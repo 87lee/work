@@ -1,0 +1,62 @@
+* {
+	font-size: small;
+	font-family: Simsun;
+}
+
+th {
+	min-width: 90px;
+	background-color: #fd9;
+}
+
+input[type=checkbox], input[type=radio] {
+	width: auto;
+}
+
+input[type="checkbox"], input[type="radio"], label {
+	vertical-align: middle;
+}
+
+input[type=button], input[type=submit] {
+	width: 90px;
+}
+
+input[type=checkbox], input[type=radio], label {
+	vertical-align: middle;
+}
+
+input, select {
+	width: 120px;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table, td, th {
+	border: 1px solid #ccc;
+}
+
+ul {
+	padding-left: 20px;
+}
+
+.obj_type {
+	color: #00f;
+}
+
+.obj_value {
+	color: #f00;
+}
+
+.obj_list {
+	cursor: pointer;
+}
+
+.main_div {
+	border: 1px solid #999;
+	position: absolute;
+	overflow-y: auto;
+	bottom: 8px;
+	left: 8px;
+	right: 8px;
+}

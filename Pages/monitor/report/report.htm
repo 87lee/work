@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>report</title>
+	<script type="text/javascript" src="global.js"></script>
+	<script type="text/javascript" src="hex.js"></script>
+	<script type="text/javascript" src="base62.js"></script>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="base64.js"></script>
+	<script type="text/javascript" src="jsaes.js"></script>
+	<link rel="stylesheet" href="global.css" />
+	<style type="text/css">
+		th, td {
+			min-width: 30px;
+		}
+
+		td {
+			padding: 5px;
+			text-align: right;
+		}
+
+		tr.sp {
+			height: 10px;
+		}
+
+		td > span + span {
+			margin-left: 5px;
+		}
+
+		td > span {
+			border: 1px solid #999;
+			background-color: #fff;
+		}
+
+		.green {
+			color: #080;
+			background-color: #cfc;
+		}
+
+		.red {
+			color: #f00;
+			background-color: #fcc;
+		}
+
+		.yellow {
+			background-color: #fd9;
+		}
+
+		.blue {
+			color: #00f;
+			background-color: #ccf;
+		}
+
+		.gray {
+			background-color: #ddd;
+		}
+
+		#report_table > tr:hover {
+			background-color: #ffc;
+		}
+
+		input[readonly] {
+			background-color: #eee;
+		}
+	</style>
+</head>
+<body onload="init();">
+	<form onsubmit="return false;" style="margin:0;">
+		<span id="mode1">
+			<span>http://</span>
+			<input type="text" style="width:150px" name="stb_ip" id="stb_ip" value="192.168.137.76">
+			<span>:</span>
+			<input type="text" style="width:50px" name="stb_port" id="stb_port" value="8089">
+			<a href="javascript:open_report_url()">/report</a>
+			<input type="submit" onclick="start2()" value="start">
+			<input type="checkbox" checked="checked" id="repeat">
+			<label for="repeat">repeat</label>
+			<input type="button" onclick="stop()" value="stop">
+		</span>
+		<span id="mode2" style="display:none">
+			<input type="button" onclick="toggle_info()" value="附加信息">
+			<a target="_blank" href="#" id="report_url"></a>
+		</span>
+		<input type="checkbox" checked="checked" id="scroll">
+		<label for="scroll">scroll</label>
+		<span id="result"></span>
+	</form>
+	<div class="main_div" style="top:40px;right:auto;background-color:#fff;z-index:1;display:none" id="info_div">
+		<div id="bad_config"></div>
+		<table style="float:left" id="basic_table"></table>
+		<table style="float:left" id="config_table"></table>
+		<table style="float:left" id="channel_table"></table>
+		<table style="float:left" id="epg_table"></table>
+	</div>
+	<div class="main_div" style="top:40px;right:auto">
+		<div style="float:left">
+			<table id="report_table"></table>
+			<div id="tail"></div>
+		</div>
+		<div style="float:left;">
+			<div style="position:fixed;margin-left:25px;">
+				<table id="common_report">
+					<tr>
+						<th>geo</th>
+						<td id="report_geo"></td>
+						<td id="report_desc" colspan="2"></td>
+						<th>版本</th>
+						<td id="report_version"></td>
+					</tr>
+					<tr>
+						<th>系统</th>
+						<td id="report_os" colspan="3" style="max-width:250px"></td>
+						<th>芯片</th>
+						<td id="report_platform"></td>
+					</tr>
+					<tr>
+						<th>sn</th>
+						<td id="report_sn"></td>
+						<td colspan="2" id="report_model"></td>
+						<th>seq</th>
+						<td id="report_seq"></td>
+					</tr>
+					<tr>
+						<th>频道时间</th>
+						<td id="report_channelSession"></td>
+						<td id="report_channelSession2" colspan="2"></td>
+						<td id="report_id" colspan="2" style="width:90px"></td>
+					</tr>
+					<tr>
+						<th>源时间</th>
+						<td id="report_urlSession"></td>
+						<td id="report_urlSession2" colspan="2"></td>
+						<td id="report_urlSession3" colspan="2"></td>
+					</tr>
+					<tr>
+						<th>汇报时间</th>
+						<td id="report_time"></td>
+						<td id="report_time2" colspan="2"></td>
+						<td id="report_time3" colspan="2"></td>
+					</tr>
+				</table>
+				<ul id="report_content"></ul>
+				<table id="preroll_report">
+					<tr>
+						<th>解析</th>
+						<td id="parse_time" class="green"></td>
+					</tr>
+					<tr>
+						<th>预读</th>
+						<td id="preroll_time" class="green"></td>
+						<th>打开</th>
+						<td id="open_time"></td>
+						<th>下载</th>
+						<td id="load_time"></td>
+						<th>比例</th>
+						<td id="preroll_progress"></td>
+						<th>速率</th>
+						<td id="preroll_rate"></td>
+					</tr>
+					<tr>
+						<th>关闭</th>
+						<td id="close_time" class="blue"></td>
+					</tr>
+					<tr>
+						<th>播放</th>
+						<td id="play_time" class="blue"></td>
+						<th>准备</th>
+						<td id="prepare_time"></td>
+						<th>缓冲</th>
+						<td id="buffer_start"></td>
+						<th>结束</th>
+						<td id="buffer_end"></td>
+						<th>解码</th>
+						<td id="decode_size"></td>
+						<th>显示</th>
+						<td id="render_start"></td>
+					</tr>
+					<tr>
+						<th>总时间</th>
+						<td id="total_time" class="red"></td>
+					</tr>
+				</table>
+				<table id="buffering_report">
+					<tr>
+						<th>次数</th>
+						<td id="buffer_count"></td>
+					</tr>
+					<tr>
+						<th>下载量</th>
+						<td id="duration"></td>
+						<th>网络差</th>
+						<td id="network_diff" class="red"></td>
+					</tr>
+					<tr>
+						<th>系统时间</th>
+						<td id="system_time"></td>
+						<th>累计缓冲</th>
+						<td id="buffer_time" class="blue"></td>
+					</tr>
+					<tr>
+						<th>播放时间</th>
+						<td id="player_time"></td>
+						<th>剩余数据</th>
+						<td id="player_diff" class="green"></td>
+					</tr>
+					<tr>
+						<th>实际剩余</th>
+						<td id="actual_diff"></td>
+						<th>积压</th>
+						<td id="buffer_progress" class="red"></td>
+						<th>速率</th>
+						<td id="buffer_rate" class="red"></td>
+					</tr>
+				</table>
+				<ul id="special_content"></ul>
+				<ul id="extra_content"></ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

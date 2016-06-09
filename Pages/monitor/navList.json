@@ -1,0 +1,68 @@
+[
+    {
+        "type": "first",
+        "module": "module",
+        "url": "module/index",
+        "icon": "fa fa-cogs",
+        "name": "模块管理"
+    },
+    {
+        "type": "second",
+        "module": "live",
+        "icon": "fa fa-bullhorn",
+        "name": "直播系统",
+        "children": [
+            {
+                "module": "liveFeedback",
+                "url": "live/liveFeedback",
+                "name": "直播用户反馈"
+            },
+            {
+                "module": "livePower",
+                "url": "live/livePower",
+                "name": "直播用户授权"
+            },
+            {
+                "module": "watchHistory",
+                "url": "live/watchHistory",
+                "name": "直播观看记录"
+            }
+        ]
+    },
+    {
+        "type": "second",
+        "module": "interface",
+        "icon": "fa fa-sliders",
+        "name": "接口监控",
+        "children": [
+            {
+                "module": "codeStatistics",
+                "url": "interface/codeStatistics",
+                "name": "状态码统计"
+            },
+            {
+                "module": "interface",
+                "url": "interface/interface",
+                "name": "接口管理"
+            }
+        ]
+    },
+    {
+        "type": "second",
+        "module": "download",
+        "icon": "fa fa-sliders",
+        "name": "下载监控",
+        "children": [
+            {
+                "module": "url",
+                "url": "download/url",
+                "name": "域名管理"
+            },
+            {
+                "module": "downloadCount",
+                "url": "download/downloadCount",
+                "name": "下载统计"
+            }
+        ]
+    }
+]
