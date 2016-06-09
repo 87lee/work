@@ -1,0 +1,12 @@
+[ 2016-03-02T18:38:25+08:00 ] 172.16.6.16 /Monitoring/getInterface
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000283s ]
+ERR: 无法加载模块:GetInterface
+
+[ 2016-03-02T18:38:28+08:00 ] 172.16.6.16 /Monitoring/getInterface
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000303s ]
+ERR: 无法加载模块:GetInterface
+
