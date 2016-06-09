@@ -1,0 +1,282 @@
+<style type="text/css">
+#publishModal .my-modal-md .my-form label,
+#publishModal .my-modal-md .my-form .label-group {
+  width: 70px;
+}
+#publishModal .my-modal-md .my-form .form-control,
+#publishModal .my-modal-md .my-form textarea {
+  width: 715px;
+}
+
+</style>
+
+<div class="breadcrumb" id="breadcrumb">
+	<span class="active">最新通过</span><i></i><span>最新待测试</span><i></i><span>全部</span><i style="display: none;"></i><span style="display: none;">未读评论</span>
+    <a id="publishBtn" class="btn my-btn" href="javascript:"><i class="iconfont icon-release"></i>&nbsp;发布APP</a>
+</div>
+<div class="page-content" id="page-content">
+    <div class="tab-list">
+        <div id="pVersionTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+            <label style="display: inline-block;">
+                <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+            </label>
+        </div>
+        <table id="pVersionTable" class="table table-bordered table-hover dataTable no-footer">
+        </table>
+    </div>
+    <div class="tab-list">
+        <div id="nVersionTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+            <label style="display: inline-block;">
+                <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+            </label>
+        </div>
+        <table id="nVersionTable" class="table table-bordered table-hover dataTable no-footer">
+        </table>
+    </div>
+    <div class="tab-list">
+        <div id="aVersionTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+            <label style="display: inline-block;">
+                <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+            </label>
+        </div>
+        <table id="aVersionTable" class="table table-bordered table-hover dataTable no-footer">
+        </table>
+    </div>
+    <div class="tab-list">
+        <div id="commentTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+            <label style="display: inline-block;">
+                <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+            </label>
+        </div>
+        <table id="commentTable" class="table table-bordered table-hover dataTable no-footer">
+        </table>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="publishModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">发布APP</h4>
+            </div>
+            <div class="modal-body">
+                <div class="error-info"></div>
+                <div class="my-form">
+                    <div class="form-group" style="position: relative;">
+                        <label for="desc">上传APK</label>
+                        <input type="text" class="form-control fileShow" id="fileShow" placeholder="请选择APK文件" readonly="readonly">
+                        <input id="fileBtn" type="button" class="fileBtn button" value="浏览">
+                        <input type="file" accept=".apk" id="fileHide" style="width:0px;height: 0;" class="fileHide">
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="label-group">
+                            <span>版本描述</span>
+                        </div>
+                        <textarea rows="8" id="remark" placeholder="输入版本描述（不少于20字节）"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subPublish">提交</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+    <div class="modal-dialog my-modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">APP详情</h4>
+            </div>
+            <div class="modal-body" style="max-height: 562px;">
+                <div class="my-form">
+                    <div class="form-group type-base">
+                        <label for="dPublisher">发布者</label>
+                        <input type="text" class="form-control" id="dPublisher" readonly="readonly">
+                    </div>
+                    <div class="form-group type-base">
+                        <label for="dPubTime">发布时间</label>
+                        <input type="text" class="form-control" id="dPubTime" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="gitBranch">Git分支</label>
+                        <input type="text" class="form-control" id="gitBranch" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="commitId">git commit id</label>
+                        <input type="text" class="form-control" id="commitId" readonly="readonly">
+                    </div>
+                    <div class="form-group type-app">
+                        <label for="channelId">渠道号</label>
+                        <input type="text" class="form-control" id="channelId" readonly="readonly">
+                    </div>
+                    <div class="form-group type-app">
+                        <label for="systemApp">是否系统应用</label>
+                        <input type="text" class="form-control" id="systemApp" readonly="readonly">
+                    </div>
+                    <div class="form-group type-app">
+                        <label for="mixed">是否混淆</label>
+                        <input type="text" class="form-control" id="mixed" readonly="readonly">
+                    </div>
+                    <div class="form-group type-app">
+                        <label for="versionCode">版本号</label>
+                        <input type="text" class="form-control" id="versionCode" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="lowestVersion">最低支持的Android API版本</label>
+                        <input type="text" class="form-control" id="lowestVersion" readonly="readonly">
+                    </div>
+<!--                     <div class="form-group clearfix">
+                        <div class="label-group">
+                            <span>版本描述</span>
+                        </div>
+                        <textarea rows="2" id="versionRemark" readonly="readonly"></textarea>
+                    </div> -->
+                    <div class="form-group">
+                        <div class="label-group">
+                            <span>依赖模块</span>
+                        </div>
+                        <div class="form-table">
+                            <table id="detailTable" class="table table-bordered table-hover dataTable no-footer">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="descModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+    <div class="modal-dialog my-modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">版本描述</h4>
+            </div>
+            <div style="height: 40px;background-color: #ffffff;"></div>
+            <div class="modal-body" style="max-height: 562px;padding-top: 0px;">
+                <div class="form-group clearfix" align="center" id="versionRemark">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="signatureModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+    <div class="modal-dialog my-modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">APP签名信息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="my-form">
+                    <div class="form-group">
+                        <label for="serialNumber">serialNumber</label>
+                        <input type="text" class="form-control" id="serialNumber" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="validFrom">validFrom</label>
+                        <input type="text" class="form-control" id="validFrom" readonly="readonly">
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="label-group">
+                            <span>owner</span>
+                        </div>
+                        <textarea rows="3" id="owner" readonly="readonly"></textarea>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="label-group">
+                            <span>issuer</span>
+                        </div>
+                        <textarea rows="3" id="issuer" readonly="readonly"></textarea>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="label-group">
+                            <span>certificateFingerprints</span>
+                        </div>
+                        <textarea rows="5" id="certificateFingerprints" readonly="readonly"></textarea>
+                    </div>
+
+
+
+
+<!--                     <div class="form-group pos-textarea-3">
+                        <label for="owner" class="form-textarea">owner</label>
+                        <textarea rows="3" id="owner" readonly="readonly"></textarea>
+                    </div>
+                    <div class="form-group pos-textarea-row-3 pos-textarea-3">
+                        <label for="issuer" class="form-textarea">issuer</label>
+                        <textarea rows="3" id="issuer" readonly="readonly"></textarea>
+                    </div>
+                    <div class="form-group group-textarea pos-textarea-row-5 pos-textarea-5">
+                        <label for="certificateFingerprints" class="form-textarea" style="top: -92px;">certificateFingerprints</label>
+                        <textarea rows="5" id="certificateFingerprints" readonly="readonly"></textarea>
+                    </div> -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="sayModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">评论</h4>
+            </div>
+            <div class="modal-body" style="padding: 30px 50px 20px 50px;">
+                <div class="error-info"></div>
+                <ul id="sayList">
+                </ul>
+                <div>
+                    <textarea rows="2" id="newSay" style="width: 100%;height: auto;resize: none;" placeholder="说几句吧"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subSay">发表</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="stateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">修改状态</h4>
+            </div>
+            <div class="modal-body" style="overflow-y: visible;">
+                <div class="error-info"></div>
+                <div class="my-form">
+                    <div class="form-group">
+                        <label for="testState">是否通过测试</label>
+                        <select class="chosen-select form-control" id="testState" data-placeholder="请选择状态">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subState">提交</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>

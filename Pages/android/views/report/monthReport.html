@@ -1,0 +1,46 @@
+<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
+<style type="text/css">
+    #vSearchTable_filter label:after{
+        content: "";
+    }
+    .appName {
+        border-top: 1px dashed #000000;
+        margin-top: 10px;
+        padding-top: 10px;
+        margin-bottom: 5px;
+    }
+    .appDev {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    #totalTable {
+        width: 70%;
+        margin-bottom: 3%;
+    }
+</style>
+<div class="breadcrumb" id="breadcrumb">
+	<span class="active">月报</span>
+</div>
+<div class="page-content" id="page-content">
+    <div style="display: inline-block;">
+        <div class="form-group" style="float: left;margin-left: 10px;">
+            <label for="startTime" style="color:#797979;font-weight: initial;">开始时间</label>
+            <input id="startTime" style="height: 30px;"></input>
+        </div>
+        <div class="form-group" style="float: left;margin-left: 10px;">
+            <label for="endTime" style="color:#797979;font-weight: initial;">结束时间</label>
+            <input id="endTime" style="height: 30px;"></input>
+        </div>
+        <div class="form-group" style="float: left;margin-left: 10px;">
+            <label for="appName" style="color:#797979;font-weight: initial;">应用名</label>
+            <select id="appName"></select>
+        </div>
+        <button class="btn my-btn" id="getMonthReport" style="float: left;margin-left: 15px;">生成月报</button>
+    </div>
+    <div id="totalTable">
+        
+    </div>
+    <table id="generalTable" class="table table-bordered table-hover dataTable no-footer" role="grid" style="display: none;"></table>
+</div>
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+<script src="js/bootstrap-datetimepicker.zh-CN.js"></script>

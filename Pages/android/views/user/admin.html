@@ -1,0 +1,196 @@
+<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
+<style type="text/css">
+.search-box{
+    margin-bottom: 15px;
+}
+.search-box .search-condition{
+    float: left;
+    margin-right: 15px;
+}
+.search-box .search-condition label{
+    font-weight: normal;
+}
+.search-box .search-condition .form-control{
+    display: inline-block;
+    height: 30px;
+    border-radius: 0;
+    padding: 0 10px;
+    width: 180px;
+}
+</style>
+<div class="breadcrumb" id="breadcrumb">
+	<span class="active">用户列表</span><i></i><span>用户登录管理</span>
+</div>
+<div class="page-content" id="page-content">
+    <div class="tab-list">
+        <div id="adminTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+            <label style="display: inline-block;">
+                <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+            </label>
+        </div>
+        <table id="adminTable" class="table table-bordered table-hover dataTable no-footer">
+        </table>
+    </div>
+    <div class="tab-list">
+        <!-- <div id="loginTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+            <label style="display: inline-block;">
+                <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+            </label>
+        </div> -->
+        <div class="search-box clearfix">
+            <div class="search-condition">
+                <label for="searchName">用户名</label>
+                <input type="text" class="form-control" id="searchName">
+            </div>
+            <div class="search-condition">
+                <label for="startTime">开始时间</label>
+                <input type="text" class="form-control" id="startTime">
+            </div>
+            <div class="search-condition">
+                <label for="endTime">结束时间</label>
+                <input type="text" class="form-control" id="endTime">
+            </div>
+            <div class="search-condition">
+                <label for="ip">IP</label>
+                <input type="text" class="form-control" id="ip">
+            </div>
+            <a href="javascript:" class="btn my-btn" id="searchBtn"><i class="fa fa-search"></i>&nbsp;查询</a>
+        </div>
+
+        <table id="loginTable" class="table table-bordered table-hover dataTable no-footer">
+        </table>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">创建用户</h4>
+            </div>
+            <div class="modal-body">
+                <div class="error-info"></div>
+                <div class="my-form">
+                    <div class="form-group">
+                        <label for="newName">用户名</label>
+                        <input type="text" class="form-control" id="newName" placeholder="字母、数字或下划线，只能以字母开头">
+                    </div>
+                    <div class="form-group">
+                        <label for="newNickName">昵称</label>
+                        <input type="text" class="form-control" id="newNickName" placeholder="请输入昵称">
+                    </div>
+                    <div class="form-group">
+                        <label for="newEmail">邮箱</label>
+                        <input type="text" class="form-control" id="newEmail" placeholder="请输入邮箱">
+                    </div>
+                    <div class="form-group">
+                        <label for="userPwd">密码</label>
+                        <input type="password" class="form-control" id="userPwd" placeholder="6~20位">
+                    </div>
+                    <div class="form-group">
+                        <label for="resetUserPwd">确认密码</label>
+                        <input type="password" class="form-control" id="resetUserPwd" placeholder="6~20位">
+                    </div>
+                    <div class="form-group" id="aUserPower">
+                        <label for="aUserPower">权限</label>
+                        <div class="power-list">
+                            <label class="position-relative"><input type="checkbox" class="ace tourist" disabled><span class="lbl"></span> 普通游客</label>
+                            <label class="position-relative"><input type="checkbox" class="ace tester"><span class="lbl"></span> 测试用户</label>
+                            <label class="position-relative"><input type="checkbox" class="ace publisher"><span class="lbl"></span> 发布用户</label>
+                            <label class="position-relative"><input type="checkbox" class="ace admin"><span class="lbl"></span> 系统管理员</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subUser">创建</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="pwdModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">重置密码</h4>
+            </div>
+            <div class="modal-body">
+                <div class="error-info"></div>
+                <div class="my-form">
+                    <div class="form-group">
+                        <label for="userName">用户名</label>
+                        <input type="text" class="form-control" id="userName" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="newPwd">新密码</label>
+                        <input type="password" class="form-control" id="newPwd" placeholder="6~20位">
+                    </div>
+                    <div class="form-group">
+                        <label for="resetPwd">确认密码</label>
+                        <input type="password" class="form-control" id="resetPwd" placeholder="6~20位">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subPwd">提交</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="powerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">修改用户</h4>
+            </div>
+            <div class="modal-body">
+                <div class="error-info"></div>
+                <div class="my-form">
+                    <div class="form-group">
+                        <label for="powerName">用户名</label>
+                        <input type="text" class="form-control" id="powerName" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="resetNick">昵称</label>
+                        <input type="text" class="form-control" id="resetNick">
+                    </div>
+                    <div class="form-group">
+                        <label for="resetEmail">邮箱</label>
+                        <input type="text" class="form-control" id="resetEmail">
+                    </div>
+<!--                     <div class="form-group" id="oldPower">
+                        <label for="oldPower">旧权限</label>
+                        <div class="power-list">
+                            <label class="position-relative"><input type="checkbox" class="ace tourist" disabled><span class="lbl"></span> 普通游客</label>
+                            <label class="position-relative"><input type="checkbox" class="ace tester" disabled><span class="lbl"></span> 测试用户</label>
+                            <label class="position-relative"><input type="checkbox" class="ace publisher" disabled><span class="lbl"></span> 发布用户</label>
+                            <label class="position-relative"><input type="checkbox" class="ace admin" disabled><span class="lbl"></span> 系统管理员</label>
+                        </div>
+                    </div> -->
+                    <div class="form-group" id="newPower">
+                        <label for="newPower">权限</label>
+                        <div class="power-list">
+                            <label class="position-relative"><input type="checkbox" class="ace tourist" disabled><span class="lbl"></span> 普通游客</label>
+                            <label class="position-relative"><input type="checkbox" class="ace tester"><span class="lbl"></span> 测试用户</label>
+                            <label class="position-relative"><input type="checkbox" class="ace publisher"><span class="lbl"></span> 发布用户</label>
+                            <label class="position-relative"><input type="checkbox" class="ace admin"><span class="lbl"></span> 系统管理员</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subPower">提交</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+<script src="js/bootstrap-datetimepicker.zh-CN.js"></script>

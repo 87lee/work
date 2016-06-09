@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<title>欢迎使用APP发布系统</title>
+<meta name="description" content="overview &amp; stats" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/font-awesome.css" />
+<link rel="stylesheet" href="css/iconfont.css" />
+<link rel="stylesheet" href="css/chosen.css" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+	<div id="navbar" class="navbar navbar-default">
+		<div class="navbar-container" id="navbar-container">
+			<div class="navbar-header pull-left">
+				<a href="#" class="navbar-brand">
+					管理控制台
+				</a>
+			</div>
+
+			<div class="navbar-buttons navbar-header pull-right" role="navigation">
+				<ul class="nav ace-nav">
+					<li>
+						<ul style="padding-right: 40px;">
+							<li style="width: 100px;height: 50px;border-right: 1px solid #6699ff;border-left: 1px solid #6699ff;" >
+								<a href="#app/comment" id="msg" class="dropdown-toggle" style="color:#ffffff;margin-left: 35px;">消息<div id="msgNum"></div></a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+							<span class="user-info" id="user-info"></span>
+							<i class="ace-icon fa fa-caret-down"></i>
+						</a>
+
+						<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+							<li>
+								<a href="#user/personal" class="dropdown-toggle">
+									<i class="menu-icon iconfont icon-icon-user"></i>
+									&nbsp;个人中心
+								</a>
+							</li>
+							<li>
+								<a href="#user/admin" class="dropdown-toggle">
+									<i class="menu-icon iconfont icon-yonghuguanli1"></i>
+									&nbsp;用户管理
+								</a>
+							</li>
+							<li>
+								<a href="#user/application" class="dropdown-toggle">
+									<i class="menu-icon iconfont icon-iconpuzzle"></i>
+									&nbsp;应用管理
+								</a>
+							</li>
+							<li>
+								<a href="#user/modular" class="dropdown-toggle">
+									<i class="menu-icon iconfont icon-cube"></i>
+									&nbsp;模块管理
+								</a>
+							</li>
+							<li id="logOut">
+								<a href="javascript:">
+									<i class="ace-icon iconfont icon-tuichu"></i>
+									&nbsp;退出
+								</a>
+							</li>
+						</ul>
+					</li>
+					<!-- /section:basics/navbar.user_menu -->
+				</ul>
+			</div>
+
+
+			<!-- /section:basics/navbar.dropdown -->
+		</div><!-- /.navbar-container -->
+	</div>
+	<div class="main-container" id="main-container">
+		<div class="sidebar-one" id="firstModular">
+			<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+				<i class="fa fa-angle-double-left" data-icon1="fa fa-angle-double-left" data-icon2="fa fa-angle-double-right"></i>
+			</div>
+			<ul class="nav-list">
+				<li>
+					<a href="#app/version" class="dropdown-toggle app">
+						<i class="menu-icon iconfont icon-jiedianapp"></i>
+						<span class="menu-text">APP</span>
+					</a>
+				</li>
+				<li>
+					<a href="#base/version" class="dropdown-toggle base">
+						<i class="menu-icon iconfont icon-cubes"></i>
+						<span class="menu-text">基础库</span>
+					</a>
+				</li>
+				<li>
+					<a href="#report/monthReport" class="dropdown-toggle report">
+						<i class="menu-icon iconfont icon-cubes"></i>
+						<span class="menu-text">月报</span>
+					</a>
+				</li>
+				<li style="display: none;">
+					<a href="#" class="dropdown-toggle user">
+						<i class="menu-icon iconfont icon-icon-user"></i>
+						用户中心
+					</a>
+					<div class="sidebar-two">
+						<ul class="nav-list">
+							<li>
+								<a href="#user/personal" class="dropdown-toggle">
+									<i class="menu-icon iconfont icon-icon-user"></i>
+									个人中心
+								</a>
+							</li>
+							<li>
+								<a href="#user/admin" class="dropdown-toggle">
+									<i class="menu-icon iconfont icon-yonghuguanli1"></i>
+									用户管理
+								</a>
+							</li>
+							<li>
+								<a href="#user/modular" class="dropdown-toggle">
+									<i class="menu-icon iconfont icon-cube"></i>
+									模块管理
+								</a>
+							</li>
+							<li>
+								<a href="#app/comment" class="dropdown-toggle">
+									<i class="menu-icon iconfont icon-cube"></i>
+									消息
+								</a>
+							</li>
+							<li>
+								<a href="#user/application" class="dropdown-toggle">
+									<i class="menu-icon iconfont icon-iconpuzzle"></i>
+									应用管理
+								</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="main-content">
+			<div class="main-content-inner" id="main-content">
+			</div>
+		</div>
+	</div>
+
+<!--loading start-->
+<div class="spinner" id="loading">
+  <div class="spinner-container container1">
+      <div class="circle1"></div>
+      <div class="circle2"></div>
+      <div class="circle3"></div>
+      <div class="circle4"></div>
+  </div>
+  <div class="spinner-container container2">
+      <div class="circle1"></div>
+      <div class="circle2"></div>
+      <div class="circle3"></div>
+      <div class="circle4"></div>
+  </div>
+  <div class="spinner-container container3">
+      <div class="circle1"></div>
+      <div class="circle2"></div>
+      <div class="circle3"></div>
+      <div class="circle4"></div>
+  </div>
+</div>
+<div id="myShade"></div>
+<!--loading end-->
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.dataTables.js"></script>
+<script src="js/jquery.dataTables.bootstrap.js"></script>
+<script src="js/chosen.jquery.js"></script>
+<script src="js/util.js"></script>
+<script src="js/welcome.js"></script>
+<script type="text/javascript">
+$('#myTable').on('click', 'input[type=checkbox]+span', function () {
+	$(this).prev('input').trigger('click');
+	$check = $(this).prev('input');
+	$check.prop('checked', !$check.prop('checked'));
+});
+</script>
+</body>
+</html>

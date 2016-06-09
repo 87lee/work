@@ -1,0 +1,95 @@
+<div class="breadcrumb" id="breadcrumb">
+    <span class="active">模块列表</span><i></i><span>模块管理列表</span>
+</div>
+<div class="page-content" id="page-content">
+    <div class="tab-list">
+        <div id="uModularTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+            <label style="display: inline-block;">
+                <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+            </label>
+        </div>
+        <table id="uModularTable" class="table table-bordered table-hover dataTable no-footer">
+        </table>
+    </div>
+    <div class="tab-list">
+        <div id="uModularListTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+            <label style="display: inline-block;">
+                <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+            </label>
+        </div>
+        <table id="uModularListTable" class="table table-bordered table-hover dataTable no-footer">
+        </table>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="modularModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">新增模块</h4>
+            </div>
+            <div class="modal-body">
+                <div class="error-info"></div>
+                <div class="my-form">
+                    <div class="form-group">
+                        <label for="newModularName">模块</label>
+                        <input type="text" class="form-control" id="newModularName" placeholder="请输入模块名">
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="label-group">
+                            <span>备注</span>
+                        </div>
+                        <textarea rows="2" id="newRemark" placeholder="输入备注（选填）"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subNewModular">提交</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="modularListModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">新增模块管理</h4>
+            </div>
+            <div class="modal-body" style="overflow-y: visible;">
+                <div class="error-info"></div>
+                <div class="my-form">
+                    <div class="form-group">
+                        <label for="userAction">操作</label>
+                        <select class="chosen-select form-control" id="userAction" data-placeholder="请选择操作">
+                            <option value="publish">维护</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="userName">用户</label>
+                        <select class="chosen-select form-control" id="userName" data-placeholder="请选择用户">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="newModular">模块</label>
+                        <select class="chosen-select form-control" id="newModular" data-placeholder="请选择模块">
+                        </select>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="label-group">
+                            <span>备注</span>
+                        </div>
+                        <textarea rows="2" id="remark" placeholder="输入备注（选填）"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subModular">提交</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,186 @@
+<div class="breadcrumb" id="breadcrumb">
+	<span class="active">应用列表</span><i></i><span>应用管理列表</span><i></i><span>发布规则</span>
+</div>
+<div class="page-content" id="page-content">
+    <div class="tab-list">
+        <div id="uAppTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+            <label style="display: inline-block;">
+                <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+            </label>
+        </div>
+        <table id="uAppTable" class="table table-bordered table-hover dataTable no-footer">
+        </table>
+    </div>
+    <div class="tab-list">
+        <div id="uAppListTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+            <label style="display: inline-block;">
+                <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+            </label>
+        </div>
+        <table id="uAppListTable" class="table table-bordered table-hover dataTable no-footer">
+        </table>
+    </div>
+    <div class="tab-list">
+        <div id="uRuleTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+            <label style="display: inline-block;">
+                <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+            </label>
+        </div>
+        <table id="uRuleTable" class="table table-bordered table-hover dataTable no-footer">
+        </table>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="uAppModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">新增应用</h4>
+            </div>
+            <div class="modal-body">
+                <div class="error-info"></div>
+                <div class="my-form">
+                    <div class="form-group">
+                        <label for="newAppName">应用名</label>
+                        <input type="text" class="form-control" id="newAppName" placeholder="请输入应用名">
+                    </div>
+                    <div class="form-group">
+                        <label for="newPkgName">包名</label>
+                        <input type="text" class="form-control" id="newPkgName" placeholder="请输入包名">
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="label-group">
+                            <span>备注</span>
+                        </div>
+                        <textarea rows="2" id="newRemark" placeholder="输入备注（选填）"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subNewApp">提交</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="uAppListModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">新增应用管理</h4>
+            </div>
+            <div class="modal-body" style="overflow-y: visible;">
+                <div class="error-info"></div>
+                <div class="my-form">
+                    <div class="form-group">
+                        <label for="userAction">操作</label>
+                        <select class="chosen-select form-control" id="userAction" data-placeholder="请选择操作">
+                            <option value="test">测试</option>
+                            <option value="publish">发布</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="userName">用户</label>
+                        <select class="chosen-select form-control" id="userName" data-placeholder="请选择用户">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="newApp">应用</label>
+                        <select class="chosen-select form-control" id="newApp" data-placeholder="请选择应用">
+                        </select>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="label-group">
+                            <span>备注</span>
+                        </div>
+                        <textarea rows="2" id="remark" placeholder="输入备注（选填）"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subApp">提交</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="uRuleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">发布规则</h4>
+            </div>
+            <div class="modal-body" style="overflow-y: visible;">
+                <div class="error-info"></div>
+                <div class="my-form">
+                    <div class="form-group">
+                        <label for="ruleColumn">字段</label>
+                        <input type="text" class="form-control" id="ruleColumn" placeholder="请输入字段名">
+                    </div>
+                    <div class="form-group">
+                        <label for="ruleOperator">运算</label>
+                        <select class="chosen-select form-control" id="ruleOperator" data-placeholder="请选择运算">
+                            <option value="">请选择运算</option>
+                            <option value="+">+</option>
+                            <option value="-">-</option>
+                            <option value="*">*</option>
+                            <option value="/">/</option>
+                            <option value="%">%</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ruleParam">参数</label>
+                        <input type="text" class="form-control" id="ruleParam" placeholder="请输入参数（选填）">
+                    </div>
+                    <div class="form-group">
+                        <label for="ruleCondition">条件</label>
+                        <select class="chosen-select form-control" id="ruleCondition" data-placeholder="请选择条件">
+                            <option value="==">==</option>
+                            <option value="!=">!=</option>
+                            <option value=">=">&gt;=</option>
+                            <option value="<=">&lt;=</option>
+                            <option value=">">&gt;</option>
+                            <option value="<">&lt;</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ruleValue">取值</label>
+                        <input type="text" class="form-control" id="ruleValue" placeholder="请输入取值">
+                    </div>
+                    <div class="form-group">
+                        <label for="attrName">属性名</label>
+                        <input type="text" class="form-control" id="attrName" placeholder="">
+                    </div>
+                    <div class="form-group" hidden="true">
+                        <label for="attrValue">属性值</label>
+                        <input type="text" class="form-control" id="attrValue" placeholder="">
+                    </div>
+                    <div class="form-group" hidden="true">
+                        <label for="attrPoint">所属节点</label>
+                        <input type="text" class="form-control" id="attrPoint" placeholder="请输入节点，如：parent_node.child_node">
+                    </div>                    
+                    <div class="form-group" id="xxxx">
+                        <label for="specifiedApp">指定的应用</label>
+                        <select class="chosen-select form-control" multiple id="specifiedApp" data-placeholder="请选择应用（选填）">
+                        </select>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="label-group">
+                            <span>备注</span>
+                        </div>
+                        <textarea rows="2" id="ruleNote" placeholder="输入备注（选填）"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subRule">提交</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>

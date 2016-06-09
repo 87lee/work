@@ -1,0 +1,108 @@
+<div class="breadcrumb" id="breadcrumb">
+	<span class="active">模块版本列表</span>
+</div>
+<div class="page-content" id="page-content">
+    <div id="bVersionTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+        <label style="display: inline-block;">
+            <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+        </label>
+    </div>
+    <table id="bVersionTable" class="table table-bordered table-hover dataTable no-footer">
+    </table>
+</div>
+
+<div class="modal my-modal fade" id="publishModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">发布模块</h4>
+            </div>
+            <div class="modal-body">
+                <div class="error-info"></div>
+                <div class="my-form">
+                    <div class="form-group" style="position: relative;">
+                        <label for="desc">模块信息</label>
+                        <input type="text" class="form-control fileShow" id="fileShow" placeholder="请选择xml文件" readonly="readonly">
+                        <input id="fileBtn" type="button" class="fileBtn button" value="浏览">
+                        <input type="file" accept="application/xml" id="fileHide" style="width:0px;height: 0;" class="fileHide">
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="label-group">
+                            <span>备注</span>
+                        </div>
+                        <textarea rows="3" id="remark" placeholder="输入备注（选填）"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subPublish">提交</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+    <div class="modal-dialog my-modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">模块详情</h4>
+            </div>
+            <div class="modal-body" style="max-height: 562px;">
+                <div class="my-form">
+                    <div class="form-group">
+                        <label for="commitId">git commit id</label>
+                        <input type="text" class="form-control" id="commitId" readonly="readonly">
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="label-group">
+                            <span>版本描述</span>
+                        </div>
+                        <textarea rows="2" id="versionRemark" readonly="readonly"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="lowestVersion">最低支持的Android API版本</label>
+                        <input type="text" class="form-control" id="lowestVersion" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <div class="label-group">
+                            <span>依赖模块</span>
+                        </div>
+                        <div class="form-table">
+                            <table id="bDetailTable" class="table table-bordered table-hover dataTable no-footer">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="sayModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">评论</h4>
+            </div>
+            <div class="modal-body" style="padding: 30px 50px 20px 50px;">
+                <div class="error-info"></div>
+                <ul id="sayList">
+                </ul>
+                <div>
+                    <textarea rows="2" id="newSay" style="width: 100%;height: auto;resize: none;" placeholder="说几句吧"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subSay">发表</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
