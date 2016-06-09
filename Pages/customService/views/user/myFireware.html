@@ -1,0 +1,92 @@
+<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
+<style type="text/css">
+#publishModal .my-modal-md .my-form label,
+#publishModal .my-modal-md .my-form .label-group {
+  width: 70px;
+}
+#publishModal .my-modal-md .my-form .form-control,
+#publishModal .my-modal-md .my-form textarea {
+  width: 715px;
+}
+#main-container .main-content-inner{
+    min-width: 1225px;
+    overflow-x: hidden;
+}
+</style>
+
+<div class="breadcrumb" id="breadcrumb">
+	<span class="active">我的固件</span>
+</div>
+<div class="page-content" id="page-content">
+    <div class="tab-list">
+        <div id="firewareListTable_filter" class="dataTables_filter" style="position: absolute;margin-top: 45px;width: 100%;">
+            <div class="row" style="margin-top: -15px;margin-left: 1px;">
+            <div class="form-group" style="margin-top: 15px;">
+            <label style="margin-top: 3px;color:#797979;float:left;">vendorID</label>
+            <input type="search" class="form-control input-sm" placeholder="请输入vendorID" style="width: 10%;float:left;display: inline-block;border-radius: 0;padding-left: 5px;margin-left:10px;font-size: 13px;">
+            </div>
+            <div class="form-group">
+            <label style="margin-top: 3px;color:#797979;margin-left:10px;float:left;">平台</label>
+            <input type="search" class="form-control input-sm" placeholder="请输入平台" style="width: 10%;float:left;display: inline-block;border-radius: 0;padding-left: 5px;margin-left:10px;font-size: 13px;">
+            </div>
+            <div class="form-group">
+            <label style="margin-top: 3px;color:#797979;float:left;margin-left:10px;">固件版本</label>
+            <input type="search" class="form-control input-sm" placeholder="请输入固件版本" style="float:left;width: 10%;display: inline-block;border-radius: 0;padding-left: 5px;margin-left:10px;font-size: 13px;">
+            </div>
+            <div class="form-group">
+            <label style="margin-top: 3px;float:left;color:#797979;margin-left:10px;">发布时间</label>
+            <input type="text" id="publishTime" class="form-control input-sm" placeholder="请输入发布时间" style="float:left;width: 10%;display: inline-block;border-radius: 0;padding-left: 5px;margin-left:10px;font-size: 13px;">
+            <button class="btn my-btn" style="float: left;margin-left: 15px;">搜索</button>
+            </div>
+            </div>
+        </div>
+        <table id="firewareListTable" class="table table-bordered table-hover dataTable no-footer">
+        </table>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="descModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+    <div class="modal-dialog my-modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">版本描述</h4>
+            </div>
+            <div style="height: 40px;background-color: #ffffff;"></div>
+            <div class="modal-body" style="max-height: 562px;padding-top: 0px;">
+                <div class="form-group clearfix" align="center" id="versionRemark">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="sayModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">评论</h4>
+            </div>
+            <div class="modal-body" style="padding: 30px 50px 20px 50px;">
+                <div class="error-info"></div>
+                <ul id="sayList">
+                </ul>
+                <div>
+                    <textarea rows="2" id="newSay" style="width: 100%;height: auto;resize: none;" placeholder="说几句吧"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subSay">发表</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+<script src="js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="js/jquery.zeroclipboard.js"></script>

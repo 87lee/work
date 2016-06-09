@@ -1,0 +1,304 @@
+<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
+<style type="text/css">
+.search-box{
+    margin-bottom: 15px;
+}
+.search-box .search-condition{
+    float: left;
+    margin-right: 15px;
+}
+.search-box .search-condition label{
+    font-weight: normal;
+}
+.search-box .search-condition .form-control{
+    display: inline-block;
+    height: 30px;
+    border-radius: 0;
+    padding: 0 10px;
+    width: 180px;
+}
+.createUserForm {
+    margin-right: 15%;
+    display: inline-block;
+    float: right;
+}
+.subBtn {
+    border: 1px solid #20a7f6;
+    border-radius: 0px;
+    background-color: #ffffff;
+    color: #20a7f6;
+    font-family: inherit;
+    width: 120px;
+    height: 40px;
+}
+.subBtn:hover {
+    background-color: #009af5;
+    color: #ffffff;
+}
+.winBorder {
+    width: 700px;
+    height: 530px;
+    box-shadow: 0 0 10px rgba(0,0,0,.75);
+    border-radius: 2px;
+    margin-right: 30%;
+    float: right;
+    margin-top: 70px;
+}
+</style>
+<div class="breadcrumb" id="breadcrumb"></div>
+<div class="page-content" id="page-content">
+    <div class="tab-list">
+        <div id="adminTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+            <label style="display: inline-block;">
+                <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+            </label>
+        </div>
+        <table id="adminTable" class="table table-bordered table-hover dataTable no-footer">
+        </table>
+    </div>
+    <div class="tab-list">
+        <div id="uGroupTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+            <label style="display: inline-block;">
+                <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+            </label>
+        </div>
+        <table id="uGroupTable" class="table table-bordered table-hover dataTable no-footer">
+        </table>
+    </div>
+    <div class="tab-list">
+        <div id="sum" style="display: none;">
+        <div id="uRuleTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+            <label style="display: inline-block;">
+                <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+            </label>
+        </div>
+        <table id="uRuleTable" class="table table-bordered table-hover dataTable no-footer">
+        </table>
+        </div>
+        <div id="sub" style="display: none;">
+        <div id="uChildrenRuleTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+            <label style="display: inline-block;">
+                <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+            </label>
+        </div>
+        <table id="uChildrenRuleTable" class="table table-bordered table-hover dataTable no-footer">
+        </table>
+        </div>
+    </div>
+</div>
+
+<div class="breadcrumb" id="headTab" style="display: none;">
+    <span class="active">创建用户</span>
+</div>
+<div class="page-content" id="createUser" style="display: none;">
+<div class="winBorder my-modal">
+    <div class="my-form" style="padding-top: 6%;">
+        <div class="form-group createUserForm">
+            <div style="width: 463px;height: 30px;color: #ff0000;" id="errorInfo"></div>
+        </div>
+        <div class="form-group createUserForm">
+            <label for="newName">用户名</label>
+            <input style="width: 463px;" type="text" class="form-control" id="newName" placeholder="字母、数字或下划线，只能以字母开头">
+        </div>
+        <div class="form-group createUserForm">
+            <label for="newNickName">昵称</label>
+            <input style="width: 463px;" type="text" class="form-control" id="newNickName" placeholder="请输入昵称">
+        </div>
+        <div class="form-group createUserForm">
+            <label for="userPwd">密码</label>
+            <input style="width: 463px;" type="password" class="form-control" id="userPwd" placeholder="8~20位">
+        </div>
+        <div class="form-group createUserForm">
+            <label for="resetUserPwd">确认密码</label>
+            <input style="width: 463px;" type="password" class="form-control" id="resetUserPwd" placeholder="8~20位">
+        </div>
+        <div class="form-group createUserForm">
+            <label for="power">权限</label>
+            <select class="chosen-select form-control" id="power" data-placeholder="">
+            </select>
+        </div>
+        <div class="form-group createUserForm">
+            <label for="newEmail">邮箱</label>
+            <input style="width: 463px;" type="text" class="form-control" id="newEmail" placeholder="请输入邮箱">
+        </div>
+        <div class="form-group createUserForm">
+            <label for="newNote">备注</label>
+            <textarea style="vertical-align: top;height: 64px;resize: vertical;width: 463px;resize: none;" class="form-control" id="newNote"></textarea>
+        </div>
+        <div  class="form-group createUserForm modal-footer" style="float: left;width: 100%;text-align: center;">
+            <button class="btn my-btn" id="subUser">提交</button>
+            <button class="btn my-btn" id="backUser">返回</button>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="modal my-modal fade" id="pwdModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">重置密码</h4>
+            </div>
+            <div class="modal-body">
+                <div class="error-info"></div>
+                <div class="my-form">
+                    <div class="form-group">
+                        <label for="userName">用户名</label>
+                        <input type="text" class="form-control" id="userName" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="newPwd">新密码</label>
+                        <input type="password" class="form-control" id="newPwd" placeholder="8~20位">
+                    </div>
+                    <div class="form-group">
+                        <label for="resetPwd">确认密码</label>
+                        <input type="password" class="form-control" id="resetPwd" placeholder="8~20位">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subPwd">提交</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="UGModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;"></h4>
+            </div>
+            <div style="height: 10px;"></div>
+            <div class="modal-body">
+                <div class="error-info"></div>
+                <div class="my-form">
+                    <div class="form-group">
+                        <label for="userGroup">用户组名</label>
+                        <input style="width: 400px;" type="text" class="form-control" id="userGroup" placeholder="">
+                    </div>
+                    <div class="form-group" hidden="true">
+                        <label for="tree">权限规则</label>
+                        <div style="width: 400px;margin-left: 124px;margin-top: -20px;" id="tree"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subUG">提交</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-md" style="width: 700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">修改用户</h4>
+            </div>
+            <div class="modal-body" style="overflow-y: inherit;">
+                <div class="error-info"></div>
+                <div class="my-form">
+                    <div class="form-group">
+                        <label for="editName">用户名</label>
+                        <input type="text" style="width: 463px;" class="form-control" id="editName" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="editNickName">昵称</label>
+                        <input type="text" style="width: 463px;" class="form-control" id="editNickName">
+                    </div>
+                    <div class="form-group">
+                        <label for="editPower">权限</label>
+                        <select class="chosen-select form-control" id="editPower" data-placeholder="请选择操作">
+                            <option value="customer">客户</option>
+                            <option value="normal">普通客服</option>
+                            <option value="online">在线客服</option>
+                            <option value="admin">客服管理员</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editEmail">邮箱</label>
+                        <input type="text" style="width: 463px;" class="form-control" id="editEmail">
+                    </div>
+                    <div class="form-group">
+                        <label for="editNote">备注</label>
+                        <textarea style="vertical-align: top;height: 64px;resize: vertical;width: 463px;resize: none;" class="form-control" id="editNote"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subEdit">提交</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal my-modal fade" id="ruleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="error-info"></div>
+                <div class="my-form">
+                    <div class="form-group">
+                        <label for="preMenu">上级菜单</label>
+                        <select class="chosen-select form-control" id="preMenu">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ruleName">规则名</label>
+                        <input type="text" class="form-control" id="ruleName" placeholder="请输入规则名">
+                    </div>
+                    <div class="form-group">
+                        <label for="ruleTitle">规则描述</label>
+                        <input type="text" class="form-control" id="ruleTitle" placeholder="请输入规则描述">
+                    </div>
+                    <div class="form-group">
+                        <label for="ruleAuthType">类型</label>
+                        <select class="chosen-select form-control" id="ruleAuthType">
+                            <option value="1">菜单</option>
+                            <option value="2">权限</option>
+                            <option value="3">菜单+权限</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ruleStatus">状态</label>
+                        <select class="chosen-select form-control" id="ruleStatus">
+                            <option value="1">启用</option>
+                            <option value="0">禁止</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ruleCss">样式</label>
+                        <input type="text" class="form-control" id="ruleCss" placeholder="请输入样式">
+                    </div>
+                     <div class="form-group">
+                        <label for="ruleIcon">icon图标</label>
+                        <input type="text" class="form-control" id="ruleIcon" placeholder="请输入icon图标">
+                    </div>
+                    <div class="form-group">
+                        <label for="ruleSort">排序</label>
+                        <input type="text" class="form-control" id="ruleSort" placeholder="请输入排序">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subRule">提交</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+<script src="js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="js/bootstrap-treeview.js"></script>

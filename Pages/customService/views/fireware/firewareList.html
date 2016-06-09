@@ -1,0 +1,275 @@
+<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
+<style type="text/css">
+#publishModal .my-modal-md .my-form label,
+#publishModal .my-modal-md .my-form .label-group {
+  width: 70px;
+}
+#publishModal .my-modal-md .my-form .form-control,
+#publishModal .my-modal-md .my-form textarea {
+  width: 715px;
+}
+#main-container .main-content-inner{
+    min-width: 1225px;
+    overflow-x: hidden;
+}
+
+
+</style>
+
+<div class="breadcrumb" id="breadcrumb"></div>
+<div class="page-content" id="page-content">
+    <div class="tab-list">
+        <div id="firewareListTable_filter" class="dataTables_filter" style="position: absolute;margin-top: 45px;width: 100%;">
+            <div class="row" style="margin-top: -15px;margin-left: 1px;min-width: 1500px;">
+            <div class="form-group" style="margin-top: 15px;">
+            <label style="margin-top: 3px;float:left;color:#797979;">客户</label>
+            <input type="search" class="form-control input-sm" placeholder="请输入客户" style="width: 10%;float:left;display: inline-block;border-radius: 0;padding-left: 5px;margin-left:10px;font-size: 13px;">
+            </div>
+            <div class="form-group">
+            <label style="margin-top: 3px;float:left;color:#797979;margin-left:10px;">品牌</label>
+            <input type="search" class="form-control input-sm" placeholder="请输入品牌" style="width: 10%;float:left;display: inline-block;border-radius: 0;padding-left: 5px;margin-left:10px;font-size: 13px;">
+            </div>            
+            <div class="form-group">
+            <label style="margin-top: 3px;color:#797979;float:left;margin-left:10px;">vendorID</label>
+            <input type="search" class="form-control input-sm" placeholder="请输入vendorID" style="width: 10%;float:left;display: inline-block;border-radius: 0;padding-left: 5px;margin-left:10px;font-size: 13px;">
+            </div>
+            <div class="form-group">
+            <label style="margin-top: 3px;color:#797979;margin-left:10px;float:left;">平台</label>
+            <input type="search" class="form-control input-sm" placeholder="请输入平台" style="width: 10%;float:left;display: inline-block;border-radius: 0;padding-left: 5px;margin-left:10px;font-size: 13px;">
+            </div>
+            <div class="form-group">
+            <label style="margin-top: 3px;color:#797979;float:left;margin-left:10px;">固件版本</label>
+            <input type="search" class="form-control input-sm" placeholder="请输入固件版本" style="float:left;width: 10%;display: inline-block;border-radius: 0;padding-left: 5px;margin-left:10px;font-size: 13px;">
+            </div>
+            <div class="form-group">
+            <label style="margin-top: 3px;float:left;color:#797979;margin-left:10px;">发布时间</label>
+            <input type="text" id="publishTime" class="form-control input-sm" placeholder="请输入发布时间" style="float:left;width: 10%;display: inline-block;border-radius: 0;padding-left: 5px;margin-left:10px;font-size: 13px;">
+            <button class="btn my-btn" style="float: left;margin-left: 15px;">搜索</button>
+            </div>
+            </div>
+        </div>
+        <table id="firewareListTable" class="table table-bordered table-hover dataTable no-footer">
+        </table>
+    </div>
+    <div class="tab-list">
+        <div id="platformListTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+            <label style="display: inline-block;">
+                <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+            </label>
+        </div>
+        <table id="platformListTable" class="table table-bordered table-hover dataTable no-footer">
+        </table>
+    </div>
+    <div class="tab-list">
+        <div id="vendorIdListTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+            <label style="display: inline-block;">
+                <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+            </label>
+        </div>
+        <table id="vendorIdListTable" class="table table-bordered table-hover dataTable no-footer">
+        </table>
+    </div>
+    <div class="tab-list">
+        <div id="brandListTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+            <label style="display: inline-block;">
+                <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+            </label>
+        </div>
+        <table id="brandListTable" class="table table-bordered table-hover dataTable no-footer">
+        </table>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="publishModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">发布固件</h4>
+            </div>
+            <div class="modal-body" style="overflow-y: inherit;">
+                <div class="error-info"></div>
+                <div class="my-form">
+                    <div class="form-group">
+                        <label for="customer">客户</label>
+                        <select class="chosen-select form-control" id="customer" data-placeholder="请选择客户">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="brand">品牌</label>
+                        <select class="chosen-select form-control" id="brand" data-placeholder="请选择品牌">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="vendorID">vendorID</label>
+                        <select class="chosen-select form-control" id="vendorID" data-placeholder="请选择平台">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="platform">平台</label>
+                        <select class="chosen-select form-control" id="platform" data-placeholder="请选择平台">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fireware">固件版本</label>
+                        <input type="text" class="form-control" id="fireware" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="md5">MD5</label>
+                        <input type="text" class="form-control" id="md5" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="downloadLink">下载链接</label>
+                        <input type="text" class="form-control" id="downloadLink" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">下载密码</label>
+                        <input type="text" class="form-control" id="pwd" placeholder="请输入4位下载密码">
+                    </div>
+                    <div class="form-group">
+                        <label for="versionDes">版本描述</label>
+                        <input type="text" class="form-control" id="versionDes" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subPublish">提交</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="platformModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">新增平台</h4>
+            </div>
+            <div class="modal-body" style="overflow-y: inherit;">
+                <div class="error-info"></div>
+                <div class="my-form">
+                    <div class="form-group">
+                        <label for="platformName">平台名</label>
+                        <input type="text" class="form-control" id="platformName" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="platformNote" style="float: left;">备注</label>
+                        <textarea rows="3" style="height: 100px;margin-left:4px;" class="form-control" id="platformNote"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subPlatform">提交</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="vendorIDModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">新增vendorID</h4>
+            </div>
+            <div class="modal-body" style="overflow-y: inherit;">
+                <div class="error-info" style="padding-left: 70px;"></div>
+                <div class="my-form">
+                    <div class="form-group">
+                        <label for="newVendorID">vendorID</label>
+                        <input type="text" class="form-control" id="newVendorID" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="newVendorIDNote" style="float: left;">备注</label>
+                        <textarea rows="3" style="height: 100px;margin-left:4px;" class="form-control" id="newVendorIDNote"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subVendorID">提交</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="brandModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">新增品牌</h4>
+            </div>
+            <div class="modal-body" style="overflow-y: inherit;">
+                <div class="error-info"></div>
+                <div class="my-form">
+                    <div class="form-group">
+                        <label for="brandName">品牌名</label>
+                        <input type="text" class="form-control" id="brandName" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="bcustomer">客户</label>
+                        <select class="chosen-select form-control" id="bcustomer" data-placeholder="请选择客户">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="brandNote" style="float: left;">备注</label>
+                        <textarea rows="3" style="height: 100px;margin-left:4px;" class="form-control" id="brandNote"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subBrand">提交</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="descModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+    <div class="modal-dialog my-modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">版本描述</h4>
+            </div>
+            <div style="height: 40px;background-color: #ffffff;"></div>
+            <div class="modal-body" style="max-height: 562px;padding-top: 0px;">
+                <div class="form-group clearfix" align="center" id="versionRemark">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="sayModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">评论</h4>
+            </div>
+            <div class="modal-body" style="padding: 30px 50px 20px 50px;">
+                <div class="error-info"></div>
+                <ul id="sayList">
+                </ul>
+                <div>
+                    <textarea rows="2" id="newSay" style="width: 100%;height: auto;resize: none;" placeholder="说几句吧"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subSay">发表</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+<script src="js/bootstrap-datetimepicker.zh-CN.js"></script>

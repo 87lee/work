@@ -1,0 +1,466 @@
+<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" type="text/css" href="views/question/jPages.css">
+<link rel="stylesheet" type="text/css" href="views/question/style.css">
+<style type="text/css">
+/*************客户服务******************/
+.holder {
+	margin: 15px 0 15px 15px;
+	text-align:right;
+	border-left:1px solid #ddd;
+}
+.holder a {
+	display: inline-block;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	font-size: 12px;
+	cursor: pointer;
+	margin: 0px;
+	padding: 7px 16px;
+	color: #666;
+}
+.holder a:hover {
+	background-color: #22a8f9;
+	color: #fff;
+}
+.holder a.jp-previous {
+11margin-right: 0px;
+}
+.holder a.jp-next {
+	margin-left: 0px;
+}
+.holder a.jp-current,
+a.jp-current:hover {
+	color: #fff;
+	background-color:#22a8f9;
+	font-weight: bold;
+}
+.holder a.jp-disabled,
+a.jp-disabled:hover {
+	color: #bbb;
+	background-color:#fff;
+	cursor:not-allowed;
+}
+.holder a.jp-current,
+a.jp-current:hover,
+ .holder a.jp-disabled,
+a.jp-disabled:hover {
+	cursor:not-allowed;
+	555background: none;
+}
+.holder a.jp-previous {
+    margin-right: 0px;
+}
+
+/************************/
+.holder span {
+	margin: 0 5px;
+}
+
+.pos {
+	margin-bottom: 0px;
+	padding-left: 10px;
+	height: 35px;
+	line-height: 35px;
+	background-color: #f5f5f5;
+	border: 1px solid #ddd;
+	color:#333;
+	font-size:14px;
+	font-family:"Microsoft YaHei",Verdana, Geneva, sans-serif;
+}
+.pos a {
+	color: #333;
+}
+.pos a:hover {
+	color: #20A8F7;
+}
+#commonQuestionTable {
+	border-bottom: 1px #ccc solid;
+}
+#commonQuestionTable_filter1 {
+	margin-bottom: 15px;
+	text-align: left;
+}
+#commonQuestionTable_filter1 label:after {
+	content: "";
+}
+#commonQuestionTable_filter1 select {
+	width: 200px;
+}
+#commonQuestionTable_filter1 input {
+	width: 250px;
+	height:25px;
+	line-height:25px;
+	font-family:"Microsoft YaHei",Verdana, Geneva, sans-serif;
+	font-size:14px;
+	color:#999999;
+}
+#page-content {
+	margin-left: 200px;
+	margin-right: 250px;
+}
+#myqlist-content .nav-type {
+	position: absolute;
+	width: 160px;
+	text-align: center;
+}
+.online-service {
+	position: absolute;
+	right: 60px;
+	top: 173px;
+}
+.online-service .create-answer {
+	width: 200px;
+	-webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.3), -1px 1px 1px rgba(0,0,0,.3);
+	box-shadow: 1px 1px 1px rgba(0,0,0,.3), -1px 1px 1px rgba(0,0,0,.3);
+}
+.online-service .create-answer dt {
+	padding:20px;
+	background-color: #21a9f8;
+	color: #fff;
+	font-family:"Microsoft YaHei";
+	font-size: 14px;
+	text-align: center;
+	font-weight:normal;
+}
+.online-service .create-answer dd {
+	text-align: center;
+	color: #333;
+}
+.online-service .create-answer dd a {
+	0padding:20px;
+	color: #22a8f9;
+	font-family:"Microsoft YaHei";
+	font-size: 14px;
+	text-align: center;
+	font-weight:normal;
+	line-height:60px;
+	height:60px;
+	border:none;
+	border-style:none;
+}
+.online-service .create-answer dd a:link
+.online-service .create-answer dd a:focus,
+.online-service .create-answer dd a:active{
+	border:0;
+	outline:none;
+}
+.service {
+	-webkit-box-shadow: 0px 0px 10px rgba(0,0,0,.3);
+	-moz-box-shadow: 0px 0px 10px rgba(0,0,0,.3);
+	box-shadow: 0px 0px 10px rgba(0,0,0,.3);
+}
+.service dt {
+	height:40px;
+	line-height:40px;
+	background-color: #22a8f9;
+	color: #fff;
+	font-size: 16px;
+	text-align: center;
+	font-weight:normal;
+}
+.service dd {
+	text-align: center;
+}
+.service dd a {
+	box-sizing: content-box;
+	display: block;
+	margin-left: 25px;
+	margin-right: 25px;
+	height:50px;
+	line-height:50px;
+
+	font-size: 14px;
+	border-bottom: 1px solid #50bbfe;
+	color: #22a8f9;
+}
+.service dd:last-child a {
+	border-bottom: 0;
+}
+table thead {
+	display: none;
+}
+.nav-type .list-group-item:first-child{
+	border-radius:0 !important;
+}
+.nav-type li{
+	background-color: #d2efff;
+	padding:0;
+	border-radius:0;
+	border:1px solid #fff;
+}
+.nav-type li a{
+	border:0;
+}
+.nav-type li.all-type a{
+	color:#fff;
+	height:45px;
+	line-height:45px;
+}
+.nav-type li a{
+	height:40px;
+	line-height:40px;
+	display:block;
+	color:#5c5c5c;
+	width: 158px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
+}
+.nav-type li > a.active{
+	color:#333;
+	background:#50bbfe;
+}
+
+
+.nav-type .list-group-item:hover,
+.nav-type .list-group-item:focus {
+	background-color: #a7ddfe;
+	border-color: #ccc;
+	border:1px solid #fff;
+	border-radius:0;
+}
+.nav-type li.active {
+	background-color: #50bbfe;
+}
+.nav-type .list-group-item a {
+	font-family:"Microsoft YaHei",Verdana, Geneva, sans-serif;
+	font-size:14px;
+}
+.nav-type li.all-type {
+	background-color: #20A8F7;
+	color: #fff;
+}
+.nav-type li.all-type a {
+	font-family:"Microsoft YaHei",Verdana, Geneva, sans-serif;
+	font-size:14px;
+	color: #fff;
+	height:45px;
+	line-height:45px;
+}
+#search {
+	font-family:"Microsoft YaHei";
+	font-size:14px;
+	height: 35px;
+	padding: 0;
+	width:90px;
+	background-color: #4fbafb;
+	color: #fff;
+	border-radius:0;
+	border:1px solid #4fbafb;
+	outline: 0;
+}
+#search:hover,
+#search:active{
+	background-color: #20A8F7;
+	color: #fff;
+	border-radius:0;
+	border:1px solid #20A8F7;
+}
+#searchVal {
+	padding-left: 5px;
+}
+.jh {
+	color: #666;
+}
+.jh:hover {
+	color: #20A8F7;
+}
+.jh2 {
+	color: #666;
+}
+.jh2:hover {
+	color: #20A8F7;
+}
+
+.nav-type dl {
+	margin:0;
+	display: none;
+	min-height:0;
+	background-color: ;
+}
+.nav-type dl dd {
+	padding:0;
+	border-top: 1px solid #fff;
+	background-color: #e8e8e8;
+	color:#999;
+}
+.nav-type dl dd a{
+	display:block;
+	height:39px;
+	line-height:39px;
+	color:#999;
+    width: 158px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+.nav-type dl dd a:hover{
+	color:#51befe;
+	background:#f5f5f5;
+}
+.nav-type dl dd a.active{
+	color:#fff;
+	background:#a7ddfe;
+}
+/*.nav-type dl dd:hover {
+	background-color: #f5f5f5;
+	color:#51bafe;
+}
+.nav-type dl dd.active{
+	background:#a7ddfe;
+}
+
+.nav-type .list-group-item.active dl dd a{
+	color:#999;
+	background:#e8e8e8;
+}
+.nav-type .list-group-item.active dl dd a{
+	color:#999;
+	background:#e8e8e8;
+}
+
+.nav-type .list-group-item.active dl dd.active a{
+	color:#fff;
+}
+.nav-type dl dd:hover a{
+	color:#51bafe;
+}
+*/
+.nav-type dl dd:focus{
+	color:#fff;
+	background:#a7ddfe;
+}
+#wrap ul li {
+	padding:0;
+	border-bottom: 1px dashed #ddd;
+	height:40px;
+	line-height:40px;
+	padding-left: 10px;
+
+}
+#wrap ul li a{
+	font-family:"Microsoft YaHei",Verdana, Geneva, sans-serif;
+	font-size:14px;
+	color:#666;
+}
+#wrap ul li a:hover{
+	color:#22a8f9;
+}
+.page{
+	222position:fixed;
+	right:310px;
+	bottom:90px;
+	text-align:right;
+
+}
+.page .info{
+	display:inline-block;
+	font-family:"Microsoft YaHei";
+	font-size:14px;
+}
+.page .holder{
+	display:inline-block;
+}
+#wrap #con li{
+	height:auto;
+}
+#wrap #con li p{
+	font-family:"Microsoft YaHei",Verdana, Geneva, sans-serif;
+	font-size:14px;
+}
+a:focus{
+	outline:none;
+}
+.customImg{
+	background: url('img/custom.png') no-repeat  !important;
+	position: relative;
+	top: 8px;
+	left: 72px;
+	width: 52px;
+	height: 46px;
+	border: 0;
+	box-shadow:0;
+}
+</style>
+<div class="myqlist-content-inner" id="myqlist-content">
+  <!---->
+  <div class="breadcrumb" id="breadcrumb"> <span class="active">客户服务</span></div>
+  <div class="nav-type">
+    <ul class="list-group">
+      <li class="list-group-item all-type" style="background-color:#21a9f8"><a href="all">常见问题分类</a></li>
+    </ul>
+  </div>
+  <div class="page-content" id="page-content">
+    <div class="tab-list">
+      <div id="commonQuestionTable_filter1" class="dataTables_filter">
+        <div class="form-group">
+            <input type="search" id="searchVal" class="" placeholder="请输入关键字" >
+
+        	<button id="search" class="btn btn-default" style="margin-top: -5px;">搜索</button>
+        </div>
+      </div>
+      <div class="pos"><a href="all" class="all">全部</a></div>
+      <div id="wrap"></div>
+      <div class="page"><div class="holder"></div></div>
+
+    </div>
+  </div>
+  <!---->
+  <div class="online-service">
+    <dl class="create-answer">
+      <dt>没有找到答案？试试创建问题单吧！</dt>
+      <dd><a href="#" id="createAnswer">点击创建问题单</a></dd>
+    </dl>
+    <div class="customImg"></div>
+    <div class="service">
+      <dl>
+        <dt>在线客服</dt>
+        <dd><a href="">在线客服1</a></dd>
+        <dd><a href="">在线客服2</a></dd>
+        <dd><a href="">在线客服3</a></dd>
+      </dl>
+    </div>
+  </div>
+  <!--start #questionModal-->
+  <div class="modal my-modal fade" id="questionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 style="margin: 0;">新建问题单</h4>
+        </div>
+        <div class="modal-body" style="overflow-y:inherit;">
+          <div class="error-info"></div>
+          <div class="my-form">
+            <div class="form-group appTypeQuick">
+              <label for="questionType">问题分类:</label>
+              <select class="chosen-select form-control" id="questionType" data-placeholder="请选择分类">
+                <option value="请选择分类">请选择分类</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="questionDesc" aria-hidden="true">问题描述</label>
+              <div class="form-control" contenteditable="true" id="questionDesc" style="vertical-align: top; height: 150px; resize: vertical; color: rgb(153, 153, 153);" placeholder="请输入问题描述"></div>
+            </div>
+            <div class="form-group">
+              <label for="fileToUpload">添加附件</label>
+              <input type="file" id="fileToUpload" name="ask_attach[]" multiple="multiple" style="display: inline-block;width: 180px;">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer"> <a href="javascript:" class="btn my-btn" id="subQuestion">提交</a>&nbsp;&nbsp; <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a> </div>
+      </div>
+    </div>
+  </div>
+  <!--/end #questionModal-->
+
+  <!---->
+</div>
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+<script src="js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="views/question/jPages.js"></script>
+<script type="text/javascript" src="views/question/ajaxfileupload.js"></script>

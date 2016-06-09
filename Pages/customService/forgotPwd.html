@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>客户服务系统</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+  <script type="text/javascript" src="js/forgotPwd.js"></script>
+  <script type="text/javascript" src="js/util.js"></script>
+  <script src="js/jquery.cookie.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
+	<meta charset="utf-8">
+	<style type="text/css">
+		body {
+			font-family: 微软雅黑;
+		}
+		input[type="checkbox"] {
+  			-webkit-appearance: none;
+  			background: #fff url('img/uncheck.png');
+  			height: 22px;
+  			vertical-align: middle;
+  			width: 22px;
+		}
+
+		input[type="checkbox"]:checked {
+  			-webkit-appearance: none;
+  			background: #fff url('img/checked.png');
+  			height: 22px;
+  			vertical-align: middle;
+  			width: 22px;
+		}
+
+		.modal-content-cus {
+  			position: relative;
+  			background-color: #f5f5f5;
+ 		 	border: 1px solid #999999;
+  			border: 1px solid rgba(0, 0, 0, 0.2);
+  			border-radius: 0px;
+  			-webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  			box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  			background-clip: padding-box;
+  			outline: 0;
+  			margin-top: 410px;
+		}
+		.error-info{
+	        color:red;
+	        padding-left:2px;
+			text-align:left;
+			display:none;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			// body...
+			$('#forgotPwd').on('click', function() {
+				$('#myModal').modal('show');	
+			});
+		});
+	</script>
+</head>
+<body>
+<div id="backImg" style="background-image: url('img/background.jpg');position: absolute;z-index: -9999;top: 0px;height: 100%;"></div>
+	<div align="center">
+		<img id="logo" style="position: absolute;" src="img/logo.png">
+		<div id="back" style="background: rgba(245, 245, 245, .4);width: 560px;height: 260px;padding-top: 40px;border: 1px solid rgba(0,0,0,.1);">
+
+      		<div class="input-group">
+      			<p class='error-info' style="line-height: 0;height: 0px;">邮箱格式不正确</p>
+        		<span class="glyphicon glyphicon-envelope" style="font-size: 28px;float: left;position: relative;left: 15px;z-index: 3;color:#999999;margin-top: 28px;"></span>
+         		<input style="margin-left: -32px;margin-bottom: 20px;height: 45px;font-size: 16px;width: 460px;padding-left: 57px;margin-top: 20px;background-color: #ffffff;border-radius: 0px;" type="text" class="form-control" placeholder="请输入邮箱">
+         	</div>
+         	<div class="input-group" style="width: 460px;">
+         		<a href="./" style="float: left;margin-top: -5px;">返回登录</a>
+         	</div>
+			<div class="input-group">
+			<button class="btn" id="emailSub" style="width: 460px;height: 50px;border-radius: 0px;background-color: #009af5;font-size: 16px;letter-spacing: 10px;margin-top: 20px;color: #ffffff;">
+			找回密码
+			</button>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

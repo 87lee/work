@@ -1,0 +1,416 @@
+<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
+<style>
+#answerTable {
+	border-bottom: 1px #ccc dashed;
+}
+#common_question_filter {
+	margin-bottom: 15px;
+	text-align: left;
+}
+
+#common_question_filter label:after {
+	content: "";
+}
+#common_question_filter select {
+	width: 200px;
+}
+#common_question_filter input {
+	width: 250px;
+}
+#answerTable .pull-right {
+	height: 96px;
+	line-height: 96px;
+}
+#answerTable .comment {
+	display: none;
+	clear: both;
+	margin-bottom: 10px;
+	padding: 20px;
+	background: #d8d8d8;
+}
+.time {
+	color: #666;
+}
+.typical_question,#typical_content{
+	color:#019018;
+}
+#answerTable .comment .selected {
+	color: #50bbfe;
+}
+label.experience {
+	display: inline-block;
+	box-sizing: content-box;
+	width: 3%;
+}
+textarea.experience {
+	display: inline-block;
+	box-sizing: content-box;
+	width: 95%;
+	height: 150px;
+	vertical-align: top;
+}
+ #commonQuestionTable > tbody > tr > td,
+ #questionTypeTable > tbody > tr > td
+ {
+	line-height:24px;
+	height:60px;
+	border-top:1px dashed #eee !important;
+ 	padding: 5px 0px
+}
+
+#commonQuestionTable .position-relative,
+.pos-rel,
+#questionTypeTable .position-relative,
+.pos-rel {
+	top: 0px;
+}
+.question-btn {
+	border: 1px solid #999999;
+	background-color: #fafafa;
+	border-radius: 0;
+	padding: 0;
+	margin-right: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+	line-height: 28px;
+	font-size: 14px;
+}
+/***分类管理***/
+#commonQuestionTypeTable_filter label,
+#secondTable_filter label,
+#wenTiDanTable_filter label{
+	position:relative;
+	top:45px;
+}
+.common-question-type,
+.second-question-type,
+.wentidan {
+	position: relative;
+	width: 48%;
+}
+.common-question-type {
+	float: left;
+}
+.second-question-type {
+	float: left;
+}
+.wentidan {
+	float: right;
+}
+#commonQuestionTable, #questionTypeTable{
+	border-bottom:1px dashed #eee !important;
+}
+#commonQuestionTable thead,
+#questionTypeTable thead{
+	display:none;
+}
+#commonQuestionTable .sorting_1,
+#questionTypeTable .sorting_1{
+	width:100%;
+	padding-left:10px;
+  max-width: 1300px;
+}
+.addBtn,.delBtn,.assignBtn,.myAssignBtn,.allQuesBtn,.backBtn{
+	margin:0 15px 0 0;
+	padding:0;
+	width:90px;
+	height:30px;
+	color:#999;
+	background:#fff;
+	border:1px solid #999;
+}
+.addBtn:hover,
+.delBtn:hover,
+.backBtn:hover,
+.assignBtn:hover,
+.myAssignBtn:hover,
+.allQuesBtn:hover{
+	background:#52bafe;
+	border:1px solid #4fbafb;
+	color:#fff!important;
+}
+
+.checkBtn{
+    background:#22a8f9;
+	border:1px solid #22a8f9;
+	color:#fff!important;
+}
+.sorting_1 p{
+	margin:0;
+	padding:0;
+	line-height:28px;
+}
+.look-reply{
+	display:none;
+}
+.look-reply .texta,.look-reply .texta:hover{
+  cursor: auto;
+  color: #666666;
+  word-break:break-all;
+  overflow: hidden;
+}
+.cont-q{
+	color:#666;
+	word-break:break-all;
+	display: block;
+  overflow: hidden;
+}
+.ellipsis{
+	word-break:break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+	max-width:1620px;
+  white-space: nowrap;
+}
+
+.cont-q:focus,.attach_link:focus,.cont-q:visited,.attach_link:visited{
+	color:#222
+}
+
+.cont-q:hover,#typical_content:hover,.attach_link:hover{
+	color:#22a8f9;
+}
+.breadcrumb span{
+	padding-left:5px
+}
+.question-cate-crumb{
+	color: #22a8f9;
+    font-size: 14px;
+    margin: 15px 0px;
+    font-weight: unset;
+}
+.attach_link{
+	color:#222
+}
+
+</style>
+<!---->
+<div class="breadcrumb" id="breadcrumb"></div>
+<div class="page-content" id="page-content">
+  <!----常见问题---->
+  <div class="tab-list">
+    <div id="commonQuestionTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+      <label style="display: inline-block;">
+        <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+      </label>
+    </div>
+    <table id="commonQuestionTable" class="table table-hover dataTable no-footer" role="grid">
+    </table>
+  </div>
+  <!----问题管理---->
+  <div class="tab-list">
+    <div id="questionTypeTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+      <label style="display: inline-block;">
+        <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+      </label>
+    </div>
+    <table id="questionTypeTable" class="table table-hover dataTable no-footer" role="grid">
+    </table>
+  </div>
+  <!----分类管理---->
+  <div class="tab-list">
+    <!----常见问题一级分类---->
+    <div class="common-question-type">
+     <h3 class="question-cate-crumb">常见问题分类</h3>
+      <div id="commonQuestionTypeTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+        <label style="display: inline-block;">
+          <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+        </label>
+      </div>
+      <table id="commonQuestionTypeTable" class="table table-hover table-bordered dataTable no-footer" role="grid">
+      </table>
+    </div>
+    <!----常见问题一级分类---->
+    <!----常见问题二级分类---->
+    <div class="second-question-type" style="display:none;">
+     <h3 class="question-cate-crumb">常见问题二级分类</h3>
+      <div id="secondTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+        <label style="display: inline-block;">
+          <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+        </label>
+      </div>
+      <table id="secondTable" class="table table-hover table-bordered dataTable no-footer" role="grid">
+      </table>
+    </div>
+    <!----常见问题二级分类---->
+
+    <div class="wentidan">
+     <h3 class="question-cate-crumb">问题单分类</h3>
+      <div id="wenTiDanTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 40px;">
+        <label style="display: inline-block;">
+          <input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;border-radius: 0;">
+        </label>
+      </div>
+      <table id="wenTiDanTable" class="table table-hover table-bordered dataTable no-footer" role="grid">
+      </table>
+    </div>
+    <!----/end问题单分类---->
+  </div>
+</div>
+
+<!--start #发布常见问题-->
+<div class="modal my-modal fade" id="publicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+  <div class="modal-dialog my-modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 style="margin: 0;">发布常见问题</h4>
+      </div>
+      <div class="modal-body" style="overflow-y:inherit;">
+        <div class="error-info"></div>
+        <div class="my-form">
+          <div class="form-group">
+            <label for="publicFirstType">一级分类</label>
+            <select class="form-control" id="publicFirstType" data-placeholder="请选择一级分类">
+
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="publicSecondType">二级分类</label>
+            <select class="form-control" id="publicSecondType" data-placeholder="请选择二级分类">
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="typical">典型问题</label>
+            <select class="form-control" id="typical" data-placeholder="是">
+            <option value="1">是</option>
+            <option value="0">否</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="questionDesc">问题描述</label>
+            <textarea class="form-control" id="questionDesc" placeholder="问题描述" style="vertical-align: top; height: 100px; resize: none; " ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputFile">添加附件</label>
+            <input type="file" id="questionFile" multiple="multiple" style="display: inline-block;width: 180px;">
+          </div>
+          <div class="form-group">
+            <label for="questionReply">回复</label>
+            <textarea class="form-control" id="questionReply" placeholder="请输入回复" style="vertical-align: top; height: 100px; resize: none; " ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputFile">添加附件</label>
+            <input type="file" id="replyFile" multiple="multiple" style="display: inline-block;width: 180px;">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer"> <a href="javascript:" class="btn my-btn" id="publicQuestion">提交</a>&nbsp;&nbsp; <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a> </div>
+    </div>
+  </div>
+</div>
+<!--/end #publicModal-->
+<!--start #指派问题-->
+<div class="modal my-modal fade" id="assignModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+  <div class="modal-dialog my-modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 style="margin: 0;">指派问题</h4>
+      </div>
+      <div class="modal-body" style="overflow-y:inherit;">
+        <div class="error-info"></div>
+        <div class="my-form">
+          <div class="form-group">
+            <label for="user">用户</label>
+            <select class="form-control" id="assignUser" data-placeholder="请选择用户">
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="type">分类</label>
+            <select class="form-control" id="assignType" data-placeholder="请选择分类">
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer"> <a href="javascript:" class="btn my-btn" id="assignQuestion">提交</a>&nbsp;&nbsp; <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a> </div>
+    </div>
+  </div>
+</div>
+<!--/end #assignModal-->
+<!--start #新增一级分类-->
+<div class="modal my-modal fade" id="firstTypeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+  <div class="modal-dialog my-modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 style="margin: 0;">新增分类</h4>
+      </div>
+      <div class="modal-body">
+        <div class="error-info"></div>
+        <div class="my-form">
+          <div class="form-group">
+            <label for="user">分类名称</label>
+            <input type="text" class="form-control" id="firstTypeName" data-placeholder="请输入分类名称">
+          </div>
+          <div class="form-group">
+            <label for="type">备注</label>
+            <input type="text" class="form-control" id="firstTypeDesc" data-placeholder="请输入分类名称">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer"> <a href="javascript:" class="btn my-btn" id="addFirstType">提交</a>&nbsp;&nbsp; <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a> </div>
+    </div>
+  </div>
+</div>
+<!--/end #assignModal-->
+
+<!--start #新增二级分类-->
+<div class="modal my-modal fade" id="secondTypeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+  <div class="modal-dialog my-modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 style="margin: 0;">新增分类</h4>
+      </div>
+      <div class="modal-body">
+        <div class="error-info"></div>
+        <div class="my-form">
+         <!-- <div class="form-group">
+            <label for="sFirstTypeName">一级分类</label>
+            <select class="form-control" id="sFirstTypeName" data-placeholder="请选择一级分类">
+            </select>
+          </div>-->
+          <div class="form-group">
+            <label for="sSecondTypeName">分类名称</label>
+            <input type="text" class="form-control" id="sSecondTypeName" data-placeholder="请输入分类名称">
+          </div>
+          <div class="form-group">
+            <label for="type">备注</label>
+            <input type="text" class="form-control" id="sSecondTypeDesc" data-placeholder="请输入分类名称">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer"> <a href="javascript:" class="btn my-btn" id="addSecondType">提交</a>&nbsp;&nbsp; <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a> </div>
+    </div>
+  </div>
+</div>
+<!--/end #assignModal-->
+<!--start #新增一级分类-->
+<div class="modal my-modal fade" id="questionTypeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+  <div class="modal-dialog my-modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 style="margin: 0;">新增分类</h4>
+      </div>
+      <div class="modal-body">
+        <div class="error-info"></div>
+        <div class="my-form">
+          <div class="form-group">
+            <label for="user">分类名称</label>
+            <input type="text" class="form-control" id="questionTypeName" data-placeholder="请输入分类名称">
+          </div>
+          <div class="form-group">
+            <label for="type">备注</label>
+            <input type="text" class="form-control" id="questionTypeDesc" data-placeholder="请输入分类名称">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer"> <a href="javascript:" class="btn my-btn" id="addQuestionType">提交</a>&nbsp;&nbsp; <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a> </div>
+    </div>
+  </div>
+</div>
+<!--/end #firstTypeModal-->
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+<script src="js/bootstrap-datetimepicker.zh-CN.js"></script>

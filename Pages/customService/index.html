@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>客户服务系统</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/login.js"></script>
+  <script type="text/javascript" src="js/util.js"></script>
+  <script src="js/jquery.cookie.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
+	<meta charset="utf-8">
+	<style type="text/css">
+		body {
+			font-family: 微软雅黑;
+		}
+		input[type="checkbox"] {
+  			-webkit-appearance: none;
+  			background: rgba(0,0,0,0) url('img/uncheck.png');
+  			height: 22px;
+  			vertical-align: middle;
+  			width: 22px;
+		}
+
+		input[type="checkbox"]:checked {
+  			-webkit-appearance: none;
+  			background: rgba(0,0,0,0) url('img/checked.png');
+  			height: 22px;
+  			vertical-align: middle;
+  			width: 22px;
+		}
+
+		.modal-content-cus {
+  			position: relative;
+  			background-color: #f5f5f5;
+ 		 	border: 1px solid #999999;
+  			border: 1px solid rgba(0, 0, 0, 0.2);
+  			border-radius: 0px;
+  			-webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  			box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  			background-clip: padding-box;
+  			outline: 0;
+  			margin-top: 410px;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			// body...
+			$('#forgotPwd').on('click', function() {
+				$('#myModal').modal('show');	
+			});
+		});
+	</script>
+</head>
+<body>
+<div id="backImg" style="background-image: url('img/background.jpg');position: absolute;z-index: -9999;top: 0px;height: 100%;"></div>
+	<div align="center">
+		<img id="logo" style="position: absolute;" src="img/logo.png">
+		<div id="back" style="background: rgba(245, 245, 245, .4);width: 560px;height: 330px;border: 1px solid rgba(0,0,0,.1);">
+			
+
+			<div class="row" style="width: 460px;padding-top: 60px;">
+				<form class="bs-example bs-example-form" role="form">
+      				<div class="input-group">
+         				<input type="text" id="login-name" style="height: 50px;font-size: 16px;width: 460px;padding-left: 57px;background: url('img/username.png');background-repeat: no-repeat;background-color: #ffffff;background-position: 10px 12px;background-size: 22px 22px;" class="form-control" placeholder="账号">
+      				</div>
+
+      				<div class="input-group" style="padding-top: 10px;">
+         				<input id="login-pass"  style="height: 50px;font-size: 16px;width: 460px;padding-left: 57px;background: url('img/password.png');background-repeat: no-repeat;background-color: #ffffff;background-position: 10px 12px;background-size: 22px 22px;"  type="password" class="form-control" placeholder="密码">
+      				</div>
+   				</form>
+				
+				<div>
+   				<div style="float: left;font-size: 14px;color: #666666;padding-top: 10px;padding-bottom: 30px;vertical-align: middle;"><input type="checkbox" style="margin-top: 0px;" id="remember" checked><span class="lbl" style="font-size: 14px;color: #666666;"> 记住用户名和密码</span></div>
+   				</div>
+
+   				<div style="padding-top: 10px;float: right;">
+   					<a id="forgotPwd" style="font-size: 14px;" href="forgotPwd.html">忘记密码?</a>
+   				</div>
+
+			</div>
+			<div class="row">
+				<button class="btn" id="loginBtn" style="width: 460px;border-radius: 0px;background-color: #009af5;font-size: 16px;letter-spacing: 10px;color: #ffffff;height: 50px;">登录</button>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

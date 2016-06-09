@@ -1,0 +1,486 @@
+<link rel="stylesheet" type="text/css" href="views/question/jPages.css">
+<link rel="stylesheet" type="text/css" href="views/question/style.css">
+<style>
+/***************************************/
+
+.holder {
+	margin: 15px 0 15px 15px;
+	text-align:right;
+	border-left:1px solid #ddd;
+}
+.holder a {
+	display: inline-block;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	font-size: 12px;
+	cursor: pointer;
+	margin: 0px;
+	padding: 7px 16px;
+	color: #666;
+}
+.holder a:hover {
+	background-color: #22a8f9;
+	color: #fff;
+}
+.holder a.jp-previous {
+11margin-right: 0px;
+}
+.holder a.jp-next {
+	margin-left: 0px;
+}
+.holder a.jp-current,
+a.jp-current:hover {
+	color: #fff;
+	background-color:#22a8f9;
+	font-weight: bold;
+}
+.holder a.jp-disabled,
+a.jp-disabled:hover {
+	color: #bbb;
+	background-color:#fff;
+}
+.holder a.jp-current,
+a.jp-current:hover,
+ .holder a.jp-disabled,
+a.jp-disabled:hover {
+	cursor: default;
+	555background: none;
+}
+.holder a.jp-previous {
+    margin-right: 0px;
+}
+
+/************************/
+#page-content .pos {
+	position: absolute;
+	top: 55px;
+	left: 20px;
+}
+.position-relative,
+.pos-rel {
+	position: relative;
+	margin-right:10px;
+	top: 0px;
+}
+#notSlove ul>li,
+#sloved ul>li,
+#all ul>li {
+	border-top: 1px dashed #eee !important;
+}
+/*#notSlove_filter,
+#sloved_filter,*/
+.searchDiv{
+	margin-bottom: 15px;
+	text-align: left;
+}
+/*#notSlove_filter label:after,
+#sloved_filter label:after,*/
+.searchDiv label:after {
+	content: "";
+}
+/*#notSlove_filter select,
+#sloved_filter select,*/
+.searchDiv select {
+	width: 220px;
+    height: 35px;
+    line-height: 35px;
+    font-family: "Microsoft YaHei",Verdana, Geneva, sans-serif;
+    font-size: 14px;
+    color: #999;
+    padding: 0 0 0 10px;
+    border-radius: 0;
+}
+/*#notSlove_filter input,
+#sloved_filter input,*/
+.searchDiv input {
+	    width: 308px;
+    padding: 0 0 0 10px;
+    border-radius: 0;
+    height: 33.5px;
+    line-height: 33.5px;
+    font-family: "Microsoft YaHei",Verdana, Geneva, sans-serif;
+    font-size: 14px;
+    color: #999;
+}
+
+.dataTables_filter  input {
+	    width: 308px;
+    padding: 0 0 0 10px;
+    border-radius: 0;
+    height: 25px !important;
+    line-height: 33.5px;
+    font-family: "Microsoft YaHei",Verdana, Geneva, sans-serif;
+    font-size: 14px;
+    color: #999;
+}
+#notSlove .pull-left,
+#sloved .pull-left,
+#all .pull-left {
+	33height: 96px;
+	33line-height: 96px;
+}
+#notSlove .pull-left,
+#sloved .pull-left,
+#all .pull-left{
+	margin-top:10px;
+	line-height: 20px;
+
+}
+
+#notSlove .pull-right,
+#sloved .pull-right,
+#all .pull-right {
+	height: 60px;
+	line-height: 60px;
+}
+
+.add-question,.reply-question,.comment
+ {
+	display: none;
+	clear: both;
+	margin-bottom: 10px;
+	padding: 20px;
+	background: #d8d8d8;
+}
+
+#notSlove .comment span,
+#sloved .comment span,
+#all .comment span {
+	font-size: 20px;
+}
+#notSlove .comment .selected,
+#sloved .comment .selected,
+#all .comment .selected {
+	color: #50bbfe;
+}
+label.experience {
+	display: inline-block;
+	box-sizing: content-box;
+	width: 3%;
+}
+label.reply-con{
+	font-family:"Microsoft YaHei",Verdana, Geneva, sans-serif;
+	font-size:14px;
+
+	font-weight:normal;
+}
+textarea.experience {
+	display: inline-block;
+	box-sizing: content-box;
+	width: 95%;
+	height: 150px;
+	vertical-align: top;
+}
+label.add-question,label.reply-question{
+	display: inline-block;
+	box-sizing: content-box;
+	width: 4%;
+}
+textarea.add-con,textarea.reply-con{
+	display: inline-block;
+	box-sizing: content-box;
+  resize: none;
+	width: 90%;
+	height: 150px;
+	vertical-align: top;
+}
+.tab-list li{
+	clear:both;
+	/* border-top:1px dashed #eee; */
+	height:auto;
+	overflow:hidden;
+}
+li .h-cont{
+	display:none;
+}
+.tab-list ul{
+	margin-bottom:0px;
+}
+.tab-list li p{
+	margin-bottom:5px;
+	font-family:"Microsoft YaHei",Verdana, Geneva, sans-serif;
+	font-size:14px;
+	color:#666;
+}
+.tab-list li a.jh{
+	font-family:"Microsoft YaHei",Verdana, Geneva, sans-serif;
+	font-size:14px;
+	color:#666;
+}
+.tab-list li .pull-right .btn{
+	margin:0 0 0 10px;
+	padding:0;
+	height:30px;
+	line-height:30px;
+	width:90px;
+	background-color:#fff;
+	color:#999;
+	font-family:"Microsoft YaHei",Verdana, Geneva, sans-serif;
+	font-size:14px;
+	border-radius:0;
+}
+.tab-list li .pull-right .btn:hover{
+	background-color:#22a8f9;
+	border:1px solid #22a8f9;
+	color:#fff;
+	border-radius:0;
+}
+.form-group{
+	margin-right: 7px;
+}
+/*.tab-list li .pull-right .btn:focus{
+	background-color:#22a8f9;
+	border:1px solid #22a8f9;
+	color:#fff;
+	border-radius:0;
+}*/
+.page{
+	55position:fixed;
+	right:55px;
+	bottom:90px;
+	text-align:right;
+}
+.page .info{
+	display:inline-block;
+}
+.page .holder{
+	display:inline-block;
+}
+.subReply{
+	margin:0 0 0 60px;
+	padding:0;
+	width:89px;
+	border:1px solid #4fbafb;
+	height:30px;
+	line-height:30px;
+	background:#4fbafb;
+	color:#fff;
+	border-radius:0;
+}
+.subReply:hover{
+	background:#22a8f9;
+	color:#fff;
+	border:1px solid #22a8f9;
+	border-radius:0;
+}
+.subReply:focus{
+	background:#22a8f9;
+	color:#fff;
+	border:1px solid #22a8f9;
+	border-radius:0;
+}
+.reply-question{
+	background:#f5f5f5;
+}
+.chosen-container > .chosen-single, [class*="chosen-container"] > .chosen-single {
+    line-height: 35px;
+    height: 35px;
+    border-color: #cccccc;
+    color: #444444;
+    border-radius: 0;
+    box-shadow: none;
+    background: #fff;
+}
+/*#notSlove_filter .chosen-search input,
+#sloved_filter .chosen-search input,*/
+.searchDiv .chosen-search input{
+	width:200px;
+	height:26px;
+	line-height:26px;
+}
+.chosen-results li{
+	border:0;
+}
+.chosen-container-active.chosen-with-drop .chosen-single div b {
+    background-position: -18px 9px;
+}
+.chosen-container-single .chosen-single div b{
+ background-position: 0px 9px;
+ }
+ .breadcrumb span{
+	padding:0px 5px
+}
+.dataTables_filter::before {
+    content: "\f002";
+    display: inline-block;
+    font-family: FontAwesome;
+    font-size: 14px;
+    color: #ccc;
+    position: absolute;
+    top: 7px;
+    left: 283px;
+}
+.form-group label{
+	font-weight:normal;
+	vertical-align: middle;
+	margin-bottom:0px;
+}
+#page-content a.jh:focus,
+#page-content .h-cont a:focus,
+#page-content a.jh:visited,
+#page-content .h-cont a:visited{
+	color:#222
+}
+#page-content a.jh:hover,
+#page-content .h-cont a:hover
+{
+    color: #22a8f9;
+}
+.ellipsis{
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  width: 100%;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  -webkit-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  max-width: 85%;
+}
+
+</style>
+<!---->
+<div class="breadcrumb" id="breadcrumb"> <span class="active">未解决</span><i></i> <span>已解决</span><i></i> <span>全部问题单</span> </div>
+<div class="page-content" id="page-content">
+
+  <!-- 未解决 -->
+  <div class="tab-list">
+    <div class="searchDiv">
+    <!-- <div id="notSlove_filter" class="dataTables_filter"> -->
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="notSloveType">分类&nbsp;&nbsp;&nbsp;</label>
+          <select class="form-control input-sm type"  id="notSloveType">
+          </select>
+        </div>
+        <div class="form-group dataTables_filter" id="notSlove_filter" >
+          <input type="search" class="form-control input-sm" placeholder="搜索" >
+        </div>
+      </form>
+    </div>
+    <div id="notSlove" class="table table-hover dataTable no-footer"> </div>
+    <div class="page page1"><div class="holder holder1"></div></div>
+  </div>
+
+
+  <!-- 已解决 -->
+  <div class="tab-list">
+    <!-- <div id="sloved_filter" class="dataTables_filter"> -->
+    <div class="searchDiv">
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="slovedType">分类&nbsp;&nbsp;&nbsp;</label>
+          <select class="form-control input-sm type"  id="slovedType">
+          </select>
+        </div>
+        <div class="form-group dataTables_filter" id="sloved_filter">
+          <input type="search" class="form-control input-sm" placeholder="搜索" >
+        </div>
+      </form>
+    </div>
+    <div id="sloved" class="table table-hover dataTable no-footer"> </div>
+    <div class="page page2"><div class="holder holder2"></div></div>
+  </div>
+  <!-- 全部问题 -->
+  <div class="tab-list">
+    <!-- <div id="all_filter" class="dataTables_filter"> -->
+    <div  class="searchDiv">
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="allType">分类&nbsp;&nbsp;&nbsp;</label>
+          <select class="form-control input-sm type"  id="allType">
+          </select>
+        </div>
+        <div class="form-group dataTables_filter" id="all_filter">
+          <input type="search" class="form-control input-sm " placeholder="搜索" >
+        </div>
+      </form>
+    </div>
+    <div id="all" class="table table-hover dataTable no-footer"> </div>
+    <div class="page page3"><div class="holder holder3"></div></div>
+  </div>
+
+</div>
+
+<!--start #replyQuestionModal-->
+<div class="modal my-modal fade" id="replyQuestionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+  <div class="modal-dialog my-modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 style="margin: 0;">回复问题</h4>
+      </div>
+      <div class="modal-body">
+        <div class="error-info"></div>
+        <div class="my-form">
+          <div class="form-group">
+            <label for="replyQuestionDesc" aria-hidden="true">问题描述</label>
+            <textarea class="form-control" id="replyQuestionDesc" style="vertical-align: top; height: 150px; resize: vertical; color: rgb(153, 153, 153);" placeholder="请输入问题描述"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="replyQuestionReply" aria-hidden="true">回复</label>
+            <textarea class="form-control" id="replyQuestionReply" style="vertical-align: top; height: 150px; resize: vertical; color: rgb(153, 153, 153);" placeholder="请输入问题描述"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputFile">添加附件</label>
+            <input type="file" id="exampleInputFile" style="display: inline-block;width: 180px;">
+            <input type="file" id="exampleInputFile" style="display: inline-block;width: 180px;">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer"> <a href="javascript:" class="btn my-btn" id="subNewApp">提交</a>&nbsp;&nbsp; <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a> </div>
+    </div>
+  </div>
+</div>
+<!--/end #replyQuestionModal-->
+
+<!--start #seeMoreQuestionModal-->
+<div class="modal my-modal fade" id="seeMoreQuestionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+  <div class="modal-dialog my-modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 style="margin: 0;">查看问题</h4>
+      </div>
+      <div class="modal-body">
+        <div class="error-info"></div>
+        <div class="my-form">
+          <div class="form-group">
+            <label for="seeMoreQuestionDesc" aria-hidden="true">问题描述</label>
+            <textarea class="form-control" id="replyQuestionDesc" style="vertical-align: top; height: 150px; resize: vertical; color: rgb(153, 153, 153);" placeholder="请输入问题描述"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputFile">附件</label>
+            <span>附件1</span> <span>附件2</span> </div>
+        </div>
+      </div>
+      <div class="modal-footer"> <a href="javascript:" class="btn my-btn pull-right" data-dismiss="modal" style="margin-right:20px;">返回</a> </div>
+    </div>
+  </div>
+</div>
+<!--/end #seeMoreQuestionModal-->
+
+<div class="modal my-modal fade" id="sayModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog my-modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 style="margin: 0;">评论</h4>
+      </div>
+      <div class="modal-body" style="padding: 30px 50px 20px 50px;">
+        <div class="error-info"></div>
+        <ul id="sayList">
+        </ul>
+        <div>
+          <textarea rows="2" id="newSay" style="width: 100%;height: auto;resize: none;" placeholder="说几句吧"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer"> <a href="javascript:" class="btn my-btn" id="subSay">发表</a>&nbsp;&nbsp; <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a> </div>
+    </div>
+  </div>
+</div>
+<!---->
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+<script src="js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="views/question/jPages.js"></script>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<a id='dd'>a</a>
+<script type='text/javascript'>
+
+var data = '{"VendorId": 1,"PlatForm": 2,"FirmwareVer": 3,"VersionDesc": 4,"Md5": 5,"Customer": 6,"Path": 6,"Passwd": 6,"Publisher": 6}';
+
+	  data = JSON.parse(data);
+	  
+	  $.post('/Customer/Home/FirmwarePublish/publish', data, function(data, status){
+	  	console.log(data);
+	  });
+ //    $.ajax({
+	//    type: "POST",
+	//    url: "/Customer/Home/FirmwarePublish/publish",
+	//    data:data,
+	//    success: function(msg){
+	//      alert( "Data Saved: " + msg );
+	//    }
+	// });
+</script>
+</body>
+</html>

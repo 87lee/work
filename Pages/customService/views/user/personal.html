@@ -1,0 +1,96 @@
+<style type="text/css">
+.dataTables_filter label {
+  top: -10px;
+}
+</style>
+<div class="breadcrumb" id="breadcrumb">
+	<span class="active">个人中心</span>
+</div>
+<div class="page-content" id="page-content">
+
+    <div>
+        <div class="toolbar" style="margin-bottom: 15px;">
+            <a class="btn my-btn pwdBtn" href="javascript:"><i class="fa fa-unlock-alt"></i>&nbsp;修改密码</a>
+            <a class="btn my-btn nickBtn" href="javascript:"><i class="fa fa-pencil-square-o"></i>&nbsp;修改资料</a>
+        </div>
+        <table id="personalTable" class="table table-bordered table-hover dataTable no-footer" style="width: 48%;">
+            <tbody>
+                <tr>
+                    <td style="width: 30%;">用户名</td>
+                    <td id="userName"></td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">昵称</td>
+                    <td id="userNickName"></td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">邮箱</td>
+                    <td id="userEmail"></td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">权限</td>
+                    <td id="userPower"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+<div class="modal my-modal fade" id="aPwdModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">修改密码</h4>
+            </div>
+            <div class="modal-body">
+                <div class="error-info"></div>
+                <div class="my-form">
+                    <div class="form-group">
+                        <label for="oldPwd">旧密码</label>
+                        <input type="password" class="form-control" id="oldPwd" placeholder="请输入旧密码">
+                    </div>
+                    <div class="form-group">
+                        <label for="newPwd">新密码</label>
+                        <input type="password" class="form-control" id="newPwd" placeholder="8~20位">
+                    </div>
+                    <div class="form-group">
+                        <label for="resetPwd">确认密码</label>
+                        <input type="password" class="form-control" id="resetPwd" placeholder="8~20位">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subAPwd">提交</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal my-modal fade" id="nickModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog my-modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="margin: 0;">修改资料</h4>
+            </div>
+            <div class="modal-body">
+                <div class="error-info"></div>
+                <div class="my-form">
+                    <div class="form-group">
+                        <label for="nickName">昵称</label>
+                        <input type="text" class="form-control" id="nickName" placeholder="请输入昵称">
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">邮箱</label>
+                        <input type="text" class="form-control" id="Email" placeholder="请输入邮箱">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="javascript:" class="btn my-btn" id="subNick">提交</a>&nbsp;&nbsp;
+                <a href="javascript:" class="btn my-btn" data-dismiss="modal">返回</a>
+            </div>
+        </div>
+    </div>
+</div>
