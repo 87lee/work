@@ -1,0 +1,111 @@
+<div class="main-content-inner">
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed');}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon glyphicon glyphicon-filter home-icon"></i>
+                <span class="menu-text"> 静默管理 </span>
+            </li>
+        </ul><!-- /.breadcrumb -->
+        <!-- /section:basics/content.searchbox -->
+    </div>
+
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content" id="page-content">
+        <div class="my-content" style="margin: 0 auto;position: relative;">
+            <div id="fristTable">
+                <div id="groupTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 42px;"><label style="display: inline-block;
+                "><input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;
+                "></label></div>
+                <table id="groupTable" class="table table-bordered table-hover dataTable no-footer" style="margin-top: 42px;">
+                </table>
+            </div>
+            <div id="secondTable" style="display: none;">
+                <table id="appTable" class="table table-bordered table-hover dataTable no-footer">
+                </table>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="groupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">添加</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form" style="">
+                            <div class="form-group">
+                                <label for="groupName">组名称:</label>
+                                <input type="text" class="form-control" id="groupName" placeholder="请输入组名称">
+                            </div>
+                            <div class="form-group">
+                                <label for="copySelect">复制组:</label>
+                                <select class="chosen-select form-control" id="copySelect" data-placeholder="请选择组模板">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subGroup">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="appModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">添加</h4>
+                    </div>
+                    <div class="modal-body" style="overflow: initial;">
+                        <div class="my-form">
+                            <div class="form-group" id="appAction">
+                                <label for="appAction">行为:</label>
+                                <input name="appAction" type="radio" class="ace" value="install" checked>
+                                <span class="lbl">&nbsp;安装</span>&emsp;
+                                <input name="appAction" type="radio" class="ace" value="remove">
+                                <span class="lbl">&nbsp;卸载</span>&emsp;
+                                <input name="appAction" type="radio" class="ace" value="active">
+                                <span class="lbl">&nbsp;激活</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="appName">应用名称:</label>
+                                <select class="chosen-select form-control" id="appName" data-placeholder="请选择应用名称">
+                                </select>
+                            </div>
+                            <div class="form-group action-remove">
+                                <label for="appVersion">版本:</label>
+                                <select class="chosen-select form-control" id="appVersion" data-placeholder="请选择版本">
+                                </select>
+                            </div>
+                            <div class="form-group action-remove">
+                                <label for="appUrl">路径:</label>
+                                <select class="chosen-select form-control" id="appUrl" data-placeholder="请选择路径">
+                                </select>
+                            </div>
+                            <div class="form-group" style="display: none;">
+                                <label for="appWeight">权重:</label>
+                                <input type="text" class="form-control" id="appWeight" placeholder="请输入权重（0~100）">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subApp">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /.page-content -->
+</div>

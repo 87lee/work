@@ -1,0 +1,132 @@
+<div class="main-content-inner">
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed');}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-group home-icon"></i>
+                <span class="menu-text"> 内测组管理 </span>
+            </li>
+        </ul><!-- /.breadcrumb -->
+        <!-- /section:basics/content.searchbox -->
+    </div>
+
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content" id="page-content">
+        <div class="my-content" style="margin: 0 auto;">
+            <div id="fristTable">
+                <table id="myTable" class="table table-bordered table-hover dataTable no-footer">
+                </table>
+            </div>
+            <div id="secondTable" style="display: none;">
+                <table id="myTable2" class="my-table table table-bordered table-hover dataTable no-footer">
+                </table>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">新增</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="add_pos">
+                            <div class="my-form" style="">
+                              <div class="form-group">
+                                <label for="cn_name">组名称:</label>
+                                <input type="text" class="form-control" id="cn_name" placeholder="请输入内测组名称">
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subGroup">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">新增组成员</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="add_pos2">
+                            <div class="my-form" style="">
+                                <div class="form-group" id="deviceType">
+                                    <label for="deviceType">设备类型:</label>
+                                    <input name="deviceType" type="radio" class="ace" value="mac" checked>
+                                    <span class="lbl">&nbsp;Mac</span>&emsp;
+                                    <input name="deviceType" type="radio" class="ace" value="sn">
+                                    <span class="lbl">&nbsp;Sn</span>&emsp;
+                                </div>
+                                <div class="form-group">
+                                    <label for="mac-name">Mac:</label>
+                                    <input type="text" class="form-control mac-name" maxlength="2" size="2" style="width: 10.3%;"> :
+                                    <input type="text" class="form-control mac-name" maxlength="2" size="2" style="width: 10.3%;"> :
+                                    <input type="text" class="form-control mac-name" maxlength="2" size="2" style="width: 10.3%;"> :
+                                    <input type="text" class="form-control mac-name" maxlength="2" size="2" style="width: 10.3%;"> :
+                                    <input type="text" class="form-control mac-name" maxlength="2" size="2" style="width: 10.3%;"> :
+                                    <input type="text" class="form-control mac-name" maxlength="2" size="2" style="width: 10.3%;">
+                                </div>
+                                <div class="form-group" style="display: none;">
+                                    <label for="sn_name">Sn:</label>
+                                    <input type="text" class="form-control" id="sn_name" placeholder="请输入Sn">
+                                </div>
+                                <div class="form-group">
+                                    <label for="desc_name">描述:</label>
+                                    <input type="text" class="form-control" id="desc_name" placeholder="请输入描述">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subMac">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">批量导入</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="add_pos2">
+                            <div class="my-form" style="">
+                                <div class="form-group" style="position: relative;">
+                                    <label for="fileShow">文件:</label>
+                                    <input type="text" class="form-control fileShow" id="fileShow" placeholder="请选择文件" readonly="readonly">
+                                    <input id="fileBtn" type="button" class="fileBtn button" value="浏览" style="width:15%;position: absolute;right: 63px;top: 5px;">
+                                    <input type="file" accept="text/plain" id="fileHide" style="width:0px;height: 0;" class="fileHide">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subImport">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /.page-content -->
+</div>
+<script type="text/javascript" src="assets/js/jquery.autotab.min.js"></script>

@@ -1,0 +1,481 @@
+[
+    {
+        "type": "first",
+        "module": "module",
+        "url": "module/index",
+        "icon": "fa fa-cogs",
+        "name": "模块管理"
+    },
+    {
+        "type": "first",
+        "module": "group",
+        "url": "group/index",
+        "icon": "fa fa-group",
+        "name": "内测组管理"
+    },
+    {
+        "type": "second",
+        "module": "monitor",
+        "icon": "fa fa-upload",
+        "name": "网管升级",
+        "children": [
+            {
+                "module": "version",
+                "url": "monitor/version",
+                "name": "版本管理"
+            },
+            {
+                "module": "release",
+                "url": "monitor/release",
+                "name": "版本发布"
+            }
+        ]
+    },
+    {
+        "type": "second",
+        "module": "monitorCtrl",
+        "icon": "fa fa-internet-explorer",
+        "name": "网管管理系统",
+        "children": [
+            {
+                "module": "cmd",
+                "url": "monitorCtrl/cmd",
+                "name": "命令管理"
+            },
+            {
+                "module": "release",
+                "url": "monitorCtrl/release",
+                "name": "命令发布"
+            }
+        ]
+    },
+    {
+        "type": "second",
+        "module": "desktop",
+        "icon": "fa fa-desktop",
+        "name": "桌面系统",
+        "children": [
+            {
+                "module": "jbk",
+                "url": "desktop/jbk",
+                "name": "桌面密码管理"
+            },
+            {
+                "module": "macAuth",
+                "url": "desktop/macAuth",
+                "name": "分发控制"
+            },
+            {
+                "module": "app",
+                "url": "desktop/app",
+                "name": "应用分布统计"
+            },
+            {
+                "module": "desktopMap",
+                "url": "desktop/desktopMap",
+                "name": "桌面映射"
+            },
+            {
+                "module": "basicData",
+                "url": "desktop/basicData",
+                "name": "基础数据",
+                "children": [
+                    {
+                        "module": "block",
+                        "url": "desktop/block",
+                        "name": "块管理"
+                    },
+                    {
+                        "module": "screen",
+                        "url": "desktop/screen",
+                        "name": "屏管理"
+                    },
+                    {
+                        "module": "icon",
+                        "url": "desktop/icon",
+                        "name": "控件管理"
+                    },
+                    {
+                        "module": "nav",
+                        "url": "desktop/nav",
+                        "name": "导航管理"
+                    },
+                    {
+                        "module": "attachment",
+                        "url": "desktop/attachment",
+                        "name": "附件栏管理"
+                    },
+                    {
+                        "module": "shortCut",
+                        "url": "desktop/shortCut",
+                        "name": "快捷键管理"
+                    },
+                    {
+                        "module": "quickList",
+                        "url": "desktop/quickList",
+                        "name": "底部快捷栏管理"
+                    },
+                    {
+                        "module": "quickEntry",
+                        "url": "desktop/quickEntry",
+                        "name": "快捷入口管理"
+                    },
+                    {
+                        "module": "quickEntryGroup",
+                        "url": "desktop/quickEntryGroup",
+                        "name": "快捷入口组管理"
+                    },
+                    {
+                        "module": "twoState",
+                        "url": "desktop/twoState",
+                        "name": "两态快捷入口管理"
+                    },
+                    {
+                        "module": "threeState",
+                        "url": "desktop/threeState",
+                        "name": "三态快捷入口管理"
+                    },
+                    {
+                        "module": "handleData",
+                        "url": "desktop/handleData",
+                        "name": "跳转信息管理"
+                    },
+                    {
+                        "module": "layoutType",
+                        "url": "desktop/layoutType",
+                        "name": "布局类型管理"
+                    }
+                ]
+            },
+            {
+                "module": "operationSlot",
+                "url": "desktop/operationSlot",
+                "name": "运营坑位管理"
+            },
+            {
+                "module": "quickEntrySlot",
+                "url": "desktop/quickEntrySlot",
+                "name": "快捷坑位管理"
+            },
+            {
+                "module": "desktop",
+                "url": "desktop/desktop",
+                "name": "桌面管理"
+            },
+            {
+                "module": "layoutUpdate",
+                "url": "desktop/layoutUpdate",
+                "name": "发布管理"
+            },
+            {
+                "module": "recycle",
+                "url": "desktop/recycle",
+                "name": "回收站"
+            },
+            {
+                "module": "pushMessage",
+                "url": "desktop/pushMessage",
+                "name": "消息推送"
+            }
+        ]
+    },
+    {
+        "type": "second",
+        "module": "resources",
+        "icon": "fa fa-database",
+        "name": "资源管理",
+        "children": [
+            {
+                "module": "picture",
+                "url": "resources/picture",
+                "name": "图片管理",
+                "children": [
+                    {
+                        "module": "group",
+                        "url": "resources/group",
+                        "name": "组管理"
+                    },
+                    {
+                        "module": "image",
+                        "url": "resources/image",
+                        "name": "图片列表"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "type": "second",
+        "module": "appManager",
+        "icon": "fa fa-th-large",
+        "name": "应用管理",
+        "children": [
+            {
+                "module": "appManager3rd",
+                "url": "appManager/appManager3rd",
+                "name": "第三方应用"
+            },
+            {
+                "module": "link3rd",
+                "url": "appManager/link3rd",
+                "name": "链接管理"
+            },
+            {
+                "module": "app",
+                "url": "appManager/app",
+                "name": "应用列表管理"
+            },
+            {
+                "module": "publish",
+                "url": "appManager/publish",
+                "name": "更多应用发布"
+            }
+        ]
+    },
+    {
+        "type": "second",
+        "module": "androidFirmware",
+        "icon": "fa fa-android",
+        "name": "安卓固件",
+        "children": [
+            {
+                "module": "configPacket",
+                "url": "androidFirmware/configPacket",
+                "name": "配置包管理",
+                "children": [
+                    {
+                        "module": "configPacketGroup",
+                        "url": "androidFirmware/configPacketGroup",
+                        "name": "配置包"
+                    },
+                    {
+                        "module": "configPacketRelease",
+                        "url": "androidFirmware/configPacketRelease",
+                        "name": "发布"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "type": "second",
+        "module": "otaUpdate",
+        "icon": "fa fa-circle-o",
+        "name": "OTA升级",
+        "children": [
+            {
+                "module": "ota",
+                "url": "otaUpdate/ota",
+                "name": "OTA包管理"
+            },
+            {
+                "module": "publish",
+                "url": "otaUpdate/publish",
+                "name": "OTA发布"
+            },
+            {
+                "module": "authentication",
+                "url": "otaUpdate/authentication",
+                "name": "OTA鉴权"
+            }
+        ]
+    },
+    {
+        "type": "second",
+        "module": "appUpdate",
+        "icon": "fa fa-arrow-circle-up",
+        "name": "应用升级",
+        "children": [
+            {
+                "module": "app",
+                "url": "appUpdate/app",
+                "name": "应用管理"
+            },
+            {
+                "module": "publish",
+                "url": "appUpdate/publish",
+                "name": "应用发布"
+            },
+            {
+                "module": "authentication",
+                "url": "appUpdate/authentication",
+                "name": "发布鉴权"
+            },
+            {
+                "module": "history",
+                "url": "appUpdate/history",
+                "name": "发布记录"
+            }
+        ]
+    },
+    {
+        "type": "second",
+        "module": "telecommand",
+        "icon": "fa fa-mars-double",
+        "name": "远程命令",
+        "children": [
+            {
+                "module": "cmd",
+                "url": "telecommand/cmd",
+                "name": "命令管理"
+            },
+            {
+                "module": "publish",
+                "url": "telecommand/publish",
+                "name": "命令发布"
+            }
+        ]
+    },
+    {
+        "type": "second",
+        "module": "silent",
+        "icon": "glyphicon glyphicon-filter",
+        "name": "静默安装",
+        "children": [
+            {
+                "module": "blackList",
+                "url": "silent/blackList",
+                "name": "静默黑名单"
+            },
+            {
+                "module": "silent",
+                "url": "silent/silent",
+                "name": "静默管理"
+            },
+            {
+                "module": "publish",
+                "url": "silent/publish",
+                "name": "静默发布"
+            }
+        ]
+    },
+    {
+        "type": "second",
+        "module": "adminMonitoring",
+        "icon": "fa fa-sliders",
+        "name": "后台监控",
+        "children": [
+            {
+                "module": "codeStatistics",
+                "url": "adminMonitoring/codeStatistics",
+                "name": "状态码统计"
+            },
+            {
+                "module": "liveFeedback",
+                "url": "adminMonitoring/liveFeedback",
+                "name": "直播用户反馈"
+            }
+        ]
+    },
+    {
+        "type": "second",
+        "module": "live",
+        "icon": "fa fa-file-movie-o",
+        "name": "直播系统",
+        "children": [
+            {
+                "module": "liveParam",
+                "name": "直播参数管理",
+                "children": [
+                    {
+                        "module": "liveArg",
+                        "url": "live/liveArg",
+                        "name": "参数管理"
+                    },
+                    {
+                        "module": "group",
+                        "url": "live/group",
+                        "name": "参数组管理"
+                    }
+                ]
+            },
+            {
+                "module": "liveAuth",
+                "name": "直播授权",
+                "children": [
+                    {
+                        "module": "setAuth",
+                        "url": "live/setAuth",
+                        "name": "授权管理"
+                    },
+                    {
+                        "module": "authLog",
+                        "url": "live/authLog",
+                        "name": "操作记录"
+                    },
+                    {
+                        "module": "authedLog",
+                        "url": "live/authedLog",
+                        "name": "已授权记录"
+                    }
+                ]
+            },
+            {
+                "module": "liveList",
+                "name": "直播列表管理",
+                "children": [
+                    {
+                        "module": "listPublish",
+                        "url": "live/listPublish",
+                        "name": "直播列表发布"
+                    },
+                    {
+                        "module": "checkLiveList",
+                        "url": "live/checkLiveList",
+                        "name": "查看直播列表"
+                    }
+                ]
+            },
+            {
+                "module": "serveParam",
+                "name": "服务参数管理",
+                "children": [
+                    {
+                        "module": "serveArg",
+                        "url": "live/serveArg",
+                        "name": "参数管理"
+                    }
+                ]
+            },
+            {
+                "module": "liveAd",
+                "name": "直播广告",
+                "children": [
+                    {
+                        "module": "liveGroup",
+                        "url": "live/liveGroup",
+                        "name": "广告管理"
+                    },
+                    {
+                        "module": "livePublish",
+                        "url": "live/livePublish",
+                        "name": "广告发布"
+                    }
+                ]
+            },
+            {
+                "module": "startupPic",
+                "name": "开机画面",
+                "url": "live/startupPic"
+            }
+        ]
+    },
+    {
+        "type": "second",
+        "module": "search",
+        "icon": "fa fa-upload",
+        "name": "全搜索",
+        "children": [
+            {
+                "module": "hot",
+                "url": "search/hot",
+                "name": "热词配置"
+            },
+            {
+                "module": "sort",
+                "url": "search/sort",
+                "name": "搜索排序"
+            }
+        ]
+    }
+]

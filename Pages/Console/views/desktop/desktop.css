@@ -1,0 +1,362 @@
+#pageWrap, #pageDataWrap{
+    background: #2C3E50;
+    width: 1280px;
+    height: 720px;
+    margin: 0 auto;
+    top: 45px;
+    left: 130px;
+    position: absolute;
+}
+#pageWrap .my-close{
+    top: -70px;
+    right: 0;
+    position: absolute;
+}
+.my-close:hover, .my-close:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+.my-close {
+    position: relative;
+    top: -12px;
+    float: right;
+    font-size: 60px;
+    font-weight: bold;
+    line-height: 1;
+    color: red;
+    text-shadow: 0 1px 0 #ffffff;
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+}
+.screenWarp {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 1280px;
+    height: 720px;
+    display: block;
+}
+.screenWarp ul li{
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: auto;
+}
+/* Let's get this party started */
+.screenWarp ul li::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* Track */
+.screenWarp ul li::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
+/* Handle */
+.screenWarp ul li::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background: rgba(29, 149, 41, 0.8);
+    background-image: -webkit-linear-gradient(45deg,  rgba(255, 255, 255, .4) 25%,  transparent 25%,  transparent 50%,  rgba(255, 255, 255, .4) 50%,  rgba(255, 255, 255, .4) 75%,  transparent 75%,  transparent);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+.screenWarp ul li::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(255,0,0,0.4);
+}
+#screenWarp .screen-block, #screenWarp .screen-nav, #screenWarp .screen-nav a,
+.screen-attachment, .screen-attachment a,
+.screen-quick, .screen-quick a{
+    cursor: move;
+}
+#screenBtn, #screenHandleBtn, #layoutCtrl, #layoutDataCtrl, #quickCtrl{
+    width: 110px;
+    position: absolute;
+}
+#layoutCtrl, #layoutDataCtrl, #quickCtrl{
+    left: 20px;
+    bottom: 0;
+}
+#quickCtrl{
+    top: 290px;
+}
+#screenBtn{
+      top: 45px;
+}
+#screenBtn a, #layoutCtrl a, #layoutDataCtrl a, #quickCtrl a{
+    width: 110px;
+    margin: 5px 0;
+}
+#slotInfo{
+    width: 180px;
+    top: -25px;
+    right: 0;
+    position: absolute;
+}
+#screenSelect{
+    position: absolute;
+    display: none;
+    left: 130px;
+}
+#slotInfo label, #navInfo label{
+    width: 24%;
+}
+#slotInfo input, #navInfo input{
+    width: 70%;
+    display: inline-block;
+}
+#screenInfoWrap{
+    margin-top: 90px;
+}
+#navWarp, #logoWarp, #navDataWarp, #attachmentWarp, #quickWarp a,#threeWarp a, #twoWarp a, #weatherWarp, #timeWeatherWarp, #timerWarp, #snWarp, #quickSlotWarp .quick-slot-block{
+    position: absolute;
+}
+
+#navWarp a, #attachmentWarp a, #quickWarp a, #threeWarp a, #twoWarp a, #quickSlotWarp .quick-slot-block{
+    cursor: move;
+}
+#navWarp.ui-draggable-disabled a, #attachmentWarp.ui-draggable-disabled a, #quickWarp.ui-draggable-disabled a, #threeWarp.ui-draggable-disabled a, #twoWarp.ui-draggable-disabled a{
+    cursor: pointer;
+}
+
+#navInfo, #attachmentInfo, #quickInfo, #threeInfo, #twoInfo, #QEGInfo{
+    width: 320px;
+    height: 180px;
+    right: 0;
+    position: relative;
+    background-color: #000;
+    margin: 0 auto;
+}
+
+
+
+.box .s_1{ position:absolute; color:#fff; left:15px; font-size:30px;height:30px; line-height:30px; top:10px; cursor:pointer; z-index:2;}
+.box .s_2{ position:absolute; color:#fff; right:10px; font-size:30px;  bottom:0px; cursor:text;}
+.box .s_2 input{ width:70px; height:36px; font-size:26px; line-height:36px; text-align:center; display:none; color:#2C3E50 }
+.box .s_3{ position:absolute;}
+.box .s_3 img{ float:left; display:block;}
+.box .s_3 font{ color:#fff; font-family:"微软雅黑"; font-size:20px; display:block; line-height:24px;}
+.box .s_4{ position:absolute; width:100%; height:100%; background:#000; opacity:0.6; left:0; top:0; display:none;
+z-index:1;}
+
+.fillet{-webkit-border-radius: 8px; border-radius: 8px;}
+.fillet .s_4{-webkit-border-radius: 8px; border-radius: 8px; }
+
+.selectBlock{ outline:2px dashed #fff;}
+.block-id {
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #fff;
+    font-size: 30px;
+    cursor: text;
+}
+.block-id input, .block-data input{
+    display: none;
+    width: 60px;
+}
+
+.block-data input{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.block-data {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.icon-quick {
+    position: absolute;
+    background-image: url('../../img/icon_quickEntry.png');
+    background-size: 48px 25px;
+    width: 48px;
+    height: 25px;
+    top: 7px;
+    right: 7px;
+}
+
+.icon-quick-slot {
+    position: absolute;
+    background-image: url('../../img/icon_global_quickEntry.png');
+    background-size: 48px 25px;
+    width: 48px;
+    height: 25px;
+    top: 7px;
+    right: 7px;
+}
+
+.block-title{
+    position: absolute;
+    top: 10%;
+    text-align: center;
+    width: 100%;
+    font-size: 20px;
+    color: #fff;
+}
+
+.block-data i{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    display: none;
+    opacity: 1;
+}
+.block-data span{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #fff;
+    font-size: 30px;
+    cursor: auto;
+}
+
+.common-block .block-data:hover{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.block-data:hover i{
+    display: block;
+    opacity: 1;
+}
+
+/*slider*/
+.ui-slider {
+    position: relative;
+    text-align: left;
+}
+.ui-slider .ui-slider-handle {
+    position: absolute;
+    z-index: 2;
+    width: 1.2em;
+    height: 1.2em;
+    cursor: default;
+    -ms-touch-action: none;
+    touch-action: none;
+}
+.ui-slider .ui-slider-range {
+    position: absolute;
+    z-index: 1;
+    font-size: .7em;
+    display: block;
+    border: 0;
+    background-position: 0 0;
+}
+
+/* support: IE8 - See #6727 */
+.ui-slider.ui-state-disabled .ui-slider-handle,
+.ui-slider.ui-state-disabled .ui-slider-range {
+    filter: inherit;
+}
+
+.ui-slider-horizontal {
+    height: .8em;
+}
+.ui-slider-horizontal .ui-slider-handle {
+    top: -.3em;
+    margin-left: -.6em;
+}
+.ui-slider-horizontal .ui-slider-range {
+    top: 0;
+    height: 100%;
+}
+.ui-slider-horizontal .ui-slider-range-min {
+    left: 0;
+}
+.ui-slider-horizontal .ui-slider-range-max {
+    right: 0;
+}
+
+.ui-slider-vertical {
+    width: .8em;
+    height: 100px;
+}
+.ui-slider-vertical .ui-slider-handle {
+    left: -.3em;
+    margin-left: 0;
+    margin-bottom: -.6em;
+}
+.ui-slider-vertical .ui-slider-range {
+    left: 0;
+    width: 100%;
+}
+.ui-slider-vertical .ui-slider-range-min {
+    bottom: 0;
+}
+.ui-slider-vertical .ui-slider-range-max {
+    top: 0;
+}
+/*screenList*/
+#screenList, .screenList {
+    text-align: center;
+}
+#screenList .screen, .screenList .screen {
+    float: left;
+    margin: 10px 0 35px 27px;
+    width: 320px;
+    height: 180px;
+    position: relative;
+    background-color: #2C3E50;
+}
+#screenList .screen .item, .screenList .screen .item {
+    position: absolute;
+}
+#screenList .screen .radioBox, .screenList .screen .radioBox {
+    display: block;
+    position: absolute;
+    bottom: -25px;
+    cursor: pointer;
+    width: 100%;
+}
+#screenList .screen_title, .screenList .screen_title {
+    position: absolute;
+    bottom: -35px;
+    width: 100%;
+    text-align: center;
+}
+#screenList .screen_title span, .screenList .screen_title span {
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  width: auto;
+  background-position: left center;
+  min-width: 30px;
+}
+
+#blockList {
+    background-color: #2C3E50;
+}
+
+#blockList .item {
+  margin: 15px;
+  float: left;
+}
+
+.selectHandle{
+    outline: 2px dashed #fff;
+}
+a.selectHandle:hover{
+    outline: 2px dashed #fff;
+}
+
+#pageWrap .my-btn {
+  padding: 1px 0;
+  text-align: center;
+}
+.screen-fillet .screen-block, .screen-fillet .block-data{
+    border-radius: 15px;
+}

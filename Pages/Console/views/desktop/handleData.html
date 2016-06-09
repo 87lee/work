@@ -1,0 +1,180 @@
+<style type="text/css">
+.handle{
+    display: none;
+}
+.my-form .form-control.handle-pic{
+    width: 34.7%;
+}
+.my-form input + .btn{
+    float: none;
+    margin-bottom: 3px;
+    margin-left: 2px;
+}
+.my-content-detail{
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .my-content-detail{
+        width: 90%;
+    }
+}
+</style>
+<div class="main-content-inner">
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed');}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-cubes home-icon"></i>
+                <span class="menu-text"> 跳转信息管理 </span>
+            </li>
+        </ul><!-- /.breadcrumb -->
+        <!-- /section:basics/content.searchbox -->
+    </div>
+
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content" id="page-content">
+        <div class="my-content" style="margin: 0 auto;position: relative;">
+            <div id="myTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 42px;"><label style="display: inline-block;
+            "><input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;
+            "></label></div>
+            <table id="myTable" class="table table-bordered table-hover dataTable no-footer" style="margin-top: 42px;">
+            </table>
+        </div>
+        <div class="my-content-detail" style="margin: 0 auto;position: relative;">
+            <table id="detailTable" class="table table-bordered table-hover dataTable no-footer">
+            </table>
+        </div>
+
+        <div class="modal my-modal fade" id="appModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">添加</h4>
+                    </div>
+                    <div class="modal-body" style="overflow-y: initial">
+                        <div class="my-form">
+                            <div class="form-group">
+                                <label for="appName">应用名称:</label>
+                                <select class="chosen-select form-control" id="appName" data-placeholder="请选择应用名称">
+                                    <option value="请选择应用名称">请选择应用名称</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subApp">添加</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">添加</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form" style="">
+                            <div class="form-group">
+                                <label for="detailName">详情页名称:</label>
+                                <input type="text" class="form-control" id="detailName" placeholder="请输入详情页名称">
+                            </div>
+                            <div class="form-group">
+                                <label for="handleType">ACTION类型:</label>
+                                <select class="chosen-select form-control" id="handleType" data-placeholder="请选择ACTION类型">
+                                    <option value="请选择ACTION类型">请选择ACTION类型</option>
+                                    <option value="ACTION">ACTION</option>
+                                    <option value="COMPONENT">COMPONENT</option>
+                                    <option value="SCHEME">SCHEME</option>
+                                </select>
+                            </div>
+                            <div class="form-group handle handle-action">
+                                <label for="actionVal">action:</label>
+                                <input type="text" class="form-control" id="actionVal" placeholder="请输入action">
+                            </div>
+                            <div class="form-group handle handle-component">
+                                <label for="clsNameVal">clsName:</label>
+                                <input type="text" class="form-control" id="clsNameVal" placeholder="请输入clsName">
+                            </div>
+                            <div class="form-group handle handle-component">
+                                <label for="componentVal">包名:</label>
+                                <input type="text" class="form-control" id="componentVal" placeholder="请输入包名">
+                            </div>
+                            <div class="form-group handle handle-uri">
+                                <label for="clsUriVal">Uri:</label>
+                                <input type="text" class="form-control" id="clsUriVal" placeholder="请输入clsUriVal">
+                            </div>
+                            <div class="form-group">
+                                <label for="key">附加数据:</label>
+                                <a id="addkeyVal" class="btn my-btn btn-success" href="javascript:" style="float: none;margin-bottom: 3px;">&nbsp;添加</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subDetail">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <!----复制跳转信息---->
+           <div class="modal my-modal fade" id="copyActionAppModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">复制跳转信息</h4>
+                    </div>
+                    <div class="modal-body" style="max-height: 650px;">
+                        <div class="my-form">
+
+                            <table class="my-table table table-bordered table-hover dataTable no-footer" id="releaseTable">
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subCopyActionApp">复制</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!----/end复制跳转信息---->
+        
+        <div class="modal my-modal fade" id="keyValModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">附加数据</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form" style="">
+                            <div class="form-group" id="jumpExtra" style="margin-bottom: 2px;">
+                                <label>附加数据:</label>
+                                <span class="bind-span" style="padding: 0;border: 0;">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div><!-- /.page-content -->
+</div>

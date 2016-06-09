@@ -1,0 +1,117 @@
+<div class="main-content-inner">
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed');}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-area-chart home-icon"></i>
+                <span class="menu-text"> 参数管理 </span>
+            </li>
+        </ul><!-- /.breadcrumb -->
+        <!-- /section:basics/content.searchbox -->
+    </div>
+
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content" id="page-content">
+        <div class="my-content" style="margin: 0 auto;">
+            <table id="myTable" class="table table-bordered table-hover dataTable no-footer">
+            </table>
+            <table id="myTable2" class="table table-bordered table-hover dataTable no-footer">
+            </table>
+            <table id="myTable3" class="table table-bordered table-hover dataTable no-footer">
+            </table>
+        </div>
+
+        <div class="modal my-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">新增</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="add_pos">
+                            <div class="my-form" style="">
+                              <div class="form-group">
+                                <label for="typeName">类型:</label>
+                                <input type="text" class="form-control" id="typeName" placeholder="请输入类型名称">
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subType">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">新增</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="add_pos2">
+                            <div class="my-form" style="">
+                              <div class="form-group">
+                                <label for="paramName">参数:</label>
+                                <input type="text" class="form-control" id="paramName" placeholder="请输入参数名称">
+                              </div>
+                              <div class="form-group">
+                                <label for="paramDesc">描述:</label>
+                                <input type="text" class="form-control" id="paramDesc" placeholder="请输入描述">
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subParam">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">新增</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="add_pos3">
+                            <div class="my-form" style="">
+                              <div class="form-group">
+                                <label for="advanceName">预选值:</label>
+                                <input type="text" class="form-control" id="advanceName" placeholder="请输入预选值">
+                              </div>
+                              <div class="form-group" id="chooseDefault">
+                                <label for="chooseDefault">默认值:</label>
+                                <input name="chooseDefault" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="chooseDefault" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subAdvance">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.page-content -->
+</div>

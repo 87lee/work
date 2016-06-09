@@ -1,0 +1,103 @@
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-datetimepicker.min.css">
+<style type="text/css">
+#getBackData{
+    border: 1px solid #999999;
+    padding: 5px 20px 5px 20px;
+    margin-left: 10px;
+}
+.my-choose{
+    border: 1px solid #ccc;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    background-color: #f5f7fa;
+}
+.my-choose .nav {
+    margin-bottom: 10px;
+}
+.my-choose ul > li{
+    float: left;
+    margin-bottom: 5px;
+}
+.my-choose ul > li > label {
+    width: 80px;
+    text-align: right;
+}
+.my-choose ul > li > .form-control{
+    margin-left: 10px;
+    padding: 4px 12px;
+    font-size: 12px;
+    height: 27px;
+    width: 150px;
+    display: inline-block;
+}
+@media (min-width: 768px) {
+    .my-content{
+        width: 100%;
+    }
+}
+</style>
+<div class="main-content-inner">
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed');}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-bullhorn home-icon"></i>
+                <span class="menu-text"> 已授权记录 </span>
+            </li>
+        </ul><!-- /.breadcrumb -->
+        <!-- /section:basics/content.searchbox -->
+    </div>
+
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content" id="page-content">
+        <div class="my-content" style="margin: 0 auto;position: relative;">
+            <div>
+                <div class="row my-choose">
+                    <ul class="nav">
+                        <li>
+                            <label for="model">model：</label>
+                            <input type="text" class="form-control" id="model">
+                        </li>
+                        <li>
+                            <label for="mac">mac：</label>
+                            <input type="text" class="form-control" id="mac">
+                        </li>
+                        <li>
+                            <label for="vendorID">vendorID：</label>
+                            <input type="text" class="form-control" id="vendorID">
+                        </li>
+                        <li>
+                            <label for="wifi">wifi：</label>
+                            <input type="text" class="form-control" id="wifi">
+                        </li>
+                        <li>
+                            <label for="channel">channel：</label>
+                            <input type="text" class="form-control" id="channel">
+                        </li>
+                        <li>
+                            <label for="startTime">startTime：</label>
+                            <input type="text" class="form-control" id="startTime">
+                        </li>
+                        <li>
+                            <label for="endTime">endTime：</label>
+                            <input type="text" class="form-control" id="endTime">
+                        </li>
+                    </ul>
+                    <div style="border-top: 1px solid #ccc;margin: 0 25px;padding-top: 15px;">
+                        <a href="javascript:" id="getBackData">查询</a>
+                    </div>
+                </div>
+                <div class="row" id="tableBox" style="margin-top: 20px;">
+                    <table id="PowerTable" class="table table-bordered table-hover dataTable no-footer">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.page-content -->
+</div>
+<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+<script src="assets/js/bootstrap-datetimepicker.zh-CN.js"></script>

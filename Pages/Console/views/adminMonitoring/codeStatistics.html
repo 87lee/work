@@ -1,0 +1,136 @@
+<link rel="stylesheet" type="text/css" href="assets/css/daterangepicker-bs3.css">
+<style type="text/css">
+.my-choose{
+    border: 1px solid #ccc;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    background-color: #f5f7fa;
+}
+.my-choose .nav {
+    margin-bottom: 10px;
+}
+.my-choose .nav-pills > li > a,
+.my-choose .nav-pills > li > select.form-control{
+    padding: 4px 12px;
+    border-radius: 0;
+}
+.my-choose .nav-pills > li > label {
+    width: 80px;
+}
+.my-choose .nav-pills > li > select.form-control{
+    margin-left: 10px;
+    padding: 4px 12px;
+    font-size: 12px;
+    height: 27px;
+    width: 150px;
+    display: inline-block;
+}
+.btn-group a {
+    display: block;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    float: left;
+    border-left: none;
+}
+.btn-group a:first-child {
+    border-left: 1px solid #ccc;
+}
+.btn-group a:hover, .btn-group a.active {
+    background-color: #d8ebff;
+}
+#monitorChart {
+    display: block;
+    margin-top: 20px;
+}
+</style>
+<div class="main-content-inner">
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed');}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-line-chart home-icon"></i>
+                <span class="menu-text"> 状态码统计 </span>
+            </li>
+        </ul><!-- /.breadcrumb -->
+        <!-- /section:basics/content.searchbox -->
+    </div>
+
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content" id="page-content" style="display: none;">
+        <div class="my-content" style="margin: 0 auto;position: relative;">
+            <div>
+                <div class="row my-choose">
+                    <ul class="nav nav-pills">
+                        <li role="presentation" class="active"><a href="#">30分钟</a></li>
+                        <li role="presentation"><a href="#">1小时</a></li>
+                        <li role="presentation"><a href="#">6小时</a></li>
+                        <li role="presentation"><a href="#">今天</a></li>
+                        <li role="presentation"><a href="#">昨天</a></li>
+                        <li role="presentation"><a href="#">近7天</a></li>
+                        <li role="presentation"><a href="#">近15天</a></li>
+                        <li role="presentation"><a href="#">近30天</a></li>
+                        <li role="presentation"><a href="#">自定义</a></li>
+                        <li>
+<!--                             <label for="datePicker">时间：</label>
+                            <input id="beginTime" type="text" class="form-control" readonly="readonly">
+                            &ensp;到
+                            <input id="endTime" type="text" class="form-control" readonly="readonly">
+                             <input size="16" type="text" value="2012-06-15 14:45" readonly class="datePicker">
+                            <input class="form-control date-picker" id="datePicker" type="text" data-date-format="yyyy-mm-dd h:mm" readonly="readonly" placeholder="请选择时间"> -->
+
+                            <div id="reportrange2" class="btn" style="display: inline-block; background: #fff; cursor: pointer; padding: 2px 10px; border: 1px solid #ccc;margin-left: 10px;">
+                                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                <span></span> <b class="caret"></b>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-pills">
+                        <li style="margin-right: 50px;">
+                            <label for="projectSelect">项目：</label>
+                            <select class="chosen-select form-control" id="projectSelect" data-placeholder="请选择项目">
+                                <option>全部项目</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="timeSelect">时间粒度：</label>
+                            <select class="chosen-select form-control" id="timeSelect" data-placeholder="请选择粒度">
+                                <option value="1">1分钟</option>
+                                <option value="5">5分钟</option>
+                                <option value="10">10分钟</option>
+                            </select>
+                        </li>
+                    </ul>
+                    <div style="border-top: 1px solid #ccc;margin: 0 25px;padding-top: 15px;">
+                        <a class="btn my-btn btn-primary" href="javascript:" style="padding: 0 12px;" id="getChartData">&nbsp;查询</a>
+                    </div>
+                </div>
+
+                <div class="row" id="chartBox">
+                    <h4 style="margin-top: 50px;">状态码统计</h4>
+                    <div class="btn-group">
+                        <a href="javascript:" class="active" data-type="2">2XX</a>
+                        <a href="javascript:" data-type="3">3XX</a>
+                        <a href="javascript:" data-type="4">4XX</a>
+                        <a href="javascript:" data-type="5">5XX</a>
+                        <a href="javascript:" data-type="all">全部</a>
+                    </div>
+
+                    <div id="monitorChart" height="300"></div>
+                </div>
+
+                <div class="row" id="tableBox" style="display: none;">
+                    <h4 style="margin-top: 50px;">返回码分布</h4>
+                    <table id="chartTable" class="table my-table table-bordered table-hover dataTable no-footer">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.page-content -->
+</div>
+<script src="assets/js/moment.js"></script>
+<script src="assets/js/daterangepicker.js"></script>
+<script type="text/javascript" src="assets/js/highcharts.js"></script>

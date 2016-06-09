@@ -1,0 +1,151 @@
+<link rel="stylesheet" type="text/css" href="views/desktop/desktop.css">
+<div class="main-content-inner">
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed');}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-puzzle-piece home-icon"></i>
+                <span class="menu-text"> 导航管理 </span>
+            </li>
+        </ul><!-- /.breadcrumb -->
+        <!-- /section:basics/content.searchbox -->
+    </div>
+
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content" id="page-content" style="overflow-x: auto;padding-bottom: 0;">
+        <div class="my-layout" id="myLayout" style="width: 1610px;margin: 0 auto;height: 790px;position: relative;">
+            <div style="width: 130px;height: 720px;float: left;">
+                <div id="screenBtn">
+                    <a class="btn my-btn btn-primary" href="javascript:" id="addNav">新建导航</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="delNav" style="display:none;">删除导航</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="addIcon" style="display:none;">添加控件</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="editIcon" style="display:none;">修改控件</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="delIcon" style="display:none;">删除控件</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="moveIconFront" style="display:none;">向前移</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="moveIconBehind" style="display:none;">向后移</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="editNav" style="display:none;">保存</a>
+                </div>
+            </div>
+            <div>
+                <div id="screenSelect">
+                    <label for="navSelect">选择导航:</label>
+                    <select id="navSelect" class="chosen-select form-control" style="width: 170px;margin-left: 10px;display: none;"></select>&emsp;
+
+                    <label for="desktopProportion">显示比例:</label>
+                    <select class="chosen-select" id="desktopProportion" data-placeholder="100%" style="width: 170px;">
+                        <option value="120">120%</option>
+                        <option value="100" selected>100%</option>
+                        <option value="80">80%</option>
+                        <option value="60">60%</option>
+                    </select>&emsp;
+                </div>
+            </div>
+            <div id="pageWrap">
+                <div class="screenWarp" id="screenWarp"><ul><li>
+                    <div id="navWarp" class="screen-nav"></div>
+                </li></ul></div>
+            </div>
+            <div style="width: 200px;height: 700px;position: absolute;left: 1410px;top: 70px;">
+                <div id="slotInfo">
+                    <h4>导航信息：</h4>
+                    <div class="form-group">
+                        <label for="navMargin">间隔:</label>
+                        <input type="text" class="form-control nav-data" id="navMargin">
+                    </div>
+                    <div class="form-group">
+                        <label for="navLeft">left:</label>
+                        <input type="text" class="form-control nav-data" id="navLeft">
+                    </div>
+                    <div class="form-group">
+                        <label for="navTop">top:</label>
+                        <input type="text" class="form-control nav-data" id="navTop">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" style="width: 1461px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">新建导航</h4>
+                    </div>
+                    <div class="modal-body" style="max-height: 650px;">
+                        <div class="my-form" style="width:1400px">
+                            <div class="form-group">
+                                <label for="navName" style="width: 10%;">导航名称:</label>
+                                <input type="text" class="form-control" id="navName" placeholder="请输入导航名称" style="width: 20%;">
+                                <span style="margin-left: 100px;font-size: 16px;color: #999;">说明：不选择导航，生成的导航则为空导航</span>
+                            </div>
+                        </div>
+                        <div id="navList" class="screenList clearfix">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subNewNav">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="iconModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">新增控件</h4>
+                    </div>
+                    <div class="modal-body" style="overflow: initial;">
+                        <div id="add_pos2">
+                            <div class="my-form">
+                                <div class="form-group">
+                                    <label for="iconList">控件图标:</label>
+                                    <select class="chosen-select form-control" id="iconList" data-placeholder="请选择ICON图标集合">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fnId">功能ID:</label>
+                                    <select class="chosen-select form-control" id="fnId" data-placeholder="请选择功能ID">
+                                        <option value="请选择功能ID">请选择功能ID</option>
+                                        <option value="1">推荐（对应1开头的运营坑位）</option>
+                                        <option value="2">影视（对应2开头的运营坑位）</option>
+                                        <option value="3">游戏（对应3开头的运营坑位）</option>
+                                        <option value="4">儿童（对应4开头的运营坑位）</option>
+                                        <option value="5">购物（对应5开头的运营坑位）</option>
+                                        <option value="6">应用（对应6开头的运营坑位）</option>
+                                        <option value="7">扩展1（对应7开头的运营坑位）</option>
+                                        <option value="8">扩展2（对应8开头的运营坑位）</option>
+                                        <option value="9">扩展3（对应9开头的运营坑位）</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" id="reloadPic">
+                                </div>
+                                <div class="form-group linkinType picType" style="position: relative;" id="picForm">
+                                <label for="desc">选中图片:</label>
+                                <input type="text" class="form-control fileShow" id="picPath" placeholder="请选择图片" readonly="readonly">
+                                <input id="picBtn" type="button" class="fileBtn button" value="浏览" style="width:15%;position: absolute;right: 62px;top: 5px;">
+                                <input type="file" accept="image/*" id="fileBtn" style="width:0px;height: 0;" class="fileHide">
+                            </div>
+                            </div>
+                            <img src="" class="my-image">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subIcon">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /.page-content -->
+</div>
+<script type="text/javascript" src="views/desktop/public.js"></script>

@@ -1,0 +1,61 @@
+<div class="main-content-inner">
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed');}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon glyphicon glyphicon-edit home-icon"></i>
+                <span class="menu-text"> 命令管理 </span>
+            </li>
+        </ul><!-- /.breadcrumb -->
+        <!-- /section:basics/content.searchbox -->
+    </div>
+
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content" id="page-content">
+        <div class="my-content" style="margin: 0 auto;">
+            <table id="myTable" class="table table-bordered table-hover dataTable no-footer">
+            </table>
+        </div>
+
+        <div class="modal my-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">新增</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="add_pos">
+                            <div class="my-form" style="">
+                                <div class="form-group" id="cmdType">
+                                    <label for="cmdType">命令类型:</label>
+                                    <input name="cmdType" type="radio" class="ace" value="shell"  checked>
+                                    <span class="lbl">&nbsp;shell</span>&emsp;
+                                    <input name="cmdType" type="radio" class="ace" value="upload">
+                                    <span class="lbl">&nbsp;upload</span>&emsp;
+                                </div>
+                                <div class="form-group">
+                                    <label for="shell">shell:</label>
+                                    <input type="text" class="form-control" id="shell" placeholder="请输入shell命令">
+                                </div>
+                                <div class="form-group" style="display: none;">
+                                    <label for="upload">upload:</label>
+                                    <input type="text" class="form-control" id="upload" placeholder="请输入文件路径">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subCmd">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.page-content -->
+</div>

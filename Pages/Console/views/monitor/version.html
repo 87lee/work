@@ -1,0 +1,62 @@
+<div class="main-content-inner">
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon glyphicon glyphicon-edit home-icon"></i>
+                <span class="menu-text"> 版本管理 </span>
+            </li>
+        </ul><!-- /.breadcrumb -->
+        <!-- /section:basics/content.searchbox -->
+    </div>
+
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content" id="page-content">
+        <div class="my-content" style="margin: 0 auto;">
+            <table id="myTable" class="table table-bordered table-hover dataTable no-footer">
+            </table>
+            <table id="myTable2" class="my-table table table-bordered table-hover dataTable no-footer">
+            </table>
+        </div>
+
+        <div class="modal my-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">新增</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="add_pos">
+                            <div class="my-form" style="">
+                              <div class="form-group">
+                                <label for="version">版本:</label>
+                                <input type="text" class="form-control" id="version" placeholder="请输入版本">
+                              </div>
+                              <div class="form-group" style="position: relative;">
+                                <label for="desc">选择文件:</label>
+                                <input type="text" class="form-control fileShow" id="fileShow" placeholder="请选择文件" readonly="readonly">
+                                <input id="fileBtn" type="button" class="button fileBtn" value="浏览" style="width:15%;position: absolute;right: 62px;top: 5px;">
+                                <input type="file" id="fileHide" class="fileHide" style="width:0px;height: 0;">
+                              </div>
+                                <div class="form-group">
+                                    <label for="desc" style="float: left;line-height: 52px;">描述:</label>
+                                    <textarea class="form-control" id="desc" placeholder="请输入描述" style="height: 52px;margin-left: 3px;resize: none;"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subVersion">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.page-content -->
+</div>

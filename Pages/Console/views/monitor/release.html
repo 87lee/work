@@ -1,0 +1,107 @@
+<div class="main-content-inner">
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon glyphicon glyphicon-share home-icon"></i>
+                <span class="menu-text"> 版本发布 </span>
+            </li>
+        </ul><!-- /.breadcrumb -->
+        <!-- /section:basics/content.searchbox -->
+    </div>
+
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content" id="page-content">
+        <div class="my-content" style="margin: 0 auto;">
+            <table id="myTable" class="table table-bordered table-hover dataTable no-footer">
+            </table>
+        </div>
+
+        <div class="modal my-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">发布</h4>
+                    </div>
+                    <div class="modal-body" style="overflow: initial;">
+                        <div id="add_pos">
+                            <div class="my-form" style="">
+                                <div class="form-group" id="chooseModel">
+                                    <label for="chooseModel">全型号:</label>
+                                    <input name="chooseModel" type="radio" class="ace" value="ALL">
+                                    <span class="lbl">&nbsp;是</span>&emsp;
+                                    <input name="chooseModel" type="radio" class="ace" value="false" checked>
+                                    <span class="lbl">&nbsp;否</span>&emsp;
+                                </div>
+                                <div class="form-group">
+                                    <label for="model">型号:</label>
+                                    <input type="text" class="form-control" id="model" placeholder="请输入型号">
+                                </div>
+                                <div class="form-group">
+                                    <label for="vendorID">vendorID:</label>
+                                    <input type="text" class="form-control" id="vendorID" placeholder="none">
+                                </div>
+                                <div class="form-group">
+                                    <label for="version">选择版本:</label>
+                                    <select id="version" class="form-control"></select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="verTime">更新时间:</label>
+                                    <input type="text" class="form-control" id="verTime" disabled="false">
+                                </div>
+                                <div class="form-group" id="chooseType">
+                                    <label for="chooseType">选择类型:</label>
+                                    <input name="chooseType" type="radio" class="ace" value="group" checked>
+                                    <span class="lbl">&nbsp;内测</span>&emsp;
+                                    <input name="chooseType" type="radio" class="ace" value="AB">
+                                    <span class="lbl">&nbsp;灰度</span>&emsp;
+                                    <input name="chooseType" type="radio" class="ace" value="ALL">
+                                    <span class="lbl">&nbsp;公开</span>&emsp;
+                                </div>
+                                <div class="form-group">
+                                    <label for="group">选择内测组:</label>
+                                    <select id="group" class="form-control"></select>
+                                </div>
+                                <div class="form-group" style="display: none;">
+                                    <label for="countNum">灰度数量:</label>
+                                    <input type="text" class="form-control" id="countNum" placeholder="请输入数量">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subVersion">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">设备列表</h4>
+                    </div>
+                    <div class="modal-body" style="overflow: initial;">
+                        <div id="add_pos">
+                            <table id="myTable2" class="table table-bordered table-hover dataTable no-footer">
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.page-content -->
+</div>

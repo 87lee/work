@@ -1,0 +1,118 @@
+<style type="text/css">
+.my-table tbody tr.checkSelected {
+  background-color: #E4EFC9!important;
+}
+#versionModal textarea {
+    height: auto;
+    resize: none;
+    width: 70%;
+    margin: 0 auto;
+}
+.form-textarea{
+    position: relative;
+    top: -32px;
+}
+</style>
+<div class="main-content-inner">
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed');}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-th-large home-icon"></i>
+                <span class="menu-text"> 应用升级 </span>
+            </li>
+        </ul><!-- /.breadcrumb -->
+        <!-- /section:basics/content.searchbox -->
+    </div>
+
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content" id="page-content">
+        <div class="my-content" style="margin: 0 auto;position: relative;">
+            <div id="fristTable">
+                <div id="appTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 42px;"><label style="display: inline-block;
+                "><input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;
+                "></label></div>
+                <table id="appTable" class="table table-bordered table-hover dataTable no-footer" style="margin-top: 42px;">
+                </table>
+            </div>
+            <div id="secondTable" style="display: none;">
+                <div id="versionTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 42px;"><label style="display: inline-block;
+                "><input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;
+                "></label></div>
+                <table id="versionTable" class="my-table table table-bordered table-hover dataTable no-footer" style="margin-top: 42px;">
+                </table>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="appModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">添加</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form" style="">
+                            <div class="form-group">
+                                <label for="appName">应用名称:</label>
+                                <input type="text" class="form-control" id="appName" placeholder="请输入应用名称">
+                            </div>
+                            <div class="form-group">
+                                <label for="pkgName">包名:</label>
+                                <input type="text" class="form-control" id="pkgName" placeholder="请输入包名">
+                            </div>
+                            <div class="form-group">
+                                <label for="channel">渠道:</label>
+                                <input type="text" class="form-control" id="channel" placeholder="请输入渠道">
+                            </div>
+                            <div class="form-group">
+                                <label for="appDesc">描述:</label>
+                                <input type="text" class="form-control" id="appDesc" placeholder="选填">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subApp">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="versionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">添加</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form" style="">
+                            <div class="form-group" style="position: relative;">
+                                <label for="appFile">应用文件:</label>
+                                <input type="text" class="form-control fileShow" id="appShow" placeholder="请上传应用文件(小于100M)" readonly="readonly">
+                                <input id="appBtn" type="button" class="fileBtn button" value="浏览" style="width:15%;position: absolute;right: 62px;top: 5px;">
+                                <input type="file" accept=".apk" id="appHide" style="width:0px;height: 0;" class="fileHide">
+                            </div>
+                            <div class="form-group">
+                                <label for="versionDesc"  class="form-textarea">描述:</label>
+                                <textarea rows="2" id="versionDesc" placeholder="选填（输入描述，以英文分号';'分隔）"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subVersion">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /.page-content -->
+</div>

@@ -1,0 +1,101 @@
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-datetimepicker.min.css">
+<style type="text/css">
+.my-widget-toolbar {
+    margin-top: 79px;
+}
+.my-widget-toolbar .toolbar {
+    top: -79px;
+}
+#hotWord_chosen .custom-search:after {
+    content: '搜索';
+}
+</style>
+<div class="main-content-inner">
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed');}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-bar-chart home-icon"></i>
+                <span class="menu-text"> 热词配置 </span>
+            </li>
+        </ul><!-- /.breadcrumb -->
+        <!-- /section:basics/content.searchbox -->
+    </div>
+
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content" id="page-content">
+        <div class="my-content" style="margin: 0 auto;">
+            <table id="myTable" class="table table-bordered table-hover dataTable no-footer">
+            </table>
+            <div class="widget-box my-widget-toolbar" id="hotWords" style="display: none;">
+                <div class="toolbar"></div>
+                <div class="widget-header widget-header-flat" style="padding-left: 0;">
+                </div>
+
+                <div class="widget-body">
+                    <ul class="my-widget" id="myGroup">
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="add_pos">
+                            <div class="my-form" style="">
+                                <div class="form-group">
+                                    <label for="versionName">发布时间:</label>
+                                    <input type="text" class="form-control" id="versionName" placeholder="请选择发布时间">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subVersion">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;"></h4>
+                    </div>
+                    <div class="modal-body" style="overflow: initial;">
+                        <div class="my-form">
+                            <div class="form-group">
+                                <label for="hotWord">热词:</label>
+                                <select class="chosen-select form-control" multiple id="hotWord" data-placeholder="请选择快捷入口">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subHotWords">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /.page-content -->
+</div>
+
+<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+<script src="assets/js/bootstrap-datetimepicker.zh-CN.js"></script>

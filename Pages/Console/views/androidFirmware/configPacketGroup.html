@@ -1,0 +1,76 @@
+<div class="main-content-inner">
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed');}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-briefcase home-icon"></i>
+                <span class="menu-text"> 配置包 </span>
+            </li>
+        </ul><!-- /.breadcrumb -->
+        <!-- /section:basics/content.searchbox -->
+    </div>
+
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content" id="page-content">
+        <div class="my-content" style="margin: 0 auto;position: relative;">
+            <div id="myTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 42px;"><label style="display: inline-block;
+            "><input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;
+            "></label></div>
+            <table id="myTable" class="table table-bordered table-hover dataTable no-footer" style="margin-top: 42px;">
+            </table>
+        </div>
+
+        <div class="modal my-modal fade" id="configModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">添加</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form" style="">
+                            <div class="form-group">
+                                <label for="configName">包名称:</label>
+                                <input type="text" class="form-control" id="configName" placeholder="请输入包名称">
+                            </div>
+                            <div class="form-group" style="position: relative;">
+                                <label for="desc">环境变量:</label>
+                                <input type="text" class="form-control fileShow" id="propShow" placeholder="请上传环境变量文件" readonly="readonly">
+                                <input id="propBtn" type="button" class="fileBtn button" value="浏览" style="width:15%;position: absolute;right: 10%;top: 5px;">
+                                <input type="file" accept=".prop" id="propHide" style="width:0px;height: 0;" class="fileHide">
+                            </div>
+                            <div class="form-group" style="position: relative;">
+                                <label for="desc">开机动画:</label>
+                                <input type="text" class="form-control fileShow" id="zipShow" placeholder="请上传开机动画文件" readonly="readonly">
+                                <input id="zipBtn" type="button" class="fileBtn button" value="浏览" style="width:15%;position: absolute;right: 10%;top: 5px;">
+                                <input type="file" accept=".zip" id="zipHide" style="width:0px;height: 0;" class="fileHide">
+                            </div>
+                             <div class="form-group" style="position: relative;">
+                                <label for="desc">开机视频:</label>
+                                <input type="text" class="form-control fileShow" id="mp4Show" placeholder="请上传开机视频文件" readonly="readonly">
+                                <input id="mp4Btn" type="button" class="fileBtn button" value="浏览" style="width:15%;position: absolute;right: 10%;top: 5px;">
+                                <input type="file" accept=".mp4" id="mp4Hide" style="width:0px;height: 0;" class="fileHide">
+                            </div>
+                            <div class="form-group" style="position: relative;">
+                                <label for="desc">开机视频配置:</label>
+                                <input type="text" class="form-control fileShow" id="confShow" placeholder="请上传开机视频配置文件" readonly="readonly">
+                                <input id="confBtn" type="button" class="fileBtn button" value="浏览" style="width:15%;position: absolute;right: 10%;top: 5px;">
+                                <input type="file" accept=".conf" id="confHide" style="width:0px;height: 0;" class="fileHide">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subConfig">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /.page-content -->
+</div>

@@ -1,0 +1,200 @@
+<link rel="stylesheet" type="text/css" href="assets/css/jquery.bigcolorpicker.css">
+<link rel="stylesheet" type="text/css" href="views/desktop/desktop.css">
+<div class="main-content-inner">
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed');}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-tv home-icon"></i>
+                <span class="menu-text"> 屏管理 </span>
+            </li>
+        </ul><!-- /.breadcrumb -->
+        <!-- /section:basics/content.searchbox -->
+    </div>
+
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content" id="page-content" style="overflow-x: auto;padding-bottom: 0;">
+        <div class="my-layout" id="myLayout" style="width: 1610px;margin: 0 auto;height: 790px;position: relative;">
+            <div style="width: 130px;height: 720px;float: left;">
+                <div id="screenBtn">
+                    <a class="btn my-btn btn-primary" href="javascript:" id="addScreen" >新建屏</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="delScreen" style="display:none;">删除屏</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="addBlock" style="display:none;">添加块</a>
+                    <a class="btn my-btn btn-primary slot-data" href="javascript:" id="delBlock" style="display:none;">删除块</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="checkOffset" style="display:none;">检查对齐</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="editScreen" style="display:none;">保存</a>
+                </div>
+            </div>
+            <div>
+                <div id="screenSelect">
+                    <label for="screen">选择屏:</label>
+                    <select id="screen" class="chosen-select form-control" style="width: 170px;margin-left: 10px;display: none;"></select>&emsp;
+
+                    <label for="desktopProportion">显示比例:</label>
+                    <select class="chosen-select" id="desktopProportion" data-placeholder="100%" style="width: 170px;">
+                        <option value="120">120%</option>
+                        <option value="100" selected>100%</option>
+                        <option value="80">80%</option>
+                        <option value="60">60%</option>
+                    </select>&emsp;
+                </div>
+            </div>
+            <div id="pageWrap">
+                <ul class="dropdown-menu" id="setAlignment">
+                    <li><a href="#" class="alignment-set">左对齐</a></li>
+                    <li><a href="#" class="alignment-set">右对齐</a></li>
+                    <li><a href="#" class="alignment-set">上对齐</a></li>
+                    <li><a href="#" class="alignment-set">下对齐</a></li>
+                    <li><a href="#" class="alignment-set">横向间隔对齐</a></li>
+                    <li><a href="#" class="alignment-set">纵向间隔对齐</a></li>
+                    <li><a href="#" class="scale-set">等比列缩放</a></li>
+                    <!-- <li><a href="#" class="alignment-set">所有屏最外层对齐</a></li> -->
+                </ul>
+                <div class="screenWarp" id="screenWarp"><ul><li></li></ul></div>
+            </div>
+            <div style="width: 200px;height: 700px;position: absolute;left: 1410px;top: 70px;">
+                <div id="slotInfo">
+                    <h4>坑位信息：</h4>
+                    <div class="form-group">
+                        <label for="slotLeft">left:</label>
+                        <input type="text" class="form-control slot-data" id="slotLeft">
+                    </div>
+                    <div class="form-group">
+                        <label for="slotTop">top:</label>
+                        <input type="text" class="form-control slot-data" id="slotTop">
+                    </div>
+                    <div class="form-group">
+                        <label for="slotWidth">width:</label>
+                        <input type="text" class="form-control slot-data" id="slotWidth" >
+                    </div>
+                    <div class="form-group">
+                        <label for="slotHeight">height:</label>
+                        <input type="text" class="form-control slot-data" id="slotHeight">
+                    </div>
+                    <div class="form-group">
+                        <label for="slotBgd">bgd:</label>
+                        <input type="text" class="form-control slot-data" id="slotBgd">
+                    </div>
+                    <div class="form-group">
+                        <label for="slotOpacity" style="font-size: 12px;">透明度:</label>
+                        <span class="ui-slider-green ui-slider-small slot-data" id="slotOpacity"></span>
+                    </div>
+                </div>
+            </div>
+            <div id="screenInfoWrap" style="margin-top: 10px;width: 1280px;position: absolute;bottom: 0;left: 130px;" class="clearfix">
+                <div class="col-xs-6">
+                    <b>名称：</b><span id="screenTitle"></span>
+                </div>
+                <div class="col-xs-6">
+                    <b>坑位个数：</b><span id="screenSlots"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="screenModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" style="width: 1461px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">新建屏</h4>
+                    </div>
+                    <div class="modal-body" style="max-height: 650px;">
+                        <div class="my-form" style="width:1400px">
+                            <div class="form-group">
+                                <label for="screenName" style="width: 10%;">屏名称:</label>
+                                <input type="text" class="form-control" id="screenName" placeholder="请输入屏名称" style="width: 20%;">
+                                <span style="margin-left: 100px;font-size: 16px;color: #999;">说明：不选择屏，生成的屏则为空屏</span>
+                            </div>
+                        </div>
+                        <div id="screenList" class="clearfix">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subNewScreen">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="blockModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" style="width: 1461px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">添加块</h4>
+                        <div id="blockType" class="form-group" style="position: absolute;left: 190px;top: 14px;">
+                            <label for="blockType">块类型:&emsp;</label>
+                            <input name="blockType" type="radio" class="ace" value="common" checked>
+                            <span class="lbl">&nbsp;普通</span>&emsp;
+                            <input name="blockType" type="radio" class="ace" value="quickEntry">
+                            <span class="lbl">&nbsp;快捷坑位</span>&emsp;
+                        </div>
+                        <div id="myBlocks_filter" class="dataTables_filter" style="position: absolute;right: 50px;top: 10px;">
+                            <label style="display: inline-block;"><input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-body" style="max-height: 650px;">
+                        <div id="blockList" class="clearfix">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="scaleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">等比例缩放</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form" style="">
+                            <div class="form-group" id="scaleAll">
+                                <label for="scaleAll">所有坑位:</label>
+                                <input name="scaleAll" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="scaleAll" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" id="scaleBased">
+                                <label for="scaleBased">保持纵横比:</label>
+                                <input name="scaleBased" type="radio" class="ace" value="true" checked>
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="scaleBased" type="radio" class="ace" value="false">
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="scaleWidth">宽:</label>
+                                <input type="text" class="form-control" id="scaleWidth" placeholder="请输入宽">
+                            </div>
+                            <div class="form-group">
+                                <label for="scaleHeight">高:</label>
+                                <input type="text" class="form-control" id="scaleHeight" placeholder="请输入高">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary slot-data" id="subScale">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /.page-content -->
+</div>
+<script type="text/javascript" src="assets/js/jquery.bigcolorpicker.min.js"></script>
+<script type="text/javascript" src="views/desktop/public.js"></script>

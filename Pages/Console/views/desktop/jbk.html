@@ -1,0 +1,83 @@
+<div class="main-content-inner">
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed');}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-expeditedssl home-icon"></i>
+                <span class="menu-text"> 桌面密码管理 </span>
+            </li>
+        </ul><!-- /.breadcrumb -->
+        <!-- /section:basics/content.searchbox -->
+    </div>
+
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content" id="page-content">
+        <div class="my-content" style="margin: 0 auto;position: relative;">
+            <div id="myTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 42px;"><label style="display: inline-block;
+            "><input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;
+            "></label></div>
+            <table id="myTable" class="table table-bordered table-hover dataTable no-footer" style="margin-top: 42px;">
+            </table>
+        </div>
+
+        <div class="modal my-modal fade" id="jbkModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">新增</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form" style="">
+                            <div class="form-group">
+                                <label for="jbkVendorId">客户ID:</label>
+                                <input type="text" class="form-control" id="jbkVendorId" placeholder="请输入客户ID">
+                            </div>
+                            <div class="form-group">
+                                <label for="jbkPasswd">密码:</label>
+                                <input type="text" class="form-control" id="jbkPasswd" placeholder="请输入密码">
+                            </div>
+                            <div class="form-group">
+                                <label for="jbkDesc">描述:</label>
+                                <input type="text" class="form-control" id="jbkDesc" placeholder="选填">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subJbk">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="stateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">查询越狱状态</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form" style="">
+                            <div class="form-group" id="myMac">
+                                <label for="stateMac">mac地址:</label>
+                                <input type="text" class="form-control" id="stateMac" placeholder="请输入mac地址，例如：A1:B2:C3:D4:E5:F6">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subState">查询</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.page-content -->
+</div>

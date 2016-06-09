@@ -1,0 +1,192 @@
+<div class="main-content-inner">
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed');}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-th-large home-icon"></i>
+                <span class="menu-text"> 第三方应用 </span>
+            </li>
+        </ul><!-- /.breadcrumb -->
+        <!-- /section:basics/content.searchbox -->
+    </div>
+
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content" id="page-content">
+        <div class="my-content" style="margin: 0 auto;position: relative;">
+            <div id="fristTable">
+                <div id="myTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 42px;"><label style="display: inline-block;
+                "><input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;
+                "></label></div>
+                <table id="myTable" class="table table-bordered table-hover dataTable no-footer" style="margin-top: 42px;">
+                </table>
+                <img src="" class="my-image">
+            </div>
+            <div id="secondTable" style="display: none;">
+                <div id="versionTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 42px;"><label style="display: inline-block;
+                "><input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;
+                "></label></div>
+                <table id="versionTable" class="table table-bordered table-hover dataTable no-footer" style="margin-top: 42px;">
+                </table>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="apkModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">添加</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form" style="">
+                            <div class="form-group" id="path3rdShow">
+                                <label for="path3rdShow">类型:</label>
+                                <input name="path3rdShow" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;自定义</span>&emsp;
+                                <input name="path3rdShow" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;上传</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="appName">应用名称:</label>
+                                <input type="text" class="form-control" id="appName" placeholder="请输入应用名称">
+                            </div>
+                            <div class="form-group apk-type3rd">
+                                <label for="pkgName">包名:</label>
+                                <input type="text" class="form-control" id="pkgName" placeholder="请输入包名">
+                            </div>
+                            <div class="form-group apk-type" style="position: relative;">
+                                <label for="apkShow">选择应用:</label>
+                                <input type="text" class="form-control fileShow" id="apkShow" placeholder="请上传应用" readonly="readonly">
+                                <input id="apkBtn" type="button" class="fileBtn button" value="浏览" style="width:15%;position: absolute;right: 62px;top: 5px;">
+                                <input type="file" accept=".apk" id="apkHide" style="width:0px;height: 0;" class="fileHide">
+                            </div>
+                            <div class="form-group" style="position: relative;">
+                                <label for="iconShow">选择图标:</label>
+                                <input type="text" class="form-control fileShow" id="iconShow" placeholder="请上传图标" readonly="readonly">
+                                <input id="iconBtn" type="button" class="fileBtn button" value="浏览" style="width:15%;position: absolute;right: 62px;top: 5px;">
+                                <input type="file" accept="image/*" id="iconHide" style="width:0px;height: 0;" class="fileHide">
+                            </div>
+<!--                             <div class="form-group apk-type3rd">
+                                <label for="versionCode">版本:</label>
+                                <input type="text" class="form-control" id="versionCode" placeholder="请输入版本">
+                            </div>
+                            <div class="form-group apk-type3rd">
+                                <label for="path3rd">外链:</label>
+                                <input type="text" class="form-control" id="path3rd" placeholder="请输入外链">
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subApk">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="editApkModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">修改</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form" style="">
+                            <div class="form-group">
+                                <label for="editApkName">应用名称:</label>
+                                <input type="text" class="form-control" id="editApkName" placeholder="请输入应用名称">
+                            </div>
+                            <div class="form-group" style="position: relative;">
+                                <label for="editShow">选择图标:</label>
+                                <input type="text" class="form-control fileShow" id="editShow" placeholder="请上传图标" readonly="readonly">
+                                <input id="editBtn" type="button" class="fileBtn button" value="浏览" style="width:15%;position: absolute;right: 62px;top: 5px;">
+                                <input type="file" accept="image/*" id="editHide" style="width:0px;height: 0;" class="fileHide">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="editApk">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="versionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">添加</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form" style="">
+                            <div class="form-group" id="path3rdShowV">
+                                <label for="path3rdShowV">类型:</label>
+                                <input name="path3rdShowV" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;自定义</span>&emsp;
+                                <input name="path3rdShowV" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;上传</span>&emsp;
+                            </div>
+                            <div class="form-group version-type3rd">
+                                <label for="versionNameV">版本名称:</label>
+                                <input type="text" class="form-control" id="versionNameV" placeholder="请输入版本名称">
+                            </div>
+                            <div class="form-group version-type3rd">
+                                <label for="versionCodeV">版本:</label>
+                                <input type="text" class="form-control" id="versionCodeV" placeholder="请输入版本">
+                            </div>
+                            <div class="form-group version-type3rd">
+                                <label for="path3rdV">外链:</label>
+                                <input type="text" class="form-control" id="path3rdV" placeholder="请输入外链">
+                            </div>
+                            <div class="form-group version-type" style="position: relative;">
+                                <label for="apkShowV">选择应用:</label>
+                                <input type="text" class="form-control fileShow" id="apkShowV" placeholder="请上传应用" readonly="readonly">
+                                <input id="apkBtnV" type="button" class="fileBtn button" value="浏览" style="width:15%;position: absolute;right: 62px;top: 5px;">
+                                <input type="file" accept=".apk" id="apkHideV" style="width:0px;height: 0;" class="fileHide">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subVersion">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="editVersionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">修改</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form" style="">
+                            <div class="form-group">
+                                <label for="editPath3rdV">外链:</label>
+                                <input type="text" class="form-control" id="editPath3rdV" placeholder="请输入外链">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="editVersion">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /.page-content -->
+</div>

@@ -1,0 +1,174 @@
+<link rel="stylesheet" type="text/css" href="views/desktop/desktop.css">
+<style type="text/css">
+/*#screenBtn {
+  left: -145px;
+}*/
+#screenBtn a{
+  padding: 1px 0;
+  width: 125px;
+}
+</style>
+<div class="main-content-inner">
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed');}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-retweet home-icon"></i>
+                <span class="menu-text"> 两态快捷入口管理 </span>
+            </li>
+        </ul><!-- /.breadcrumb -->
+        <!-- /section:basics/content.searchbox -->
+    </div>
+
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content" id="page-content" style="overflow-x: auto;padding-bottom: 0;">
+        <div class="my-layout" id="myLayout" style="width: 1610px;margin: 0 auto;height: 790px;position: relative;">
+            <div style="width: 130px;height: 720px;float: left;">
+                <div id="screenBtn">
+                    <a class="btn my-btn btn-primary" href="javascript:" id="addTwo">新建两态快捷入口</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="delTwo" style="display:none;">删除两态快捷入口</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="addIcon" style="display:none;">添加控件</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="editIcon" style="display:none;">修改控件</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="delIcon" style="display:none;">删除控件</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="moveIconFront" style="display:none;">向前移</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="moveIconBehind" style="display:none;">向后移</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="editTwo" style="display:none;">保存</a>
+                </div>
+            </div>
+            <div>
+                <div id="screenSelect">
+                    <label for="twoSelect">选择两态快捷入口:</label>
+                    <select id="twoSelect" class="chosen-select form-control" style="width: 170px;margin-left: 10px;display: none;"></select>&emsp;
+
+                    <label for="desktopProportion">显示比例:</label>
+                    <select class="chosen-select" id="desktopProportion" data-placeholder="100%" style="width: 170px;">
+                        <option value="120">120%</option>
+                        <option value="100" selected>100%</option>
+                        <option value="80">80%</option>
+                        <option value="60">60%</option>
+                    </select>&emsp;
+                </div>
+            </div>
+            <div id="pageWrap">
+                <div class="screenWarp" id="screenWarp"><ul><li>
+                    <div id="twoWarp" class="screen-two" style="width:100%;height:100%;"></div>
+                </li></ul></div>
+            </div>
+            <div style="width: 200px;height: 700px;position: absolute;left: 1410px;top: 70px;">
+                <div id="slotInfo">
+                    <h4>两态快捷入口信息：</h4>
+                    <div class="form-group">
+                        <label for="twoLeft">left:</label>
+                        <input type="text" class="form-control two-data" id="twoLeft">
+                    </div>
+                    <div class="form-group">
+                        <label for="twoTop">top:</label>
+                        <input type="text" class="form-control two-data" id="twoTop">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" style="width: 1461px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">新建两态快捷入口</h4>
+                    </div>
+                    <div class="modal-body" style="max-height: 650px;">
+                        <div class="my-form" style="width:1400px">
+                            <div class="form-group">
+                                <label for="twoName" style="width: 10%;">两态快捷入口名称:</label>
+                                <input type="text" class="form-control" id="twoName" placeholder="请输入两态快捷入口名称" style="width: 20%;">
+                                <span style="margin-left: 100px;font-size: 16px;color: #999;">说明：不选择两态快捷入口，生成的两态快捷入口则为空两态快捷入口</span>
+                            </div>
+                        </div>
+                        <div id="twoList" class="screenList clearfix">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subNewTwo">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="iconModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">添加控件</h4>
+                    </div>
+                    <div class="modal-body" style="overflow: initial;">
+                        <div id="add_pos2">
+                            <div class="my-form">
+                                <div class="form-group">
+                                    <label for="iconName">控件名称:</label>
+                                    <input type="text" class="form-control two-data" id="iconName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="iconPosX">坐标X:</label>
+                                    <input type="text" class="form-control two-data" id="iconPosX">
+                                </div>
+                                <div class="form-group">
+                                    <label for="iconPosY">坐标Y:</label>
+                                    <input type="text" class="form-control two-data" id="iconPosY">
+                                </div>
+                                <div class="form-group">
+                                    <label for="eventTpye">事件类型:</label>
+                                    <select class="chosen-select form-control" id="eventTpye" data-placeholder="请选择事件类型">
+                                        <option value="请选择事件类型">请选择事件类型</option>
+                                        <option value="WIFI">WIFI</option>
+                                        <option value="ETH">ETH</option>
+                                        <option value="USB">USB</option>
+                                        <option value="MSG">MSG</option>
+                                    </select>
+                                </div>
+                                <div class="form-group operationType linkinType">
+                                    <label for="jumpApp">跳转应用:</label>
+                                    <select class="chosen-select form-control" id="jumpApp" data-placeholder="请选择跳转应用">
+                                    </select>
+                                </div>
+                                <div class="form-group operationType linkinType">
+                                    <label for="jumpDetail">跳转详情页:</label>
+                                    <select class="chosen-select form-control" id="jumpDetail" data-placeholder="请选择跳转详情页">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="iconList1">有接入USB图标:</label>
+                                    <select class="chosen-select form-control" id="iconList1" data-placeholder="请选择ICON图标集合">
+                                    </select>
+                                </div>
+                                <div class="form-group" id="reloadPic1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="iconList2">无接入USB图标:</label>
+                                    <select class="chosen-select form-control" id="iconList2" data-placeholder="请选择ICON图标集合">
+                                    </select>
+                                </div>
+                                <div class="form-group" id="reloadPic2">
+                                </div>
+                            </div>
+                            <img src="" class="my-image">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subIcon">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /.page-content -->
+</div>
+<script type="text/javascript" src="views/desktop/public.js"></script>

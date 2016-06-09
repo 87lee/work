@@ -1,0 +1,1853 @@
+<link rel="stylesheet" type="text/css" href="assets/css/jquery.bigcolorpicker.css">
+<link rel="stylesheet" type="text/css" href="views/desktop/desktop.css">
+<style type="text/css">
+#weatherModal .my-form label {
+    width: 35%;
+}
+.blocksdata-layout{
+    display: none;
+}
+#blocksDataList tbody tr{
+    height: 51px;
+}
+#blocksDataList tbody tr td{
+    vertical-align: middle;
+}
+.modal .form-group {
+    margin-bottom: 8px;
+}
+#quickListModal .form-group label{
+    width: 8%;
+}
+#quickListModal .form-group {
+    margin-bottom: 8px;
+}
+#quickTable_wrapper .toolbar{
+    margin-bottom: 30px!important;
+}
+#timeWeatherModal .my-form {
+  width: 70%;
+  margin: 0 auto;
+}
+#timeWeatherModal .my-form .form-control {
+    width: 60%;
+}
+</style>
+<div class="main-content-inner">
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed');}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-tv home-icon"></i>
+                <span class="menu-text"> 桌面管理 </span>
+            </li>
+        </ul><!-- /.breadcrumb -->
+        <!-- /section:basics/content.searchbox -->
+    </div>
+
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content" id="page-content" style="overflow-x: auto;padding-bottom: 0;">
+        <div class="my-content" id="groupContent" style="margin: 0 auto;position: relative;">
+            <table id="dGroupTable" class="table my-table table-bordered table-hover dataTable no-footer">
+            </table>
+        </div>
+
+        <div class="my-content" id="desktopContent" style="display: none;margin: 0 auto;position: relative;">
+            <div id="myTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 42px;"><label style="display: inline-block;
+            "><input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;
+            "></label></div>
+            <table id="myTable" class="table my-table table-bordered table-hover dataTable no-footer" style="margin-top: 42px;">
+            </table>
+        </div>
+
+        <div class="my-content" id="quickContent" style="margin: 0 auto;display: none;min-height: 500px;">
+            <div style="position: absolute;left: 105px;top: 55px;">
+                <label for="screen">选择模板:</label><select class="chosen-select form-control" id="shortCutSelect" data-placeholder="空模板" style="width: 200px;"></select>
+            </div>
+            <table id="quickTable" class="table table-bordered table-hover dataTable no-footer">
+            </table>
+        </div>
+
+        <div class="my-layout" id="myLayout" style="width: 1610px;margin: 0 auto;height: 790px;display: none;position: relative;">
+            <div style="width: 130px;height: 720px;float: left;">
+                <div id="screenBtn">
+                    <a class="btn my-btn btn-primary" href="javascript:" id="setStyle">风格设置</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="setScreenStyle">屏风格设置</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="setConfigure">基础设置</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="setWallpaper">壁纸</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="setNav" >导航</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="setLogo">LOGO</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="setTimeWeather">时间天气</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="setSN">SN</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="setAttachment">附件栏</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="setQuick">快捷入口</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="setTwo">两态快捷入口</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="setThree">三态快捷入口</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="setQuickEntryGroup">快捷入口组</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="setQuickList">底部快捷栏</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="setQuickKey">快捷键</a>
+                    <a class="btn my-btn btn-primary slot-data" href="javascript:" id="setFocusId">焦点跳转</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="setScreenFront">屏向前移</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="setScreenBehind">屏向后移</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="setMessageConfig">消息控件</a>
+                </div>
+            </div>
+            <div>
+                <div id="screenSelect">
+                    <label for="desktopName">桌面名称:</label>
+                    <input type="text" id="desktopName" placeholder="请输入桌面名称" style="width: 150px;height: 30px;">&emsp;
+
+                    <label for="desktopDesc">桌面备注:</label>
+                    <input type="text" id="desktopDesc" placeholder="选填" style="width: 150px;height: 30px;">&emsp;
+
+                    <label for="desktopProportion">显示比例:</label>
+                    <select class="chosen-select" id="desktopProportion" data-placeholder="100%" style="width: 150px;">
+                        <option value="120">120%</option>
+                        <option value="100" selected>100%</option>
+                        <option value="80">80%</option>
+                        <option value="60">60%</option>
+                    </select>&emsp;
+
+                    <label for="slotGroup">运营坑位组:</label>
+                    <select class="chosen-select" id="slotGroup" data-placeholder="100%" style="width: 150px;">
+
+                    </select>&emsp;
+
+                    <label for="handleisable">移动控件:</label>
+                    <input name="handleisable" type="radio" class="ace" value="true">
+                    <span class="lbl">&nbsp;是</span>&emsp;
+                    <input name="handleisable" type="radio" class="ace" value="false" checked>
+                    <span class="lbl">&nbsp;否</span>&emsp;&emsp;
+                    <!-- <label for="jbkable">越狱:</label>
+                    <input name="jbkable" type="radio" class="ace" value="true">
+                    <span class="lbl">&nbsp;是</span>&emsp;
+                    <input name="jbkable" type="radio" class="ace" value="false" checked>
+                    <span class="lbl">&nbsp;否</span>&emsp;&emsp; -->
+                    <a class="btn my-btn btn-primary" href="javascript:" id="releaseDesktop" style="width: 110px;">发布</a>
+                </div>
+                <a type="button" class="my-close" style="left: -205px;">×</a>
+            </div>
+            <div id="pageWrap">
+                <ul class="dropdown-menu" id="setAlignment">
+                    <li><a href="#" class="alignment-set">左对齐</a></li>
+                    <li><a href="#" class="alignment-set">右对齐</a></li>
+                    <li><a href="#" class="alignment-set">上对齐</a></li>
+                    <li><a href="#" class="alignment-set">下对齐</a></li>
+                    <li><a href="#" class="alignment-set">横向间隔对齐</a></li>
+                    <li><a href="#" class="alignment-set">纵向间隔对齐</a></li>
+                    <li><a href="#" class="scale-set">等比列缩放</a></li>
+                </ul>
+                <ul class="dropdown-menu" id="setQuickAlignment">
+                    <li><a href="#" class="alignment-set">左对齐</a></li>
+                    <li><a href="#" class="alignment-set">右对齐</a></li>
+                    <li><a href="#" class="alignment-set">上对齐</a></li>
+                    <li><a href="#" class="alignment-set">下对齐</a></li>
+                    <li><a href="#" class="alignment-set">横向间隔对齐</a></li>
+                    <li><a href="#" class="alignment-set">纵向间隔对齐</a></li>
+                </ul> 
+                <div class="screenWarp" id="screenWarp">
+                    <ul><li></li></ul>
+                </div>
+                <div id="navWarp" class="screen-nav"></div>
+                <div id="logoWarp" style="display: inline-block;cursor: move;"></div>
+                <div id="timerWarp" style="display: inline-block;cursor: move;"></div>
+                <div id="weatherWarp" style="display: inline-block;cursor: move;"></div>
+                <div id="timeWeatherWarp" style="display: inline-block;cursor: move;"></div>
+                <div id="snWarp" style="display: inline-block;cursor: move;"></div>
+                <div id="attachmentWarp" style="display: inline-block;cursor: move;"></div>
+                <div id="msgWarp" style="display: inline-block;cursor: move;position: absolute;"></div>
+                <div id="quickWarp"></div>
+                <div id="threeWarp"></div>
+                <div id="twoWarp"></div>
+                <div id="quickEntryGroupWarp"></div>
+                <div id="quickSlotWarp"></div>
+            </div>
+            <div style="width: 200px;height: 700px;position: absolute;left: 1410px;top: 70px;">
+                <div id="slotInfo">
+                    <h4>坑位信息：</h4>
+                    <div class="form-group">
+                        <label for="slotLeft">left:</label>
+                        <input type="text" class="form-control slot-data" id="slotLeft">
+                    </div>
+                    <div class="form-group">
+                        <label for="slotTop">top:</label>
+                        <input type="text" class="form-control slot-data" id="slotTop">
+                    </div>
+                    <div class="form-group">
+                        <label for="slotWidth">width:</label>
+                        <input type="text" class="form-control slot-data" id="slotWidth">
+                    </div>
+                    <div class="form-group">
+                        <label for="slotHeight">height:</label>
+                        <input type="text" class="form-control slot-data" id="slotHeight">
+                    </div>
+                    <div class="form-group">
+                        <label for="slotBgd">bgd:</label>
+                        <input type="text" class="form-control slot-data" id="slotBgd">
+                    </div>
+                    <div class="form-group">
+                        <label for="slotOpacity" style="font-size: 12px;">透明度:</label>
+                        <span class="ui-slider-green ui-slider-small slot-data" id="slotOpacity"></span>
+                    </div>
+                </div>
+                <div id="layoutCtrl">
+                    <a class="btn my-btn btn-primary" href="javascript:" id="addScreen">添加屏</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="editScreen">修改屏</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="delScreen">删除屏</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="addBlock">添加块</a>
+                    <a class="btn my-btn btn-primary slot-data" href="javascript:" id="delBlock">删除块</a>
+                    <a class="btn my-btn btn-primary slot-data" href="javascript:" id="setCloudWH">修改云宽高</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="checkOffset">检查对齐</a>
+                    <a class="btn my-btn btn-primary" href="javascript:" id="setDesktopDate">布局数据</a>
+                    <!-- <a class="btn my-btn btn-primary" href="javascript:" id="setBlocksData">表格数据</a> -->
+                    <a class="btn my-btn btn-primary" href="javascript:" id="subAllData">保存</a>
+                </div>
+            </div>
+            <div id="screenInfoWrap" style="margin-top: 10px;width: 1280px;position: absolute;bottom: 0;left: 130px;" class="clearfix">
+                <div class="col-xs-6">
+                    <b>屏幕信息：</b><span id="screenTitle"></span>
+                </div>
+                <div class="col-xs-6">
+                    <b>坑位个数：</b><span id="screenSlots"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-layout" id="myDataLayout" style="width: 1610px;margin: 0 auto;height: 790px;display: none;position: relative;">
+            <div style="width: 130px;height: 720px;float: left;"></div>
+            <div id="pageDataWrap">
+                <div class="screenWarp" id="screenDataWarp">
+                    <ul><li></li></ul>
+                </div>
+                <div id="navDataWarp" class="screen-nav"></div>
+            </div>
+            <div style="width: 200px;height: 700px;position: absolute;left: 1410px;top: 70px;">
+                <div id="layoutDataCtrl">
+                    <a class="btn my-btn btn-primary" href="javascript:" id="backDesktop">上一步</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="dGroupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">新增</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form">
+                            <div class="form-group">
+                                <label for="dGroupName">组名称:</label>
+                                <input type="text" class="form-control" id="dGroupName" placeholder="请输入组名称">
+                            </div>
+                            <div class="form-group">
+                                <label for="dGroupDesc">备注:</label>
+                                <input type="text" class="form-control" id="dGroupDesc" placeholder="选填">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subDGroup">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="mGroupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">移动</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form">
+                            <div class="form-group">
+                                <label for="mGroupName">组名称:</label>
+                                <select class="chosen-select form-control" id="mGroupName" data-placeholder="请选择组">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subMGroup">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="navModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">设置导航</h4>
+                    </div>
+                    <div class="modal-body" style="overflow: initial;">
+                        <div class="my-form">
+                            <div class="form-group" id="navShow">
+                                <label for="navShow">是否显示导航:</label>
+                                <input name="navShow" type="radio" class="ace" value="true" checked>
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="navShow" type="radio" class="ace" value="false">
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="navSelect">导航:</label>
+                                <select class="chosen-select form-control" id="navSelect" data-placeholder="请选择导航">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="navStyle">风格:</label>
+                                <select class="chosen-select form-control" id="navStyle" data-placeholder="请选择风格">
+                                    <option value="SIMPLE">SIMPLE</option>
+                                    <option value="JAV">JAV</option>
+                                    <option value="SAST">SAST</option>
+                                    <option value="RAIZEA">RAIZEA</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="navMargin">间隔:</label>
+                                <input type="text" class="form-control" id="navMargin" placeholder="请输入间隔">
+                            </div>
+                            <div class="form-group" id="navTitle">
+                                <label for="navTitle">是否显示焦点框:</label>
+                                <input name="navTitle" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="navTitle" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" style="display: none;">
+                                <label for="navInfo">预览图:</label>
+                                <div id="navInfo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subNav">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="attachmentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">设置附件栏</h4>
+                    </div>
+                    <div class="modal-body" style="max-height: 650px;">
+                        <div class="my-form">
+                            <div class="form-group" id="attachmentShow">
+                                <label for="attachmentShow">是否显示附件栏:</label>
+                                <input name="attachmentShow" type="radio" class="ace" value="true" checked>
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="attachmentShow" type="radio" class="ace" value="false">
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="attachmentSelect">附件栏:</label>
+                                <select class="chosen-select form-control" id="attachmentSelect" data-placeholder="请选择附件栏">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="attachmentStyle">风格:</label>
+                                <select class="chosen-select form-control" id="attachmentStyle" data-placeholder="请选择风格">
+                                    <option value="SIMPLE">SIMPLE</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="attachmentMargin">间隔:</label>
+                                <input type="text" class="form-control" id="attachmentMargin" placeholder="请输入间隔">
+                            </div>
+                            <div class="form-group" id="attachmentTitle">
+                                <label for="attachmentTitle">是否显示焦点框:</label>
+                                <input name="attachmentTitle" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="attachmentTitle" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group custom-index">
+                                <label>控件:</label>
+                                <input type="text" class="form-control" placeholder="请设置ID（位置从上到下）">
+                            </div>
+                            <div class="form-group" style="display: none;">
+                                <label for="attachmentInfo">预览图:</label>
+                                <div id="attachmentInfo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subAttachment">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="quickModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">设置快捷入口</h4>
+                    </div>
+                    <div class="modal-body" style="overflow: initial;">
+                        <div class="my-form">
+                            <div class="form-group" id="quickShow">
+                                <label for="quickShow">是否显示:</label>
+                                <input name="quickShow" type="radio" class="ace" value="true" checked>
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="quickShow" type="radio" class="ace" value="false">
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="quickSelect">快捷入口:</label>
+                                <select class="chosen-select form-control" id="quickSelect" data-placeholder="请选择快捷入口">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="quickStyle">风格:</label>
+                                <select class="chosen-select form-control" id="quickStyle" data-placeholder="请选择风格">
+                                    <option value="SIMPLE">SIMPLE</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="quickTitle">
+                                <label for="quickTitle">是否显示焦点框:</label>
+                                <input name="quickTitle" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="quickTitle" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" style="display: none;">
+                                <label for="quickInfo">预览图:</label>
+                                <div id="quickInfo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subQuick">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal my-modal fade" id="quickEntryGroupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">设置快捷入口组</h4>
+                    </div>
+                    <div class="modal-body" style="overflow: initial;">
+                        <div class="my-form">
+                            <div class="form-group" id="QEGShow">
+                                <label for="QEGShow">是否显示:</label>
+                                <input name="QEGShow" type="radio" class="ace" value="true" checked>
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="QEGShow" type="radio" class="ace" value="false">
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" style="display: none;">
+                                <label for="QEGSelect">快捷入口:</label>
+                                <select class="chosen-select form-control" id="QEGSelect" data-placeholder="请选择快捷入口">
+                                </select>
+                            </div>
+                            <div class="form-group" style="display: none;">
+                                <label for="QEGInfo">预览图:</label>
+                                <div id="QEGInfo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subQEG">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="modal my-modal fade" id="threeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">设置三态快捷入口</h4>
+                    </div>
+                    <div class="modal-body" style="overflow: initial;">
+                        <div class="my-form">
+                            <div class="form-group" id="threeShow">
+                                <label for="threeShow">是否显示:</label>
+                                <input name="threeShow" type="radio" class="ace" value="true" checked>
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="threeShow" type="radio" class="ace" value="false">
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="threeSelect">三态快捷入口:</label>
+                                <select class="chosen-select form-control" id="threeSelect" data-placeholder="请选择三态快捷入口">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="threeStyle">风格:</label>
+                                <select class="chosen-select form-control" id="threeStyle" data-placeholder="请选择风格">
+                                    <option value="SIMPLE">SIMPLE</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="threeTitle">
+                                <label for="threeTitle">是否显示焦点框:</label>
+                                <input name="threeTitle" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="threeTitle" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" style="display: none;">
+                                <label for="threeInfo">预览图:</label>
+                                <div id="threeInfo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subThree">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="twoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">设置两态快捷入口</h4>
+                    </div>
+                    <div class="modal-body" style="overflow: initial;">
+                        <div class="my-form">
+                            <div class="form-group" id="twoShow">
+                                <label for="twoShow">是否显示:</label>
+                                <input name="twoShow" type="radio" class="ace" value="true" checked>
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="twoShow" type="radio" class="ace" value="false">
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="twoSelect">两态快捷入口:</label>
+                                <select class="chosen-select form-control" id="twoSelect" data-placeholder="请选择两态快捷入口">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="twoStyle">风格:</label>
+                                <select class="chosen-select form-control" id="twoStyle" data-placeholder="请选择风格">
+                                    <option value="SIMPLE">SIMPLE</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="twoTitle">
+                                <label for="twoTitle">是否显示焦点框:</label>
+                                <input name="twoTitle" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="twoTitle" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" style="display: none;">
+                                <label for="twoInfo">预览图:</label>
+                                <div id="twoInfo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subTwo">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="copyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">新增</h4>
+                    </div>
+                    <div class="modal-body" style="overflow: initial;">
+                        <div class="my-form">
+                            <div class="form-group">
+                                <label for="newDesktopName">桌面名称:</label>
+                                <input type="text" class="form-control" id="newDesktopName" placeholder="请输入桌面名称">
+                            </div>
+                            <div class="form-group">
+                                <label for="newDesktopDesc">备注:</label>
+                                <input type="text" class="form-control" id="newDesktopDesc" placeholder="选填">
+                            </div>
+                            <div class="form-group">
+                                <label for="copySelect">选择桌面模板:</label>
+                                <select class="chosen-select form-control" id="copySelect" data-placeholder="请选择桌面模板">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subCopy">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="logoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">设置LOGO</h4>
+                    </div>
+                    <div class="modal-body" style="overflow: initial;">
+                        <div class="my-form">
+                            <div class="form-group" id="logoShow">
+                                <label for="logoShow">是否显示LOGO:</label>
+                                <input name="logoShow" type="radio" class="ace" value="true" checked>
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="logoShow" type="radio" class="ace" value="false">
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" id="logoTitle">
+                                <label for="logoTitle">是否显示焦点框:</label>
+                                <input name="logoTitle" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="logoTitle" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="logoStyle">风格:</label>
+                                <select class="chosen-select form-control" id="logoStyle" data-placeholder="请选择风格">
+                                    <option value="SIMPLE">SIMPLE</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="logoTime">展示间隔（秒）:</label>
+                                <input type="text" class="form-control" id="logoTime" placeholder="请输入展示间隔（秒）">
+                            </div>
+                            <div class="form-group">
+                                <label for="key">LOGO:</label>
+                                <a id="addLogo" class="btn my-btn btn-success" href="javascript:" style="float: none;margin-bottom: 3px;">&nbsp;添加</a>
+                            </div>
+                            <div class="form-group" style="position: relative;">
+                                <label for="desc">&nbsp;</label>
+                                <input type="text" class="form-control fileShow" placeholder="请上传LOGO" readonly="readonly" style="width: 65%;">
+                                <input type="button" class="fileBtn button" value="浏览" style="width:15%;position: absolute;right: 80px;top: 5px;">
+                                <input type="file" accept="image/*" style="width:0px;height: 0;" class="fileHide" style="width: 65%;">
+                                <button type="button" class="close delLogo" style="position: absolute;top: 6px;right: 48px;font-size: 20px;border-radius: 50%;border: 1px solid #0E0D0D;width: 22px;">×</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subLogo">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="wallpaperModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">设置壁纸</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form">
+                            <div class="form-group" id="paperShow">
+                                <label for="paperShow">是否显示:</label>
+                                <input name="paperShow" type="radio" class="ace" value="true" checked>
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="paperShow" type="radio" class="ace" value="false">
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" style="position: relative;">
+                                <label for="desc">选择壁纸:</label>
+                                <input type="text" class="form-control fileShow" id="wallpaperShow" placeholder="请选择壁纸" readonly="readonly">
+                                <input id="wallpaperBtn" type="button" class="fileBtn button" value="浏览" style="width:15%;position: absolute;right: 62px;top: 5px;">
+                                <input type="file" accept="image/*" id="wallpaperHide" style="width:0px;height: 0;" class="fileHide">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subWallpaper">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="screenModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" style="width: 1461px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">添加屏</h4>
+                    </div>
+                    <div class="modal-body" style="max-height: 650px;">
+                        <div class="my-form" style="width:1400px">
+                            <div class="form-group">
+                                <label for="screenName" style="width: 10%;">屏名称:</label>
+                                <input type="text" class="form-control" id="screenName" placeholder="请输入屏名称" style="width: 20%;">
+                                <span style="margin-left: 100px;font-size: 16px;color: #999;">说明：不选择屏，生成的屏则为空屏</span>
+                            </div>
+                        </div>
+                        <div id="screenList" class="clearfix">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subNewScreen">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="blockModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" style="width: 1461px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">添加块</h4>
+                        <div id="blockType" class="form-group" style="position: absolute;left: 190px;top: 14px;">
+                            <label for="blockType">块类型:&emsp;</label>
+                            <input name="blockType" type="radio" class="ace" value="common" checked>
+                            <span class="lbl">&nbsp;普通</span>&emsp;
+                            <input name="blockType" type="radio" class="ace" value="quickEntry">
+                            <span class="lbl">&nbsp;快捷坑位</span>&emsp;
+                            <input name="blockType" type="radio" class="ace" value="globalQuickEntry">
+                            <span class="lbl">&nbsp;全局快捷坑位</span>&emsp;
+                        </div>
+                        <div id="myBlocks_filter" class="dataTables_filter" style="position: absolute;right: 50px;top: 10px;">
+                            <label style="display: inline-block;"><input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-body" style="max-height: 650px;">
+                        <div id="blockList" class="clearfix">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">新增</h4>
+                    </div>
+                    <div class="modal-body" style="overflow-y: initial">
+                        <!-- <img src="" class="my-image"> -->
+                        <div class="my-form" style="">
+                            <div class="form-group" id="slotType">
+                                <label for="slotType">运营坑位:</label>
+                                <input name="slotType" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="slotType" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" id="dataType">
+                                <label for="dataType">数据类型:</label>
+                                <input name="dataType" type="radio" class="ace" value="yunos">
+                                <span class="lbl">&nbsp;云</span>&emsp;
+                                <input name="dataType" type="radio" class="ace" value="linkin" checked>
+                                <span class="lbl">&nbsp;非云</span>&emsp;
+                                <input name="dataType" type="radio" class="ace" value="linkinOnly">
+                                <span class="lbl">&nbsp;强制非云</span>&emsp;
+                            </div>
+                            <div class="form-group" id="disconnectType">
+                                <label for="disconnectType">无网络响应:</label>
+                                <input name="disconnectType" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="disconnectType" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" id="editType">
+                                <label for="editType">替换类型:</label>
+                                <input name="editType" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;可替换</span>&emsp;
+                                <input name="editType" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;不可替换</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="soltTitle">坑位标题:</label>
+                                <input type="text" class="form-control" id="soltTitle" placeholder="选填">
+                            </div>
+<!--                             <div class="form-group linkinType">
+                                <label for="operationType">运营坑位ID:</label>
+                                <select class="chosen-select form-control" id="operationType" data-placeholder="请选择运营坑位ID">
+                                </select>
+                            </div> -->
+
+                            <div class="form-group linkinType" id="jumpType">
+                                <label for="jumpType">跳转信息类型:</label>
+                                <input name="jumpType" type="radio" class="ace" value="APP" checked>
+                                <span class="lbl">&nbsp;应用</span>&emsp;
+                                <input name="jumpType" type="radio" class="ace" value="URI">
+                                <span class="lbl">&nbsp;链接</span>&emsp;
+                            </div>
+                            <div class="form-group linkinType">
+                                <label for="layoutType">显示效果:</label>
+                                <select class="form-control" id="layoutType" data-placeholder="请选择显示效果">
+                                    <option value="请选择显示效果">请选择显示效果</option>
+                                    <option value="IMAGE">图片</option>
+                                    <option value="VIDEO">视频</option>
+                                    <option value="APP">应用</option>
+                                    <option value="APP_CENTER_IMG_BOTTOM_TEXT">APP_CENTER_IMG_BOTTOM_TEXT</option>
+                                </select>
+                            </div>
+                            <div class="form-group linkinType operationType">
+                                <label for="uriVal">跳转链接:</label>
+                                <input type="text" class="form-control" id="uriVal" placeholder="请输入跳转链接">
+                            </div>
+                            <div class="form-group linkinType operationType" id="addVideo">
+                                <label for="addVideo">视频列表:</label>
+                                <a class="btn my-btn btn-success" href="javascript:" style="float: none;margin-bottom: 3px;">&nbsp;添加</a>
+                            </div>
+                            <div class="form-group linkinType operationType">
+                                <label for="jumpApp">跳转应用:</label>
+                                <select class="chosen-select form-control" id="jumpApp" data-placeholder="请选择跳转应用">
+                                </select>
+                            </div>
+                            <div class="form-group linkinType operationType">
+                                <label for="jumpDetail">跳转详情页:</label>
+                                <select class="chosen-select form-control" id="jumpDetail" data-placeholder="请选择跳转详情页">
+                                </select>
+                            </div>
+                            <div class="form-group linkinType" id="appType">
+                                <label for="appType">绑定应用:</label>
+                                <input name="appType" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="appType" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+<!--                             <div class="form-group appType linkinType">
+                                <label for="pkgName">绑定应用包名:</label>
+                                <input type="text" class="form-control" id="pkgName" placeholder="请输入绑定应用包名">
+                            </div> -->
+<!--                             <div class="form-group appType linkinType">
+                                <label for="versionCode">绑定应用版本:</label>
+                                <input type="text" class="form-control" id="versionCode" placeholder="请输入绑定应用版本">
+                            </div>
+                            <div class="form-group appType linkinType">
+                                <label for="appUrl">绑定应用路径:</label>
+                                <input type="text" class="form-control" id="appUrl" placeholder="请输入绑定应用路径">
+                            </div> -->
+                            <div class="form-group" style="display: none;">
+                                <label for="appName">绑定应用名称:</label>
+                                <select class="chosen-select form-control" id="appName" data-placeholder="请选择绑定应用名称">
+                                    <option value="请选择绑定应用名称">请选择绑定应用名称</option>
+                                </select>
+                            </div>
+                            <div class="form-group appType linkinType">
+                                <label for="versionCode">绑定应用版本:</label>
+                                <select class="chosen-select form-control" id="versionCode" data-placeholder="请选择绑定应用版本">
+                                    <option value="请选择绑定应用版本">请选择绑定应用版本</option>
+                                </select>
+                            </div>
+                            <div class="form-group appType linkinType">
+                                <label for="appUrl">绑定应用路径:</label>
+                                <select class="chosen-select form-control" id="appUrl" data-placeholder="请选择绑定应用路径">
+                                    <option value="请选择绑定应用路径">请选择绑定应用路径</option>
+                                </select>
+                            </div>
+                            <div class="form-group linkinType picType" style="position: relative;">
+                                <label for="desc">图片:</label>
+                                <input type="text" class="form-control fileShow" id="fileShow2" placeholder="请选择图片" readonly="readonly">
+                                <input id="fileBtn2" type="button" class="fileBtn button" value="浏览" style="width:15%;position: absolute;right: 62px;top: 5px;">
+                                <input type="file" accept="image/*" id="fileHide2" style="width:0px;height: 0;" class="fileHide">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subData">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!--         <div class="modal my-modal fade" id="quickSlotModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" style="margin: 30px auto;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">添加</h4>
+                    </div>
+                    <div class="modal-body" style="overflow-y: initial">
+                        <div class="my-form" style="">
+                            <div class="form-group">
+                                <label for="slotIdQuickEntry">坑位ID:</label>
+                                <input type="text" class="form-control" id="slotIdQuickEntry" placeholder="请输入坑位ID">
+                            </div>
+                            <div class="form-group">
+                                <label for="soltTitleQuickEntry">坑位标题:</label>
+                                <input type="text" class="form-control" id="soltTitleQuickEntry" placeholder="选填">
+                            </div>
+
+                            <div class="form-group" id="editTypeQuickEntry">
+                                <label for="editTypeQuickEntry">替换类型:</label>
+                                <input name="editTypeQuickEntry" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;可替换</span>&emsp;
+                                <input name="editTypeQuickEntry" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;不可替换</span>&emsp;
+                            </div>
+                            <div class="form-group" id="jumpTypeQuickEntry">
+                                <label for="jumpTypeQuickEntry">跳转信息类型:</label>
+                                <input name="jumpTypeQuickEntry" type="radio" class="ace" value="APP" checked>
+                                <span class="lbl">&nbsp;应用</span>&emsp;
+                                <input name="jumpTypeQuickEntry" type="radio" class="ace" value="URI">
+                                <span class="lbl">&nbsp;链接</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="uriValQuickEntry">跳转链接:</label>
+                                <input type="text" class="form-control" id="uriValQuickEntry" placeholder="请输入URI值">
+                            </div>
+                            <div class="form-group">
+                                <label for="jumpAppQuickEntry">跳转应用:</label>
+                                <select class="chosen-select form-control" id="jumpAppQuickEntry" data-placeholder="请选择跳转应用">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="jumpDetailQuickEntry">跳转详情页:</label>
+                                <select class="chosen-select form-control" id="jumpDetailQuickEntry" data-placeholder="请选择跳转详情页">
+                                </select>
+                            </div>
+                            <div class="form-group" id="appTypeQuickEntry">
+                                <label for="appTypeQuickEntry">绑定应用:</label>
+                                <input name="appTypeQuickEntry" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="appTypeQuickEntry" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" style="display: none;">
+                                <label for="appNameQuickEntry">绑定应用名称:</label>
+                                <select class="chosen-select form-control" id="appNameQuickEntry" data-placeholder="请选择绑定应用名称">
+                                    <option value="请选择绑定应用名称">请选择绑定应用名称</option>
+                                </select>
+                            </div>
+                            <div class="form-group appTypeQuickEntry">
+                                <label for="versionCodeQuickEntry">绑定应用版本:</label>
+                                <select class="chosen-select form-control" id="versionCodeQuickEntry" data-placeholder="请选择绑定应用版本">
+                                    <option value="请选择绑定应用版本">请选择绑定应用版本</option>
+                                </select>
+                            </div>
+                            <div class="form-group appTypeQuick">
+                                <label for="appUrlQuickEntry">绑定应用路径:</label>
+                                <select class="chosen-select form-control" id="appUrlQuickEntry" data-placeholder="请选择绑定应用路径">
+                                    <option value="请选择绑定应用路径">请选择绑定应用路径</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="position: relative;">
+                                <label for="desc">获取焦点</label>
+                                <input type="text" class="form-control fileShow" id="quickFileShow1" placeholder="请选择图片" readonly="readonly">
+                                <input id="quickFileBtn1" type="button" class="fileBtn button" value="浏览" style="width:15%;position: absolute;right: 62px;top: 5px;">
+                                <input type="file" accept="image/*" id="quickFileHide1" style="width:0px;height: 0;" class="fileHide">
+                            </div>
+                            <div class="form-group" style="position: relative;">
+                                <label for="desc">失去焦点</label>
+                                <input type="text" class="form-control fileShow" id="quickFileShow2" placeholder="请选择图片" readonly="readonly">
+                                <input id="quickFileBtn2" type="button" class="fileBtn button" value="浏览" style="width:15%;position: absolute;right: 62px;top: 5px;">
+                                <input type="file" accept="image/*" id="quickFileHide2" style="width:0px;height: 0;" class="fileHide">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subQuickSlot">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="modal my-modal fade" id="videoListModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true" data-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close my-back">×</button>
+                        <h4 style="margin: 0;">添加视频列表</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form" style="">
+                            <div class="form-group my-listVal" id="videoList">
+                            </div>
+                            <div class="form-group">
+                                <label for="videoUrl">路径:</label>
+                                <input type="text" class="form-control" id="videoUrl" placeholder="请输入路径">
+                            </div>
+                            <div class="form-group">
+                                <label for="videoDuration">持续时间:</label>
+                                <input type="text" class="form-control" id="videoDuration" placeholder="请输入时间">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subVideoList">添加</a>
+                        <a href="javascript:" class="btn my-btn btn-primary my-back" >返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="timeWeatherModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">设置时间天气</h4>
+                    </div>
+                    <div class="modal-body" style="overflow-y: initial;">
+                        <img src="" class="my-image">
+                        <div class="my-form" style="">
+<!--                             <div class="form-group" id="weatherTyep">
+                                <label for="weatherTyep">新/旧时间天气:</label>
+                                <input name="weatherTyep" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;新</span>&emsp;
+                                <input name="weatherTyep" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;旧</span>&emsp;
+                            </div> -->
+                            <div id="timeWeather" style="left: 10px">
+                            <div class="form-group" id="timeWeatherShow">
+                                <label for="timeWeatherShow">是否显示新时间天气:</label>
+                                <input name="timeWeatherShow" type="radio" class="ace" value="true" checked>
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="timeWeatherShow" type="radio" class="ace" value="false">
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="timeWeatherStyle">新时间天气风格:</label>
+                                <select class="chosen-select form-control" id="timeWeatherStyle" data-placeholder="请选择时间天气风格" style="width: 30%;">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                </select>
+                            </div>
+                            </div>
+                            <div>
+                            <div class="form-group" id="weatherShow">
+                                <label for="weatherShow">是否显示天气:</label>
+                                <input name="weatherShow" type="radio" class="ace" value="true" checked>
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="weatherShow" type="radio" class="ace" value="false">
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" id="weatherTitle">
+                                <label for="weatherTitle">是否显示焦点框:</label>
+                                <input name="weatherTitle" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="weatherTitle" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" id="weatherCity">
+                                <label for="weatherCity">是否显示城市名:</label>
+                                <input name="weatherCity" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="weatherCity" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" id="weatherTemperature">
+                                <label for="weatherTemperature">是否显示温度:</label>
+                                <input name="weatherTemperature" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="weatherTemperature" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" id="weatherDesc">
+                                <label for="weatherDesc">是否显示前期状况的描述:</label>
+                                <input name="weatherDesc" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="weatherDesc" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" id="weatherIcon">
+                                <label for="weatherIcon">是否显示天气图标:</label>
+                                <input name="weatherIcon" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="weatherIcon" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="weatherStyle">天气风格:</label>
+                                <select class="chosen-select form-control" id="weatherStyle" data-placeholder="请选择风格">
+                                    <option value="SIMPLE">SIMPLE</option>
+                                </select>
+                            </div>
+                            </div>
+                            <div>
+                            <div class="form-group" id="timerShow">
+                                <label for="timerShow">是否显示时间:</label>
+                                <input name="timerShow" type="radio" class="ace" value="true" checked>
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="timerShow" type="radio" class="ace" value="false">
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="timerStyle">时间风格:</label>
+                                <select class="chosen-select form-control" id="timerStyle" data-placeholder="请选择风格">
+                                    <option value="SIMPLE">SIMPLE</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="timerTitle">
+                                <label for="timerTitle">是否显示焦点框:</label>
+                                <input name="timerTitle" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="timerTitle" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="timerFormat">时间显示格式:</label>
+                                <input type="text" class="form-control" id="timerFormat" placeholder="请输入时间显示格式">
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subTimeWeather">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="snModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">设置SN</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form" style="">
+                            <div class="form-group" id="snShow">
+                                <label for="snShow">是否显示SN:</label>
+                                <input name="snShow" type="radio" class="ace" value="true" checked>
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="snShow" type="radio" class="ace" value="false">
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="snStyle">风格:</label>
+                                <select class="chosen-select form-control" id="snStyle" data-placeholder="请选择风格">
+                                    <option value="style">style</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="snPrefix">前缀:</label>
+                                <input type="text" class="form-control" id="snPrefix" placeholder="SN:">
+                            </div>
+<!--                             <div class="form-group">
+                                <label for="snSystem">系统属性:</label>
+                                <input type="text" class="form-control" id="snSystem" placeholder="选填">
+                            </div>
+                            <div class="form-group">
+                                <label for="snIpmacro">公司属性:</label>
+                                <input type="text" class="form-control" id="snIpmacro" placeholder="SN:" disabled>
+                            </div> -->
+                            <div class="form-group" id="snTitle">
+                                <label for="snTitle">是否显示焦点框:</label>
+                                <input name="snTitle" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="snTitle" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subSN">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="focusIdModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">设置焦点跳转</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form" style="">
+                            <div class="form-group" id="focusIdShow">
+                                <label for="focusIdShow">是否开启:</label>
+                                <input name="focusIdShow" type="radio" class="ace" value="true" checked>
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="focusIdShow" type="radio" class="ace" value="false">
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="nextFocusUpId">上按键跳转ID:</label>
+                                <select class="chosen-select form-control focus-id" id="nextFocusUpId" data-placeholder="请选择跳转ID">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="nextFocusDownId">下按键跳转ID:</label>
+                                <select class="chosen-select form-control focus-id" id="nextFocusDownId" data-placeholder="请选择跳转ID">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="nextFocusLeftId">左按键跳转ID:</label>
+                                <select class="chosen-select form-control focus-id" id="nextFocusLeftId" data-placeholder="请选择跳转ID">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="nextFocusRightId">右按键跳转ID:</label>
+                                <select class="chosen-select form-control focus-id" id="nextFocusRightId" data-placeholder="请选择跳转ID">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subFocusId">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="cloudModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">修改云宽高</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form" style="">
+                            <div class="form-group" id="cloudBatch">
+                                <label for="cloudBatch">批量修改:</label>
+                                <input name="cloudBatch" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="cloudBatch" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group cloud-alone">
+                                <label for="cloudWidth">云宽:</label>
+                                <input type="text" class="form-control" id="cloudWidth" placeholder="请输入云宽">
+                            </div>
+                            <div class="form-group cloud-alone">
+                                <label for="cloudHeight">云高:</label>
+                                <input type="text" class="form-control" id="cloudHeight" placeholder="请输入云高">
+                            </div>
+                            <div class="form-group">
+                                <label for="cloudAll">选择规范:</label>
+                                <select class="form-control" id="cloudAll" data-placeholder="请选择规范">
+                                    <option value="请选择规范">请选择规范</option>
+                                    <option value="XM11">XM11规范</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary slot-data" id="subCloud">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="scaleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">等比例缩放</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form" style="">
+                            <div class="form-group" id="scaleAll">
+                                <label for="scaleAll">所有坑位:</label>
+                                <input name="scaleAll" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="scaleAll" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" id="scaleBased">
+                                <label for="scaleBased">保持纵横比:</label>
+                                <input name="scaleBased" type="radio" class="ace" value="true" checked>
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="scaleBased" type="radio" class="ace" value="false">
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="scaleWidth">宽:</label>
+                                <input type="text" class="form-control" id="scaleWidth" placeholder="请输入宽">
+                            </div>
+                            <div class="form-group">
+                                <label for="scaleHeight">高:</label>
+                                <input type="text" class="form-control" id="scaleHeight" placeholder="请输入高">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary slot-data" id="subScale">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="quickKeyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">添加</h4>
+                    </div>
+                    <div class="modal-body" style="overflow-y: initial;">
+                        <div class="my-form">
+                            <div class="form-group">
+                                <label for="keyCodeQuick">键值:</label>
+                                <select class="chosen-select form-control" id="keyCodeQuick" data-placeholder="请选择键值">
+                                    <option value="请选择键值">请选择键值</option>
+                                    <option value="131">F1</option>
+                                    <option value="132">F2</option>
+                                    <option value="133">F3</option>
+                                    <option value="134">F4</option>
+                                    <option value="135">F5</option>
+                                    <option value="136">F6</option>
+                                    <option value="137">F7</option>
+                                    <option value="138">F8</option>
+                                    <option value="176">Setting</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="jumpTypeQuick">
+                                <label for="jumpTypeQuick">跳转信息类型:</label>
+                                <input name="jumpTypeQuick" type="radio" class="ace" value="APP" checked>
+                                <span class="lbl">&nbsp;应用</span>&emsp;
+                                <input name="jumpTypeQuick" type="radio" class="ace" value="URI">
+                                <span class="lbl">&nbsp;链接</span>&emsp;
+                                <input name="jumpTypeQuick" type="radio" class="ace" value="SCREEN">
+                                <span class="lbl">&nbsp;屏</span>&emsp;
+                            </div>
+                            <div class="form-group quick-key">
+                                <label for="jumpAppQuick">跳转应用:</label>
+                                <select class="chosen-select form-control" id="jumpAppQuick" data-placeholder="请选择跳转应用">
+                                </select>
+                            </div>
+                            <div class="form-group quick-key">
+                                <label for="jumpDetailQuick">跳转详情页:</label>
+                                <select class="chosen-select form-control" id="jumpDetailQuick" data-placeholder="请选择跳转详情页">
+                                </select>
+                            </div>
+                            <div class="form-group quick-key">
+                                <label for="uriValQuick">uri:</label>
+                                <input type="text" class="form-control" id="uriValQuick" placeholder="请输入uri">
+                            </div>
+                            <div class="form-group quick-key">
+                                <label for="sidValQuick">sid:</label>
+                                <input type="text" class="form-control" id="sidValQuick" placeholder="请输入sid">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subQuickKey">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="configureModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">桌面基础设置</h4>
+                    </div>
+                    <div class="modal-body" style="overflow: initial;">
+                        <div class="my-form">
+                            <div class="form-group" id="isDisposeNavLeft">
+                                <label for="isDisposeNavLeft">处理导航左边:</label>
+                                <input name="isDisposeNavLeft" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="isDisposeNavLeft" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" id="isDisposeNavRight">
+                                <label for="isDisposeNavRight">处理导航右边:</label>
+                                <input name="isDisposeNavRight" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="isDisposeNavRight" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" id="isCreateNavBottomLine">
+                                <label for="isCreateNavBottomLine">需要导航底线:</label>
+                                <input name="isCreateNavBottomLine" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="isCreateNavBottomLine" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" id="isSkipYunOSCheck">
+                                <label for="isSkipYunOSCheck">跳过阿里审核:</label>
+                                <input name="isSkipYunOSCheck" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="isSkipYunOSCheck" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" id="isAllowReplaceWallpaper">
+                                <label for="isAllowReplaceWallpaper">允许替换壁纸:</label>
+                                <input name="isAllowReplaceWallpaper" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="isAllowReplaceWallpaper" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" id="isSkipYunOSReport">
+                                <label for="isSkipYunOSReport">跳过曝光:</label>
+                                <input name="isSkipYunOSReport" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="isSkipYunOSReport" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group" id="isAllowSlotEmpty">
+                                <label for="isAllowSlotEmpty">允许坑位数为0:</label>
+                                <input name="isAllowSlotEmpty" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="isAllowSlotEmpty" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="slotCornerRadius">圆角值:</label>
+                                <input type="text" class="form-control" id="slotCornerRadius" placeholder="0（0是直角）">
+                            </div>
+                            <div class="form-group">
+                                <label for="focusTheta">焦点角度:</label>
+                                <input type="text" class="form-control" id="focusTheta" placeholder="45">
+                            </div>
+                            <div class="form-group">
+                                <label for="firstSlotId">焦点ID:</label>
+                                <select class="chosen-select form-control" id="firstSlotId" data-placeholder="请选择焦点ID">
+                                </select>
+                            </div>
+                            <div class="form-group" style="position: relative;">
+                                <label for="focusImage">焦点框图片:</label>
+                                <input type="text" class="form-control fileShow" id="focusImageShow" placeholder="请选择焦点框图片" readonly="readonly">
+                                <input id="focusImageBtn" type="button" class="fileBtn button" value="浏览" style="width:15%;position: absolute;right: 62px;top: 5px;">
+                                <input type="file" accept="image/*" id="focusImageHide" style="width:0px;height: 0;" class="fileHide">
+                            </div>
+                            <div class="form-group">
+                                <label for="focusStyle">焦点框移动效果:</label>
+                                <select class="chosen-select form-control" id="focusStyle" data-placeholder="请选择焦点框移动效果">
+                                    <option value="slide">滑动</option>
+                                    <option value="display">显示</option>
+                                    <option value="gone">不显示</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="setBlur">模糊效果:</label>
+                                <select class="chosen-select form-control" id="setBlur" data-placeholder="请选择模糊效果">
+                                    <option value="true">启用</option>
+                                    <option value="false">禁用</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subConfigure">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="quickListModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" style="width: 1400px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">底部快捷栏</h4>
+                    </div>
+                    <div class="modal-body" style="max-height: 650px;overflow-y: initial">
+                        <img src="" class="my-image">
+                        <div class="my-form" style="width: 90%;">
+                            <div class="form-group" id="quickListShow">
+                                <label for="quickListShow">是否设置:</label>
+                                <input name="quickListShow" type="radio" class="ace" value="true">
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="quickListShow" type="radio" class="ace" value="false" checked>
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="quickListSelect">底部快捷栏:</label>
+                                <select class="chosen-select form-control" id="quickListSelect" data-placeholder="请选择底部快捷栏" style="width: 36%;">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="addQuickList">添加位置:</label>
+                                <a id="addQuickList" class="btn my-btn btn-success" href="javascript:" style="float: none;margin-bottom: 3px;">&nbsp;添加</a>
+                            </div>
+                            <div class="form-group">
+                                <label></label>
+                                <label style="width: 21%;font-weight: 700;text-align: center;">标题</label>
+                                <label style="width: 21%;font-weight: 700;text-align: center;">应用名称</label>
+                                <label style="width: 21%;font-weight: 700;text-align: center;">应用版本</label>
+                                <label style="width: 21%;font-weight: 700;text-align: center;">应用下载</label>
+                            </div>
+                            <div id="quickListItem">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="saveQuickList">保存为模板</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subQuickList">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="recordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">生成记录</h4>
+                    </div>
+                    <div class="modal-body" style="max-height: 650px;">
+                            <table class="table table-bordered table-hover dataTable no-footer" id="recordTable">
+                            </table>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="keyValModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">附加数据</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form" style="">
+                            <div class="form-group" id="jumpExtra" style="margin-bottom: 2px;">
+                                <label>附加数据:</label>
+                                <span class="bind-span" style="padding: 0;border: 0;">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="releaseModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">发布桌面</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form">
+                            <div class="form-group" id="chooseType">
+                                <label for="chooseType">选择类型:</label>
+                                <input name="chooseType" type="radio" class="ace" value="group" checked>
+                                <span class="lbl">&nbsp;内测</span>&emsp;
+                                <input name="chooseType" type="radio" class="ace" value="ALL">
+                                <span class="lbl">&nbsp;公开</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="group">选择内测组:</label>
+                                <select id="group" class="form-control"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subRelease">发布</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="styleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">风格设置</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form">
+                            <div class="form-group">
+                                <label for="styleType">选择风格:</label>
+                                <select id="styleType" class="form-control">
+                                    <option value="default">默认</option>
+                                    <option value="coverflow">coverflow</option>
+                                </select>
+                            </div>
+                            <div class="form-group coverflow">
+                                <label for="displayQuantity">显示数量:</label>
+                                <input type="text" class="form-control" id="displayQuantity" placeholder="请输入显示数量">
+                            </div>
+                            <div class="form-group coverflow">
+                                <label for="slotAngle">偏转角度:</label>
+                                <input type="text" class="form-control" id="slotAngle" placeholder="请输入偏转角度">
+                            </div>
+                            <div class="form-group coverflow">
+                                <label for="areaX">X坐标:</label>
+                                <input type="text" class="form-control" id="areaX" placeholder="请输入X坐标">
+                            </div>
+                            <div class="form-group coverflow">
+                                <label for="areaY">Y坐标:</label>
+                                <input type="text" class="form-control" id="areaY" placeholder="请输入Y坐标">
+                            </div>
+                            <div class="form-group coverflow">
+                                <label for="areaW">宽:</label>
+                                <input type="text" class="form-control" id="areaW" placeholder="请输入宽">
+                            </div>
+                            <div class="form-group coverflow">
+                                <label for="areaH">高:</label>
+                                <input type="text" class="form-control" id="areaH" placeholder="请输入高">
+                            </div>
+                            <div class="form-group coverflow" id="isCircle">
+                                <label for="isCircle">滚动:</label>
+                                <input name="isCircle" type="radio" class="ace" value="true" checked>
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="isCircle" type="radio" class="ace" value="false">
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                         
+                            <div class="form-group">
+                                <label for="animationType">坑位焦点效果:</label>
+                                <select id="animationType" class="form-control">
+                                    <option value="">无效果</option>
+                                    <option value="enlarge">放大</option>
+                                    <option value="rotate">翻转</option>
+                                    <option value="enlarge_rotate">放大+翻转</option>
+                                </select>
+                            </div>
+                            <div class="form-group animationType">
+                                <label for="enlargeVal">放大倍数:</label>
+                                <input type="text" class="form-control" id="enlargeVal"  placeholder="请输入放大倍数">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subStyle">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!----屏风格---->
+         <div class="modal my-modal fade" id="screenStyleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">风格设置</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form">
+                            <!---->
+                             <div class="form-group">
+                                <label for="screenStyleType">选择屏风格:</label>
+                                <select id="screenStyleType" class="form-control">
+                                    <option value="default">默认</option>
+                                    <option value="coverflow">coverflow</option>
+                                </select>
+                            </div>
+                            <div class="form-group coverflow">
+                                <label for="screenDisplayQuantity">显示数量:</label>
+                                <input type="text" class="form-control" id="screenDisplayQuantity" placeholder="请输入显示数量">
+                            </div>
+                            <div class="form-group coverflow">
+                                <label for="screenSlotAngle">偏转角度:</label>
+                                <input type="text" class="form-control" id="screenSlotAngle" placeholder="请输入偏转角度">
+                            </div>
+                            <div class="form-group coverflow">
+                                <label for="screenAreaX">X坐标:</label>
+                                <input type="text" class="form-control" id="screenAreaX" placeholder="请输入X坐标">
+                            </div>
+                            <div class="form-group coverflow">
+                                <label for="screenAreaY">Y坐标:</label>
+                                <input type="text" class="form-control" id="screenAreaY" placeholder="请输入Y坐标">
+                            </div>
+                            <div class="form-group coverflow">
+                                <label for="screenAreaW">宽:</label>
+                                <input type="text" class="form-control" id="screenAreaW" placeholder="请输入宽">
+                            </div>
+                            <div class="form-group coverflow">
+                                <label for="screenAreaH">高:</label>
+                                <input type="text" class="form-control" id="screenAreaH" placeholder="请输入高">
+                            </div>
+                            <div class="form-group coverflow" id="screenIsCircle">
+                                <label for="screenIsCircle">滚动:</label>
+                                <input name="screenIsCircle" type="radio" class="ace" value="true" checked>
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                                <input name="screenIsCircle" type="radio" class="ace" value="false">
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                            </div>
+                            <!---->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subScreenStyle">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!----复制桌面---->
+           <div class="modal my-modal fade" id="copyDesktopModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">复制桌面</h4>
+                    </div>
+                    <div class="modal-body" style="max-height: 650px;">
+                        <div class="my-form">
+ 
+
+                            <div class="form-group">
+                                <label for="copyDesktop">选择桌面组:</label>
+                                <select id="copyDesktop" class="form-control">
+                                   <option value="不分组">不分组</option>
+</select>
+                            </div>
+                            <table class="my-table table table-bordered table-hover dataTable no-footer" id="releaseTable">
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subCopyDesktop">复制</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!----/end复制桌面---->
+
+        <div class="modal my-modal fade" id="messageConfigModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">消息控件设置</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form">
+                            <div class="form-group coverflow" id="messageSwitch" style="display: block;">
+                                <label for="messageSwitch">滚动:</label>
+                                <input name="messageSwitch" type="radio" class="ace" value="true" checked="">
+                                <span class="lbl">&nbsp;是</span> 
+                                <input name="messageSwitch" type="radio" class="ace" value="false">
+                                <span class="lbl">&nbsp;否</span> 
+                            </div>
+                            <div class="form-group">
+                                <label for="messageConfigX">x:</label>
+                                <input type="text" class="form-control" id="messageConfigX" placeholder="请输入横坐标">
+                            </div>
+                            <div class="form-group">
+                                <label for="messageConfigY">y:</label>
+                                <input type="text" class="form-control" id="messageConfigY" placeholder="请输入纵坐标">
+                            </div>
+                            <div class="form-group">
+                                <label for="messageConfigWidth">宽度:</label>
+                                <input type="text" class="form-control" id="messageConfigWidth" placeholder="请输入宽度">
+                            </div>
+                            <div class="form-group">
+                                <label for="messageConfigFontSize">字体大小:</label>
+                                <input type="text" class="form-control" id="messageConfigFontSize" placeholder="请输入字体大小">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subMessageConfig">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- /.page-content -->
+</div>
+<script type="text/javascript" src="assets/js/jquery.bigcolorpicker.min.js"></script>
+<script type="text/javascript" src="views/desktop/public.js"></script>

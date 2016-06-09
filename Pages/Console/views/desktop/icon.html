@@ -1,0 +1,67 @@
+<div class="main-content-inner">
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed');}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-star-half-empty home-icon"></i>
+                <span class="menu-text"> 控件管理 </span>
+            </li>
+        </ul><!-- /.breadcrumb -->
+        <!-- /section:basics/content.searchbox -->
+    </div>
+
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content" id="page-content">
+        <div class="my-content" style="margin: 0 auto;position: relative;">
+            <div id="myTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 42px;"><label style="display: inline-block;
+            "><input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;
+            "></label></div>
+            <table id="myTable" class="table table-bordered table-hover dataTable no-footer" style="margin-top: 42px;">
+            </table>
+        </div>
+
+        <img src="" class="my-image">
+
+        <div class="modal my-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">新增</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="add_pos">
+                            <div class="my-form" style="">
+                                <div class="form-group">
+                                    <label for="widget">控件名称:</label>
+                                    <input type="text" class="form-control" id="widget" placeholder="请输入控件名称">
+                                </div>
+                                <div class="form-group" style="position: relative;">
+                                    <label for="picNormal">正常状态图片:</label>
+                                    <input type="text" class="form-control fileShow" id="fileShow1" placeholder="请上传正常状态图片" readonly="readonly">
+                                    <input id="fileBtn1" type="button" class="fileBtn button" value="浏览" style="width:15%;position: absolute;right: 62px;top: 5px;">
+                                    <input type="file" accept="image/*" id="fileHide1" style="width:0px;height: 0;" class="fileHide">
+                                </div>
+                                <div class="form-group" style="position: relative;">
+                                    <label for="picForcus">焦点状态图片:</label>
+                                    <input type="text" class="form-control fileShow" id="fileShow2" placeholder="请上传焦点状态图片" readonly="readonly">
+                                    <input id="fileBtn2" type="button" class="fileBtn button" value="浏览" style="width:15%;position: absolute;right: 62px;top: 5px;">
+                                    <input type="file" accept="image/*" id="fileHide2" style="width:0px;height: 0;" class="fileHide">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subIcon">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.page-content -->
+</div>

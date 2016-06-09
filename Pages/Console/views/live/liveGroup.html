@@ -1,0 +1,249 @@
+<link rel="stylesheet" type="text/css" href="views/desktop/desktop.css">
+<div class="main-content-inner">
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed');}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-map-o home-icon"></i>
+                <span class="menu-text"> 广告管理 </span>
+            </li>
+        </ul><!-- /.breadcrumb -->
+        <!-- /section:basics/content.searchbox -->
+    </div>
+
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content" id="page-content" style="overflow-x: auto;padding-bottom: 0;">
+        <div class="my-content" style="margin: 0 auto;position: relative;">
+            <div id="fristTable">
+                <div id="lGroupTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 42px;"><label style="display: inline-block;
+                "><input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;
+                "></label></div>
+                <table id="lGroupTable" class="table table-bordered table-hover dataTable no-footer" style="margin-top: 42px;">
+                </table>
+            </div>
+        </div>
+        <div id="secondTable" style="display: none;">
+            <div class="my-layout" id="myLayout" style="width: 1610px;margin: 0 auto;height: 790px;position: relative;">
+                <div style="width: 130px;height: 720px;float: left;">
+                    <div id="screenBtn">
+                        <a class="btn my-btn btn-primary" href="javascript:" id="addAd">新建广告</a>
+                        <a class="btn my-btn btn-primary" href="javascript:" id="delAd" style="display:none;">删除广告</a>
+                        <a class="btn my-btn btn-primary" href="javascript:" id="addAdInfo" style="display:none;">展示信息</a>
+                        <a class="btn my-btn btn-primary" href="javascript:" id="editChannel" style="display:none;">频道列表</a>
+                        <a class="btn my-btn btn-primary" href="javascript:" id="editAd" style="display:none;">保存</a>
+                    </div>
+                </div>
+                <div>
+                    <div id="screenSelect">
+                        <label for="adSelect">选择广告:</label>
+                        <select id="adSelect" class="chosen-select form-control" style="width: 170px;margin-left: 10px;display: none;"></select>&emsp;
+
+                        <label for="desktopProportion">显示比例:</label>
+                        <select class="chosen-select" id="desktopProportion" data-placeholder="100%" style="width: 170px;">
+                            <option value="120">120%</option>
+                            <option value="100" selected>100%</option>
+                            <option value="80">80%</option>
+                            <option value="60">60%</option>
+                        </select>&emsp;
+
+                        <label for="screenSize">屏幕尺寸:</label>
+                        <input name="screenSize" type="radio" class="ace" value="1280" checked>
+                        <span class="lbl">&nbsp;1280 X 720</span>&emsp;
+                        <input name="screenSize" type="radio" class="ace" value="1920">
+                        <span class="lbl">&nbsp;1920 X 1080</span>&emsp;
+                    </div>
+                    <a type="button" class="my-close" style="left: -205px;">×</a>
+                </div>
+                <div id="pageWrap">
+                    <div class="screenWarp" id="screenWarp"><ul><li>
+                        <div id="adWarp" class="screen-nav"></div>
+                    </li></ul></div>
+                </div>
+                <div style="width: 200px;height: 700px;position: absolute;left: 1410px;top: 70px;">
+                    <div id="slotInfo">
+                        <h4>广告信息：</h4>
+                        <div class="form-group">
+                            <label for="slotLeft">X:</label>
+                            <input type="text" class="form-control slot-data" id="slotLeft">
+                        </div>
+                        <div class="form-group">
+                            <label for="slotTop">Y:</label>
+                            <input type="text" class="form-control slot-data" id="slotTop">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="lGroupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">添加</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form" style="">
+                            <div class="form-group">
+                                <label for="groupName">组名称:</label>
+                                <input type="text" class="form-control" id="groupName" placeholder="请输入组名称">
+                            </div>
+                            <div class="form-group">
+                                <label for="groupDesc">备注:</label>
+                                <input type="text" class="form-control" id="groupDesc" placeholder="请输入备注">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subGroup">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="adInfoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">展示信息</h4>
+                    </div>
+                    <div class="modal-body" style="overflow: initial;">
+                        <div class="my-form">
+                            <div class="form-group">
+                                <label for="adUrl">广告页面:</label>
+                                <input type="text" class="form-control" id="adUrl" placeholder="请输入广告页面（http://或https://开头）">
+                            </div>
+                            <div class="form-group choose-time" id="startTime">
+                                <label for="startTime">开始时间:</label>
+                                <select class="chosen-select" data-placeholder="00">
+                                </select> :
+                                <select class="chosen-select" data-placeholder="00">
+                                </select> :
+                                <select class="chosen-select" data-placeholder="00">
+                                </select>
+                            </div>
+                            <div class="form-group choose-time" id="endTime">
+                                <label for="endTime">结束时间:</label>
+                                <select class="chosen-select" data-placeholder="00">
+                                </select> :
+                                <select class="chosen-select" data-placeholder="00">
+                                </select> :
+                                <select class="chosen-select" data-placeholder="00">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="interval">展示间隔:</label>
+                                <input type="text" class="form-control" id="interval" placeholder="请输入展示间隔（单位：秒）">
+                            </div>
+                            <div class="form-group">
+                                <label for="duration">展示持续时间:</label>
+                                <input type="text" class="form-control" id="duration" placeholder="请输入展示持续时间（单位：秒）">
+                            </div>
+                            <div class="form-group">
+                                <label for="maxShowTimes">最大展示次数:</label>
+                                <input type="text" class="form-control" id="maxShowTimes" placeholder="请输入最大展示次数（单位：秒）">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subAdInfo">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="adModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">新建广告</h4>
+                    </div>
+                    <div class="modal-body" style="overflow: initial;">
+                        <div class="my-form">
+                            <div class="form-group" id="adScreenSize">
+                                <label for="adScreenSize">屏幕尺寸:</label>
+                                <input name="adScreenSize" type="radio" class="ace" value="1280" checked>
+                                <span class="lbl">&nbsp;1280 X 720</span>&emsp;
+                                <input name="adScreenSize" type="radio" class="ace" value="1920">
+                                <span class="lbl">&nbsp;1920 X 1080</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="adName">广告名称:</label>
+                                <input type="text" class="form-control" id="adName" placeholder="请输入广告名称">
+                            </div>
+                            <div class="form-group">
+                                <label for="adWidth">广告宽:</label>
+                                <input type="text" class="form-control" id="adWidth" placeholder="请输入广告宽">
+                            </div>
+                            <div class="form-group">
+                                <label for="adHeight">广告高:</label>
+                                <input type="text" class="form-control" id="adHeight" placeholder="请输入广告高">
+                            </div>
+                            <div class="form-group">
+                                <label for="adPosX">广告X坐标:</label>
+                                <input type="text" class="form-control" id="adPosX" placeholder="请输入广告X坐标">
+                            </div>
+                            <div class="form-group">
+                                <label for="adPoxY">广告Y坐标:</label>
+                                <input type="text" class="form-control" id="adPoxY" placeholder="请输入广告Y坐标">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subAd">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="channelModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">频道列表</h4>
+                    </div>
+                    <div class="modal-body" style="overflow-y: initial;">
+                        <div class="my-form">
+                            <h5>已选频道：</h5>
+                            <div id="channeled">
+                            </div>
+                            <hr style="margin-right: 18px;">
+                            <div id="unchannel">
+                                <div class="form-group">
+                                    <label for="channelListSelect">频道列表:</label>
+                                    <select id="channelListSelect" class="form-control">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="channelSelect">频道:</label>
+                                    <select id="channelSelect" class="form-control">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- <a href="javascript:" class="btn my-btn btn-primary" id="subChannel">提交</a> -->
+                        <a href="javascript:" class="btn my-btn btn-primary" id="addChannel">添加</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /.page-content -->
+</div>
+<script type="text/javascript" src="views/desktop/public.js"></script>

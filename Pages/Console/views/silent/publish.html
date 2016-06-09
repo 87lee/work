@@ -1,0 +1,199 @@
+<style type="text/css">
+#boxTimeInfo div {
+  float: left;
+  width: 20%;
+}
+</style>
+<div class="main-content-inner">
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed');}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon glyphicon glyphicon-share home-icon"></i>
+                <span class="menu-text"> 静默发布 </span>
+            </li>
+        </ul><!-- /.breadcrumb -->
+        <!-- /section:basics/content.searchbox -->
+    </div>
+
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content" id="page-content">
+        <div class="my-content" style="margin: 0 auto;position: relative;">
+            <div id="myTable_filter" class="dataTables_filter" style="position: absolute;right: 0;top: 42px;"><label style="display: inline-block;"><input type="search" class="form-control input-sm" placeholder="搜索" style="display: inline-block;
+                "></label></div>
+            <table id="myTable" class="table table-bordered table-hover dataTable no-footer" style="margin-top: 42px;">
+            </table>
+        </div>
+
+        <div class="modal my-modal fade" id="releaseModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">发布</h4>
+                    </div>
+                    <div class="modal-body" style="overflow: initial;">
+                        <div class="my-form">
+                            <div class="form-group" id="chooseModel">
+                                <label for="chooseModel">全型号:</label>
+                                <input name="chooseModel" type="radio" class="ace" value="false">
+                                <span class="lbl">&nbsp;否</span>&emsp;
+                                <input name="chooseModel" type="radio" class="ace" value="ALL" checked>
+                                <span class="lbl">&nbsp;是</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="modelName">型号:</label>
+                                <input type="text" class="form-control" id="modelName" placeholder="请输入型号">
+                            </div>
+                            <div class="form-group">
+                                <label for="vendorID">vendorID:</label>
+                                <input type="text" class="form-control" id="vendorID" placeholder="none">
+                            </div>
+                            <div class="form-group">
+                                <label for="silentGroup">选择静默组:</label>
+                                <select id="silentGroup" class="form-control"></select>
+                            </div>
+                            <div class="form-group" id="chooseRange">
+                                <label for="chooseRange">发布范围:</label>
+                                <input name="chooseRange" type="radio" class="ace" value="jbk">
+                                <span class="lbl">&nbsp;越狱</span>&emsp;
+                                <input name="chooseRange" type="radio" class="ace" value="unjbk">
+                                <span class="lbl">&nbsp;非越狱</span>&emsp;
+                                <input name="chooseRange" type="radio" class="ace" value="all" checked>
+                                <span class="lbl">&nbsp;全部</span>&emsp;
+                            </div>
+                            <div class="form-group active-type">
+                                <label for="startActive">激活开始时间:</label>
+                                <select class="form-control startActive" style="width: 22.2%;"></select>&nbsp;:
+                                <select class="form-control startActive" style="width: 22.2%;"></select>&nbsp;:
+                                <select class="form-control startActive" style="width: 22.2%;"></select>
+                            </div>
+                            <div class="form-group active-type">
+                                <label for="endActive">激活结束时间:</label>
+                                <select class="form-control endActive" style="width: 22.2%;"></select>&nbsp;:
+                                <select class="form-control endActive" style="width: 22.2%;"></select>&nbsp;:
+                                <select class="form-control endActive" style="width: 22.2%;"></select>
+                            </div>
+                            <div class="form-group active-type">
+                                <label for="idle">空闲激活时间:</label>
+                                <input type="text" class="form-control" id="idle" placeholder="请输入空闲激活时间（单位：秒 ≥10）">
+                            </div>
+                            <div class="form-group active-type">
+                                <label for="duration">持续激活时间:</label>
+                                <input type="text" class="form-control" id="duration" placeholder="请输入持续激活时间（单位：秒 ≥10）">
+                            </div>
+                            <div class="form-group" id="chooseType">
+                                <label for="chooseType">选择类型:</label>
+                                <input name="chooseType" type="radio" class="ace" value="group" checked>
+                                <span class="lbl">&nbsp;内测</span>&emsp;
+                                <input name="chooseType" type="radio" class="ace" value="AB">
+                                <span class="lbl">&nbsp;灰度</span>&emsp;
+                                <input name="chooseType" type="radio" class="ace" value="ALL">
+                                <span class="lbl">&nbsp;公开</span>&emsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="group">选择内测组:</label>
+                                <select id="group" class="form-control"></select>
+                            </div>
+                            <div class="form-group" style="display: none;">
+                                <label for="countNum">灰度数量:</label>
+                                <input type="text" class="form-control" id="countNum" placeholder="请输入数量">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subRelease">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="macModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">设备列表</h4>
+                    </div>
+                    <div class="modal-body" style="overflow: initial;">
+                        <table id="macTable" class="table table-bordered table-hover dataTable no-footer">
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="watchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">应用列表</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="boxTimeInfo" class="clearfix" style="position: absolute;width: 800px;top: 20px;font-size: 14px;">
+                            <div>激活开始时间：<span class="timeInfo"></span></div>
+                            <div>激活结束时间：<span class="timeInfo"></span></div>
+                            <div>空闲激活时间：<span class="timeInfo"></span> 秒</div>
+                            <div>持续激活时间：<span class="timeInfo"></span> 秒</div>
+                        </div>
+                        <table id="infoTable" class="table table-bordered table-hover dataTable no-footer">
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal my-modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">内测</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-form">
+                            <div class="form-group" id="customRange">
+                                <label for="customRange">发布范围:</label>
+                                <input name="customRange" type="radio" class="ace" value="jbk" checked>
+                                <span class="lbl">&nbsp;越狱</span>&emsp;
+                                <input name="customRange" type="radio" class="ace" value="unjbk">
+                                <span class="lbl">&nbsp;非越狱</span>&emsp;
+                                <input name="customRange" type="radio" class="ace" value="all">
+                                <span class="lbl">&nbsp;全部</span>&emsp;
+                            </div>
+                            <div class="form-group edit-group">
+                                <label for="customGroup">选择内测组:</label>
+                                <select id="customGroup" class="form-control"></select>
+                            </div>
+                            <div class="form-group edit-count">
+                                <label for="customCountNum">灰度数量:</label>
+                                <input type="text" class="form-control" id="customCountNum" placeholder="请输入数量">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="javascript:" class="btn my-btn btn-primary" id="subEdit">提交</a>
+                        <a href="javascript:" class="btn my-btn btn-primary" data-dismiss="modal">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /.page-content -->
+</div>

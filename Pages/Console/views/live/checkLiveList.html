@@ -1,0 +1,100 @@
+<style type="text/css">
+.my-choose{
+    border: 1px solid #ccc;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    background-color: #f5f7fa;
+}
+.my-choose .nav {
+    margin-bottom: 10px;
+}
+.my-choose > ul > li{
+    float: left;
+    margin-bottom: 5px;
+}
+.my-choose > ul > li > label {
+    width: 80px;
+    text-align: right;
+}
+.my-choose > ul > li > .form-control{
+    margin-left: 10px;
+    padding: 4px 12px;
+    font-size: 12px;
+    height: 27px;
+    width: 150px;
+    display: inline-block;
+}
+@media (min-width: 768px) {
+    .my-content{
+        width: 100%;
+    }
+}
+.chosen-container > .chosen-single, [class*="chosen-container"] > .chosen-single {
+  line-height: 30px;
+  height: 30px;
+}
+</style>
+<div class="main-content-inner">
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed');}catch(e){}
+        </script>
+
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-file-movie-o home-icon"></i>
+                <span class="menu-text"> 查看直播列表 </span>
+            </li>
+        </ul><!-- /.breadcrumb -->
+        <!-- /section:basics/content.searchbox -->
+    </div>
+
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content" id="page-content">
+        <div class="my-content" style="margin: 0 auto;position: relative;">
+            <div>
+                <div class="row my-choose">
+                    <ul class="nav">
+                        <li>
+                            <label for="channelType">分类：</label>
+                            <select class="chosen-select form-control" id="channelType" data-placeholder="请选择分类" style="width: 150px;">
+                            </select>
+                        </li>
+                        <li>
+                            <div style="margin: 0 25px;">
+                                <a class="btn my-btn btn-primary" href="javascript:" style="padding: 0 12px;" id="getChannelData">&nbsp;查询</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="row" style="margin-top: 20px;">
+                    <table id="channelTypeTable" class="table my-table table-bordered table-hover dataTable no-footer">
+                    </table>
+                </div>
+                <div class="row" style="margin-top: 20px;" hidden="true">
+                    <table id="channelTable" class="table my-table table-bordered table-hover dataTable no-footer">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.page-content -->
+
+        <div class="modal my-modal fade" id="sourceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 style="margin: 0;">源</h4>
+                    </div>
+                    <div class="modal-body">
+                            <table id="sourceTable" class="table my-table table-bordered table-hover dataTable no-footer" style="">
+                            </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
